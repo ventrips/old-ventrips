@@ -125,3 +125,23 @@ query params: {"updateMask":"sourceUploadUrl,name,labels,httpsTrigger"}
 [debug] [2018-09-24T07:26:43.895Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
  
 [debug] [2018-09-24T07:26:44.012Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:46.017Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
+[debug] [2018-09-24T07:26:46.342Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:48.346Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
+[debug] [2018-09-24T07:26:48.697Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:50.699Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
+[debug] [2018-09-24T07:26:51.053Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:53.054Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
+[debug] [2018-09-24T07:26:53.411Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:55.416Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
+[debug] [2018-09-24T07:26:55.762Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:57.766Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
+[debug] [2018-09-24T07:26:58.119Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:27:00.123Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
