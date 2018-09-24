@@ -2,6 +2,7 @@
 
 # custom
 /public
+.firebase/
 
 # compiled output
 /dist
