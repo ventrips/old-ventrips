@@ -1,0 +1,127 @@
+[debug] [2018-09-24T07:26:20.738Z] ----------------------------------------------------------------------
+[debug] [2018-09-24T07:26:20.739Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --only functions
+[debug] [2018-09-24T07:26:20.740Z] CLI Version:   4.2.1
+[debug] [2018-09-24T07:26:20.740Z] Platform:      darwin
+[debug] [2018-09-24T07:26:20.740Z] Node Version:  v8.9.3
+[debug] [2018-09-24T07:26:20.740Z] Time:          Mon Sep 24 2018 00:26:20 GMT-0700 (PDT)
+[debug] [2018-09-24T07:26:20.740Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-09-24T07:26:20.749Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-24T07:26:20.749Z] > authorizing via signed-in user
+[debug] [2018-09-24T07:26:20.750Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/ventrips-214422  
+ 
+[debug] [2018-09-24T07:26:21.079Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'ventrips-214422'...
+[info] 
+[info] i  deploying functions
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] ✔  functions: Finished running predeploy script.
+[debug] [2018-09-24T07:26:26.410Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@google-cloud/firestore": "^0.17.0",
+    "firebase-admin": "^6.0.0",
+    "firebase-functions": "^2.0.3"
+  },
+  "devDependencies": {
+    "tslint": "~5.8.0",
+    "typescript": "~2.8.3"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-09-24T07:26:26.411Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/ventrips-214422?view=CONSUMER_VIEW  
+ 
+[debug] [2018-09-24T07:26:26.412Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/ventrips-214422?view=CONSUMER_VIEW  
+ 
+[debug] [2018-09-24T07:26:27.400Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:27.412Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2018-09-24T07:26:27.413Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/ventrips-214422  
+ 
+[debug] [2018-09-24T07:26:27.569Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:27.570Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/637747621465:getServerAppConfig  
+ 
+[debug] [2018-09-24T07:26:27.665Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-09-24T07:26:27.667Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/ventrips-214422/configs  
+ 
+[debug] [2018-09-24T07:26:27.877Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (47.68 KB) for uploading
+[debug] [2018-09-24T07:26:28.189Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/ventrips-214422/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2018-09-24T07:26:28.627Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:28.627Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-fe91db9e-ec6e-4d59-9696-5cd066045dba/ade6388a-5a51-41dd-bbab-358f3b5ec3b6.zip?GoogleAccessId=service-637747621465@gcf-admin-robot.iam.gserviceaccount.com&Expires=1537775788&Signature=o1pX1lFUwXsBtTR8SVh%2BCmGPqE4hDKplOYYHJB84hve1sXLEsZYt9odT3sePRXuE7i%2Bh%2BTF7PdjOB4QpG42ji%2B7xAWwNyjTHUXCI%2BpJHG%2FXv%2FJ7BEzagWNci%2BWG4GBUAZy%2BXn0T1e66RBcSf0Ri0AwNm3Mb1ieoZm%2FXagGt9YntWs%2Bycuen3lE7%2BCq6u%2FBCMi0IhdUgo%2B6UD1RMkiDrs7avTtybXQddltkU2Zz2VWzFz6h5qm%2BP10HfeKQjVQQ6cSrq8XvLZZZ6hWBB9tEyJPSOwXUg8HCtbDQdj8ljp%2FnV1COq1W80e%2BV8XersvB8UzSJF%2BuCPhC96TGYNthJPkvQ%3D%3D  
+
+[debug] [2018-09-24T07:26:28.975Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: functions folder uploaded successfully
+[debug] [2018-09-24T07:26:28.977Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/ventrips-214422/locations/-/functions  
+ 
+[debug] [2018-09-24T07:26:29.548Z] <<< HTTP RESPONSE 200
+[info] i  functions: updating Node.js 6 function postDocument(us-central1)...
+[debug] [2018-09-24T07:26:29.551Z] Trigger is:  {"httpsTrigger":{}}
+[info] i  functions: updating Node.js 6 function updateDocument(us-central1)...
+[debug] [2018-09-24T07:26:29.552Z] Trigger is:  {"httpsTrigger":{}}
+[debug] [2018-09-24T07:26:29.553Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/ventrips-214422/locations/us-central1/functions/postDocument 
+query params: {"updateMask":"sourceUploadUrl,name,labels,httpsTrigger"} 
+
+[debug] [2018-09-24T07:26:29.554Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/ventrips-214422/locations/us-central1/functions/updateDocument 
+query params: {"updateMask":"sourceUploadUrl,name,labels,httpsTrigger"} 
+
+[debug] [2018-09-24T07:26:29.959Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:29.959Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:29.961Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/ventrips-214422/locations/-/functions  
+ 
+[debug] [2018-09-24T07:26:30.470Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:30.471Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3Bvc3REb2N1bWVudC8zZ3l6aXVaanVWMA  
+ 
+[debug] [2018-09-24T07:26:30.472Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
+[debug] [2018-09-24T07:26:30.588Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:30.806Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:32.589Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
+[debug] [2018-09-24T07:26:32.809Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3Bvc3REb2N1bWVudC8zZ3l6aXVaanVWMA  
+ 
+[debug] [2018-09-24T07:26:32.891Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:33.235Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:34.891Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
+[debug] [2018-09-24T07:26:35.010Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:35.240Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3Bvc3REb2N1bWVudC8zZ3l6aXVaanVWMA  
+ 
+[debug] [2018-09-24T07:26:35.343Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:37.017Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
+[debug] [2018-09-24T07:26:37.348Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3Bvc3REb2N1bWVudC8zZ3l6aXVaanVWMA  
+ 
+[debug] [2018-09-24T07:26:37.357Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:37.786Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:39.363Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
+[debug] [2018-09-24T07:26:39.788Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3Bvc3REb2N1bWVudC8zZ3l6aXVaanVWMA  
+ 
+[debug] [2018-09-24T07:26:39.790Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:40.199Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:41.794Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
+[debug] [2018-09-24T07:26:41.892Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T07:26:42.200Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3Bvc3REb2N1bWVudC8zZ3l6aXVaanVWMA  
+ 
+[debug] [2018-09-24T07:26:42.562Z] <<< HTTP RESPONSE 200
+[info] ✔  functions[postDocument(us-central1)]: Successful update operation. 
+[debug] [2018-09-24T07:26:43.895Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/dmVudHJpcHMtMjE0NDIyL3VzLWNlbnRyYWwxL3VwZGF0ZURvY3VtZW50L1ZDNjZOMEJoTDZF  
+ 
+[debug] [2018-09-24T07:26:44.012Z] <<< HTTP RESPONSE 200
