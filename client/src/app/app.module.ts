@@ -8,10 +8,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
+import { VideoBackgroundComponent } from './shared/video-background/video-background.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    VideoBackgroundComponent
   ],
   imports: [
     BrowserModule,
