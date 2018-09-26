@@ -33,12 +33,26 @@ const getTrendingGitHubRepos = function () {
     });
     return deferred.promise;
 };
-exports.postDocument = functions.https.onRequest((req, res) => {
+function postDocuments(data, collectionName) {
+    const writeBatch = db.batch();
+    _.forEach(data, item => {
+        const documentRef = db.collection(collectionName).doc();
+        writeBatch.create(documentRef, item);
+    });
+    writeBatch.commit().then(() => {
+        console.log('Successfully executed batch.');
+    }).catch(error => {
+        console.error('Failed to execute batch.');
+        console.log(error);
+    });
+}
+exports.postTrendingGitHubRepos = functions.https.onRequest((req, res) => {
     getTrendingGitHubRepos().then(function (data) {
         res.send(data);
-        _.forEach(data, item => {
-            db.collection('items').add(item);
-        });
+        postDocuments(data, 'items');
+    }).catch(error => {
+        console.error('Failed to get trending GitHub Repos');
+        console.error(error);
     });
     const requestBody = {
         title: 'Testing Cloud Functions',
