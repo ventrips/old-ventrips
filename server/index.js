@@ -15,7 +15,7 @@ const app = express();
 const Firestore = require('@google-cloud/firestore');
 const firestore = new Firestore({
   projectId: 'ventrips-214422',
-  keyFilename: './../ventrips-214422-firebase-adminsdk-w9d9x-fa4567e61b.json',
+  keyFilename: './../../ventrips-214422-firebase-adminsdk-w9d9x-fa4567e61b.json',
 });
 const settings = { timestampsInSnapshots: true};
 firestore.settings(settings);
