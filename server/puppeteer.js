@@ -8,11 +8,11 @@ const puppeteer = require('puppeteer');
         await page.goto('https://www.youtube.com/feed/trending');
         await page.waitForSelector('.ytd-video-renderer');
         const sections = await page.$$('div#dismissable.ytd-video-renderer');
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 2; i++) {
             const section = sections[i];
             const title = await section.$eval('a#video-title', item => item.innerText);
             console.log(title);
-            await page.click('a#video-title');
+            await section.$eval('a#video-title', item => item.click());
             await page.waitForSelector('.ytd-compact-video-renderer');
             const description = await page.$eval('#description .ytd-video-secondary-info-renderer', item => item.innerText);
             console.log(description);
