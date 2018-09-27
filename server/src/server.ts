@@ -1,5 +1,6 @@
 import * as bodyParser from 'body-parser';
 import express from 'express';
+import * as utils from './lib/utils';
 import { InstagramRoutes } from './routes/instagram';
 
 class App {

@@ -1,7 +1,8 @@
 import cheerio from 'cheerio';
 import { Request, Response } from 'express';
 import * as _ from 'lodash';
-import rp from 'request-promise';
+import requestPromise from 'request-promise';
+import * as utils from './../lib/utils';
 
 export class InstagramRoutes {
     private baseUrl = `https://www.instagram.com/explore/tags`;
@@ -10,7 +11,7 @@ export class InstagramRoutes {
         app.route('/instagram/:keyWord')
         .get((req: any, res: any) => {
             const url = `${this.baseUrl}/${req.params.keyWord}`;
-            rp(url)
+            requestPromise(url)
             .then((html: any) => {
                 let hashtags = this.scrapeHashtags(html);
                 hashtags = this.removeDuplicates(hashtags);
