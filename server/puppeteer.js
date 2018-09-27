@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer');
 
 (async function main() {
     try {
+        const responseBody = [];
         const browser = await puppeteer.launch({ headless: true });
         const page = await browser.newPage();
         page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36');
@@ -16,8 +17,13 @@ const puppeteer = require('puppeteer');
             await page.waitForSelector('.ytd-compact-video-renderer');
             const description = await page.$eval('#description .ytd-video-secondary-info-renderer', item => item.innerText);
             console.log(description);
+            const obj = {
+                title,
+                description
+            }
+            responseBody.push(obj);
         }
-        console.log(sections.length);
+        console.log(responseBody);
     } catch (e) {
         console.log('our error', e);
     }
