@@ -3,14 +3,14 @@ import { Request, Response } from 'express';
 import * as _ from 'lodash';
 import requestPromise from 'request-promise';
 import * as utils from './../lib/utils';
-
 export class InstagramRoutes {
     private baseUrl = `https://www.instagram.com/explore/tags`;
 
     public routes(app: any): void {
-        app.route('trending/instagram/:keyWord')
+
+        app.route('trending/instagram/:topic')
         .get((req: any, res: any) => {
-            const url = `${this.baseUrl}/${req.params.keyWord}`;
+            const url = `${this.baseUrl}/${req.params.topic}`;
             requestPromise(url)
             .then((html: any) => {
                 let hashtags = this.scrapeHashtags(html);
@@ -24,6 +24,7 @@ export class InstagramRoutes {
                 res.status(500).send(error);
             });
         });
+
     }
 
     private scrapeHashtags = (html: any) => {

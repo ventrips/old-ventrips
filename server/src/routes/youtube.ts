@@ -1,13 +1,15 @@
 import * as _ from 'lodash';
 import puppeteer from 'puppeteer';
-
 export class YouTubeRoutes {
     public routes(app: any): void {
+
         app.route('/trending/youtube')
         .get(async (req: any, res: any) => {
             this.getTrendingYouTubeVideos(req, res);
         });
+
     }
+
     private getTrendingYouTubeVideos(req: any, res: any): void {
         (async function main() {
             try {
