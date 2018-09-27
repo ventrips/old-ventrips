@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-
+var tools = require('./tools');
 (async function main() {
     try {
         const responseBody = [];

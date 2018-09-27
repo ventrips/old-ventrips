@@ -8,7 +8,7 @@ export class InstagramRoutes {
     private baseUrl = `https://www.instagram.com/explore/tags`;
 
     public routes(app: any): void {
-        app.route('/instagram/:keyWord')
+        app.route('trending/instagram/:keyWord')
         .get((req: any, res: any) => {
             const url = `${this.baseUrl}/${req.params.keyWord}`;
             requestPromise(url)
