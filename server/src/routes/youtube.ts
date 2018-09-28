@@ -14,14 +14,14 @@ export class YouTubeRoutes {
         (async function main() {
             try {
                 const responseBody = [];
-                const browser = await puppeteer.launch({ headless: true });
+                const browser = await puppeteer.launch({ headless: false });
                 const page = await browser.newPage();
                 // tslint:disable-next-line:max-line-length
                 page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36');
                 await page.goto('https://www.youtube.com/feed/trending');
                 await page.waitForSelector('.ytd-video-renderer');
                 const sections = await page.$$('div#dismissable.ytd-video-renderer');
-                for (let i = 0; i < 2; i++) {
+                for (let i = 0; i < sections.length; i++) {
                     const section = sections[i];
                     const title = await section.$eval(
                         'a#video-title',
@@ -35,6 +35,7 @@ export class YouTubeRoutes {
                         (item: any) => item.innerText.trim().replace(/\n/g, ' '),
                     );
                     console.log(description);
+
                     const obj = {
                         description,
                         title,
