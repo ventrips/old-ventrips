@@ -1,21 +1,6 @@
-<!-- <app-video-background></app-video-background> -->
-<div class="d-flex flex-column h-100">
-  <header class="container my-3">
-    <div class="inner">
-      <h3 class="text-white">VENTRIPS</h3>
-      <nav class="nav nav-masthead justify-content-center">
-        <!-- <a class="nav-link active" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Contact</a> -->
-      </nav>
-    </div>
-  </header>
-  <div class="w-100 h-fill">
-    <router-outlet></router-outlet>
-  </div>
-  <footer class="container my-3">
-    <div class="inner text-right">
-      <p class="text-white">By Johnson Huynh</p>
-    </div>
-  </footer>
+<app-video-background></app-video-background>
+<app-navbar></app-navbar>
+<div class="custom-margin-top">
+  <router-outlet></router-outlet>
 </div>
+<app-footer></app-footer>

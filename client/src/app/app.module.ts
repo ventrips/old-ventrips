@@ -9,11 +9,15 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
 import { VideoBackgroundComponent } from './shared/video-background/video-background.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    VideoBackgroundComponent
+    VideoBackgroundComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
