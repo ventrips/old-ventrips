@@ -48,7 +48,6 @@ function postDocuments(data, collectionName) {
 }
 exports.postTrendingGitHubRepos = functions.https.onRequest((req, res) => {
     getTrendingGitHubRepos().then(function (data) {
-        res.send(data);
         postDocuments(data, 'items');
     }).catch(error => {
         console.error('Failed to get trending GitHub Repos');
