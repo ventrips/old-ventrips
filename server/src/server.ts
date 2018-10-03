@@ -1,5 +1,6 @@
 import * as bodyParser from 'body-parser';
 import express from 'express';
+import * as _ from 'lodash';
 import * as utils from './lib/utils';
 import { GitHubRoutes } from './routes/github';
 import { HackerNewsRoutes } from './routes/hacker';

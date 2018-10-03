@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   public selectedNav: string;
-
   constructor(
     private router: Router
   ) {
@@ -20,7 +19,7 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.smoothScrolling();
   }
 
