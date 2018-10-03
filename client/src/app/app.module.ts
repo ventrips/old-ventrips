@@ -8,7 +8,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
-import { VideoBackgroundComponent } from './shared/video-background/video-background.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
@@ -25,7 +24,6 @@ import { BlogComponent } from './pages/blog/blog.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    VideoBackgroundComponent,
     NavbarComponent,
     FooterComponent,
     AboutComponent,

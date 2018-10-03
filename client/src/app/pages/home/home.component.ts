@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +7,9 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class HomeComponent implements OnInit {
   title = 'Ventrips';
-  public items: Observable<any[]>;
 
-  constructor(db: AngularFirestore) {
-      this.items = db.collection('/items').valueChanges();
-  }
+  constructor() {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
 }
