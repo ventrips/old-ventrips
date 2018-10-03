@@ -12,6 +12,8 @@ import { VideoBackgroundComponent } from './shared/video-background/video-backgr
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ProductsComponent } from './shared/products/products.component';
+import { ProductComponent } from './pages/product/product.component';
+import { AboutComponent } from './pages/about/about.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,8 @@ import { ProductsComponent } from './shared/products/products.component';
     NavbarComponent,
     FooterComponent,
     ProductsComponent,
+    ProductComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

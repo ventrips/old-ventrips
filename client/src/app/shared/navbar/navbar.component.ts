@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   public selectedNav: string;
+
   constructor(
     private router: Router
   ) {
@@ -24,6 +25,10 @@ export class NavbarComponent implements OnInit {
   }
 
   isActive(currentNav: string): boolean {
+    if (_.isEqual(this.selectedNav, '/') && _.includes(currentNav, 'home')) {
+      return true;
+    }
+
     return _.includes(this.selectedNav, currentNav);
   }
 
