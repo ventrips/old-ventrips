@@ -11,9 +11,16 @@ import { AngularFireModule } from 'angularfire2';
 import { VideoBackgroundComponent } from './shared/video-background/video-background.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { ProductsComponent } from './shared/products/products.component';
-import { ProductComponent } from './pages/product/product.component';
+
 import { AboutComponent } from './pages/about/about.component';
+import { ProductsComponent } from './shared/products/products.component';
+import { PortfolioComponent } from './pages/portfolio/portfolio.component';
+import { ProductComponent } from './pages/product/product.component';
+import { PrivacyComponent } from './pages/privacy/privacy.component';
+import { TrendsComponent } from './pages/trends/trends.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { TermsComponent } from './pages/terms/terms.component';
+import { BlogComponent } from './pages/blog/blog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,9 +28,15 @@ import { AboutComponent } from './pages/about/about.component';
     VideoBackgroundComponent,
     NavbarComponent,
     FooterComponent,
+    AboutComponent,
+    ContactComponent,
+    PortfolioComponent,
     ProductsComponent,
     ProductComponent,
-    AboutComponent,
+    PrivacyComponent,
+    TermsComponent,
+    TrendsComponent,
+    BlogComponent,
   ],
   imports: [
     BrowserModule,
