@@ -11,13 +11,15 @@ import { AngularFireModule } from 'angularfire2';
 import { VideoBackgroundComponent } from './shared/video-background/video-background.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { ProductsComponent } from './shared/products/products.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     VideoBackgroundComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
