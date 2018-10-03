@@ -1,5 +1,18 @@
-<main class="container">
-  <div class="my-2" *ngFor="let item of items | async">
+<div class="min-height">
+    <iframe class="banner-video" src="https://www.youtube.com/embed/ZCDY0SmSIrI?showinfo=0&controls=0&rel=0&autoplay=1&loop=1&mute=1&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-lead-in">Welcome To</div>
+          <div class="intro-heading text-uppercase ventrips">Ventrips</div>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+        </div>
+      </div>
+    </header>
+</div>
+<main class="container my-5">
+  <h4 class="intro-heading">Trending</h4>
+  <div class="my-5" *ngFor="let item of items | async">
     <a class="text-primary" [href]="item.url" target="__blank"><h4>{{item.name}}</h4></a>
     <p class="card-text mb-auto">{{item.description}}</p>
   </div>      

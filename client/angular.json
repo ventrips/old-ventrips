@@ -23,16 +23,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/assets/css/agency.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "src/styles.scss",
+              "src/assets/css/agency.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "src/assets/js/navbar-scroll-easing.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/lodash/lodash.min.js"
+              "node_modules/lodash/lodash.min.js",
+              "src/assets/js/navbar-scroll-easing.min.js"
             ]
           },
           "configurations": {
