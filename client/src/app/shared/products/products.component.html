@@ -16,11 +16,9 @@
         </a>
         <div class="portfolio-caption">
           <h4><a class="custom-text-black text-uppercase" [routerLink]="['/product', product.id]">{{product.name}}</a></h4>
-          <p>
-            <a class="text-muted text-uppercase" [routerLink]="['/product', product.id]">
-              {{product.category}}
-            </a>
-          </p>
+          <a class="text-muted font-italic text-uppercase" [routerLink]="['/category', product.category]">
+            {{product.category}}
+          </a>
         </div>
       </div>  
     </div>

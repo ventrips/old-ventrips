@@ -5,7 +5,12 @@
           <h2 class="section-heading text-uppercase">{{(detail | async)?.name}}</h2>
         </div>
         <div class="col-lg-6">
-          <h3 class="section-subheading text-muted">{{(detail | async)?.description}}</h3>
+          <h5>
+            <a class="text-muted font-italic text-uppercase" [routerLink]="['/category', (detail | async)?.category]">
+              {{(detail | async)?.category}}
+            </a>
+          </h5>
+          <p class="section-subheading text-muted">{{(detail | async)?.description}}</p>
           <a class="btn btn-primary custom-text-black btn-xl text-uppercase" [href]="(detail | async)?.url" target="__blank">
             <div class="d-flex">
               <span class="align-self-center mr-3">Buy on Amazon</span>
