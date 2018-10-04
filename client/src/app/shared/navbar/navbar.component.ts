@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
   }
 
   isHome(): boolean {
-    return _.isEqual(this.selectedNav, '/') || _.isEqual(this.selectedNav, 'home');
+    return _.isEqual(this.selectedNav, '/') || _.includes(this.selectedNav, 'home');
   }
 
   isActive(currentNav: string): boolean {
