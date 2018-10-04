@@ -24,6 +24,10 @@ export class NavbarComponent implements OnInit {
     this.smoothScrolling();
   }
 
+  isHome(): boolean {
+    return _.isEqual(this.selectedNav, '/') || _.isEqual(this.selectedNav, 'home');
+  }
+
   isActive(currentNav: string): boolean {
     if (_.isEqual(this.selectedNav, '/') && _.includes(currentNav, 'home')) {
       return true;

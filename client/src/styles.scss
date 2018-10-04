@@ -7,9 +7,17 @@
 }
 
 .custom-text-yellow {
-    color: #fed136;
+    color: #fed136 !important;
 }
 
 .custom-bg-yellow {
-    background-color: #fed136;
+    background-color: #fed136 !important;
+}
+
+.custom-bg-transparent {
+    background-color: transparent !important;
+}
+
+.custom-bg-black {
+    background-color: #212529 !important;
 }
