@@ -18,14 +18,12 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  documentToDomainObject = obj => {
-    const object = obj.payload.doc.data();
-    object.id = obj.payload.doc.id;
-    return object;
-  }
-
   getProducts(): Observable<any[]> {
     return this.db.collection('/products').snapshotChanges()
-    .pipe(map(actions => actions.map(this.documentToDomainObject)));
+    .pipe(map(actions => actions.map((obj: any) => {
+        const object = obj.payload.doc.data();
+        object.id = obj.payload.doc.id;
+        return object;
+    })));
   }
 }

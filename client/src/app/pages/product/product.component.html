@@ -1,10 +1,27 @@
 <section class="min-height">
   <div class="container">
     <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Product {{id}}</h2>
-          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        <div class="col-lg-12">
+          <h2 class="section-heading text-uppercase">{{(detail | async)?.name}}</h2>
         </div>
+        <div class="col-lg-6">
+          <h3 class="section-subheading text-muted">{{(detail | async)?.description}}</h3>
+          <a class="btn btn-primary custom-text-black btn-xl text-uppercase" [href]="(detail | async)?.url" target="__blank">
+            <div class="d-flex">
+              <span class="align-self-center mr-3">Buy on Amazon</span>
+              <i class="fab fa-amazon fa-2x ml-auto"></i>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <img class="img-fluid" [src]="(detail | async)?.imageUrl" alt="">
+        </div>
+    </div>
+    <div class="row" *ngIf="_.isNil(detail)">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">Sorry!</h2>
+        <h3 class="section-subheading text-muted">This page does not exist. Return to <a [routerLink]="['/']">Home</a></h3>
+      </div>
     </div>
   </div>
 </section>
