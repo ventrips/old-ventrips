@@ -6,11 +6,11 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
 import * as _ from 'lodash';
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  selector: 'app-product-detail',
+  templateUrl: './product-detail.component.html',
+  styleUrls: ['./product-detail.component.scss']
 })
-export class ProductComponent implements OnInit {
+export class ProductDetailComponent implements OnInit {
   public _ = _;
   public id: string;
   public detail: Object;

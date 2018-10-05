@@ -1,18 +1,18 @@
 <section class="min-height">
   <div class="container">
-    <div class="row" *ngIf="!_.isNil(detail)">
+    <div class="row" *ngIf="(detail | async) as data">
         <div class="col-lg-12">
-          <h2 class="section-heading text-uppercase break-word">{{(detail | async)?.name}}</h2>
+          <h2 class="section-heading text-uppercase break-word">{{data.name}}</h2>
         </div>
         <div class="col-lg-6">
           <h5>
-            <a class="text-muted font-italic text-uppercase" [routerLink]="['/category', (detail | async)?.category]">
-              {{(detail | async)?.category}}
+            <a class="text-muted font-italic text-uppercase" [routerLink]="['/products', data.category]">
+              {{data.category}}
             </a>
           </h5>
-          <p class="section-subheading text-muted">{{(detail | async)?.description}}</p>
+          <p class="section-subheading text-muted">{{data.description}}</p>
           <div class="my-5 text-center text-sm-left">
-            <a class="btn btn-primary custom-text-black btn-xl text-uppercase" [href]="(detail | async)?.url" target="__blank">
+            <a class="btn btn-primary custom-text-black btn-xl text-uppercase" [href]="data.url" target="__blank">
               <div class="d-flex justify-self-sm-center">
                 <span class="align-self-center mr-3">Buy on Amazon</span>
                 <i class="fab fa-amazon fa-2x ml-auto"></i>
@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <img class="img-fluid" [src]="(detail | async)?.imageUrl" alt="">
+          <img class="img-fluid" [src]="data.imageUrl" alt="">
         </div>
     </div>
     <app-error-not-found *ngIf="_.isNil(detail)"></app-error-not-found>

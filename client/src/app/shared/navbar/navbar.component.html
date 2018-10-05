@@ -12,6 +12,10 @@
             [routerLink]="['/home']">Home</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'active': isActive('/products')}"
+            [routerLink]="['/products']">Products</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" [ngClass]="{'active': isActive('/trends')}"
             [routerLink]="['/trends']">Trends</a>
         </li>

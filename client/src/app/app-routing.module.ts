@@ -8,21 +8,36 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
-import { ProductComponent } from './pages/product/product.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { ProductDetailComponent } from './pages/products/product-detail/product-detail.component';
 import { TrendsComponent } from './pages/trends/trends.component';
 import { TermsComponent } from './pages/terms/terms.component';
 
 const routes: Routes = [
-  { path: 'about', component: AboutComponent },
-  { path: 'blog', component: BlogComponent },
-  { path: 'category/:category', component: CategoryComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'portfolio', component: PortfolioComponent },
-  { path: 'privacy', component: PrivacyComponent },
-  { path: 'product/:id', component: ProductComponent },
-  { path: 'terms', component: TermsComponent },
-  { path: 'trends', component: TrendsComponent },
-  { path: '', component: HomeComponent },
+  {
+    path: '',
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'about', component: AboutComponent },
+      { path: 'blog', component: BlogComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: 'portfolio', component: PortfolioComponent },
+      { path: 'privacy', component: PrivacyComponent },
+      { path: 'products',
+        children: [
+          { path: '', component: ProductsComponent },
+          { path: ':category',
+            children: [
+              { path: '', component: CategoryComponent },
+              { path: ':id', component: ProductDetailComponent }
+            ]
+          }
+        ]
+      },
+      { path: 'terms', component: TermsComponent },
+      { path: 'trends', component: TrendsComponent },
+    ]
+  },
   { path: '**', redirectTo: '' }
 ];
 

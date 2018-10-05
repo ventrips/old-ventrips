@@ -15,9 +15,9 @@ import { AboutComponent } from './pages/about/about.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ErrorNotFoundComponent } from './shared/errors/error-not-found/error-not-found.component';
-import { ProductsComponent } from './shared/products/products.component';
+import { ProductsComponent } from './pages/products/products.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
-import { ProductComponent } from './pages/product/product.component';
+import { ProductDetailComponent } from './pages/products/product-detail/product-detail.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { TrendsComponent } from './pages/trends/trends.component';
 import { TermsComponent } from './pages/terms/terms.component';
@@ -34,7 +34,7 @@ import { BlogComponent } from './pages/blog/blog.component';
     ErrorNotFoundComponent,
     PortfolioComponent,
     ProductsComponent,
-    ProductComponent,
+    ProductDetailComponent,
     PrivacyComponent,
     TermsComponent,
     TrendsComponent,
