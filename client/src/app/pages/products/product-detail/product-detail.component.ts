@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestoreDocument, AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
 import * as _ from 'lodash';
 @Component({

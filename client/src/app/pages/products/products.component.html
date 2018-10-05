@@ -15,7 +15,7 @@
           <img class="img-fluid" [src]="product.imageUrl" alt="">
         </a>
         <div class="portfolio-caption">
-          <h4><a class="custom-text-black text-uppercase" [routerLink]="['/products', product?.category, product?.id]">{{product.name}}</a></h4>
+          <h4><a class="custom-text-black text-capitalize" [routerLink]="['/products', product?.category, product?.id]">{{product.name}}</a></h4>
           <a class="text-muted font-italic text-uppercase" [routerLink]="['/products', product?.category]">
             {{product.category}}
           </a>
