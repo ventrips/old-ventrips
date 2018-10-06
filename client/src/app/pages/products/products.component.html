@@ -3,47 +3,74 @@
     <div class="row">
       <div class="col-lg-12 text-center">
         <h2 class="section-heading text-uppercase">Travel Gear</h2>
-        <h3 class="section-subheading text-muted mb-5">Lorem ipsum dolor sit amet consectetur.</h3>
+        <h3 class="section-subheading text-muted mb-5">Look for top recommended travel essentials with ease.</h3>
       </div>
       <div class="col-lg-12">
-        <div class="mb-4">
-          <label for="typeahead-config">Search for a state:</label>
-          <input id="typeahead-config" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" />    
+        <div class="mb-5">
+          <label for="typeahead-config" class="font-weight-bold">Search for a product:</label>
+          <input id="typeahead-config" type="text" class="form-control" [(ngModel)]="searchTerm" [ngbTypeahead]="search" />    
         </div>
+        <hr>
       </div>
-      <div class="col-lg-4 col-md-6 col-xs-12 portfolio-item" *ngFor="let product of products">
-        <a class="portfolio-link custom-bg-white" [routerLink]="['/products', product?.category, product?.id]">
-          <div class="portfolio-hover">
-            <div class="portfolio-hover-content">
-              <!-- <i class="fas fa-link fa-3x"></i> -->
-            </div>
-          </div>
-          <div class="text-center product-image">
-            <img [src]="product.imageUrl" alt="">
-          </div>
-        </a>
-        <div class="portfolio-caption">
-          <div>
-            <a class="text-muted font-italic text-capitalize" [routerLink]="['/products', product?.category]">
-              {{product.category}}
-            </a>
-          </div>
-          <h5
-            [title]="product.name"
-            class="product-name my-3"
-            style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;">
-            <a class="custom-text-black text-capitalize" [routerLink]="['/products', product?.category, product?.id]">{{product.name}}</a>
-          </h5>
-          <div class="text-center text-sm-left">
-            <a class="btn btn-primary custom-text-black btn-md btn-block text-uppercase" [href]="product?.url" target="__blank">
-              <div class="d-flex justify-self-sm-center">
-                <span class="align-self-center mr-3">Buy on Amazon</span>
-                <i class="fab fa-amazon fa-2x ml-auto"></i>
-              </div>
-            </a>
+      <!-- Loading in progress -->
+      <ng-container *ngIf="isLoading">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase my-5">Loading...</h2>
+        </div>
+      </ng-container>
+      <!-- Loading finished -->
+      <ng-container *ngIf="!isLoading">
+        <div class="col-lg-12 text-center">
+          <div class="text-right my-2">
+            <p class="font-weight-bold text-capitalize">{{filterSearch(products).length}} Results</p>
           </div>
         </div>
-      </div>  
+        <!-- No results -->
+        <ng-container *ngIf="_.isEmpty(filterSearch(products))">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Sorry...</h2>
+            <h3 class="section-subheading text-muted">We couldn't find anything good for you at the moment with these search terms.
+              <span class="cursor-pointer custom-text-yellow" (click)="searchTerm = undefined">Search again</span>!
+            </h3>
+          </div>
+        </ng-container>
+        <!-- Results found -->
+        <ng-container *ngIf="!_.isEmpty(filterSearch(products))">
+          <div class="col-lg-4 col-md-6 col-xs-12 portfolio-item" *ngFor="let product of filterSearch(products)">
+              <a class="portfolio-link custom-bg-white" [routerLink]="['/products', product?.category, product?.id]">
+                <div class="portfolio-hover">
+                  <div class="portfolio-hover-content">
+                    <!-- <i class="fas fa-link fa-3x"></i> -->
+                  </div>
+                </div>
+                <div class="text-center product-image">
+                  <img [src]="product.imageUrl" alt="">
+                </div>
+              </a>
+              <div class="portfolio-caption">
+                <div>
+                  <a class="text-muted font-italic text-capitalize" [routerLink]="['/products', product?.category]">
+                    {{product.category}}
+                  </a>
+                </div>
+                <h5
+                  [title]="product.name"
+                  class="product-name my-3"
+                  style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;">
+                  <a class="custom-text-black text-capitalize" [routerLink]="['/products', product?.category, product?.id]">{{product.name}}</a>
+                </h5>
+                <div class="text-center text-sm-left">
+                  <a class="btn btn-primary custom-text-black btn-md btn-block text-uppercase" [href]="product?.url" target="__blank">
+                    <div class="d-flex justify-self-sm-center">
+                      <span class="align-self-center mr-3">Buy on Amazon</span>
+                      <i class="fab fa-amazon fa-2x ml-auto"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+        </ng-container>
+      </ng-container>
     </div>
   </div>
 </section>

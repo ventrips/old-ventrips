@@ -12,18 +12,12 @@ import * as _ from 'lodash';
   providers: [ NgbTypeaheadConfig ] // add NgbTypeaheadConfig to the component providers
 })
 export class ProductsComponent implements OnInit {
-  public model: any;
-
+  public _ = _;
+  public searchTerm: any;
   public products: Array<Object>;
+  public searchOptions: Array<String>;
 
-  public searchOptions = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
-  'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
-  'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
-  'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana',
-  'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-  'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
-  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
-  'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+  public isLoading = true;
 
   constructor(
     private db: AngularFirestore,
@@ -32,6 +26,9 @@ export class ProductsComponent implements OnInit {
     this.getProducts().subscribe(products => {
       this.products = products;
       this.searchOptions = _.map(products, (product) => product.name);
+      this.isLoading = false;
+    }, () => {
+      this.isLoading = false;
     });
     // customize default values of typeaheads used by this component tree
     this.config.showHint = true;
@@ -49,11 +46,16 @@ export class ProductsComponent implements OnInit {
     })));
   }
 
+  filterSearch(data: Array<Object>): any[] {
+    if (_.isEmpty(this.searchTerm)) { return data; }
+    return _.filter(data, (item: Object) => _.includes(_.toLower(item['name']), _.toLower(this.searchTerm)));
+  }
+
   search = (text$: Observable<string>) =>
     text$.pipe(
-      debounceTime(200),
+      debounceTime(0),
       distinctUntilChanged(),
-      map(term => term.length < 2 ? []
+      map(term => term.length < 5 ? []
         : this.searchOptions.filter(v => v.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10))
     )
 }
