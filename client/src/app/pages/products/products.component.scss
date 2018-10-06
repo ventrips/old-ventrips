@@ -1,9 +1,38 @@
 .product-image {
-    width: auto;
-    max-height: 250px;
-    max-width: 100%;
+    overflow: hidden;
+
+    img {
+        height: 250px;
+        width: auto;    
+    }
 }
 
-// .portfolio-item {
-//     max-height: 300px;
-// }
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and down)
+@media (max-width: 768px) {
+    .product-name {
+        display: flex !important;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .product-name {
+        min-height: 6rem;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}
