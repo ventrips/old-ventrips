@@ -37,7 +37,7 @@
         <!-- Results found -->
         <ng-container *ngIf="!_.isEmpty(filterSearch(products))">
           <div class="col-lg-4 col-md-6 col-xs-12 portfolio-item" *ngFor="let product of filterSearch(products)">
-              <a class="portfolio-link custom-bg-white" [routerLink]="['/products', product?.category, product?.id]">
+              <a class="portfolio-link custom-bg-white" [routerLink]="['/products', product?.id]">
                 <div class="portfolio-hover">
                   <div class="portfolio-hover-content">
                     <!-- <i class="fas fa-link fa-3x"></i> -->
