@@ -13,6 +13,7 @@ import * as _ from 'lodash';
 export class ProductDetailComponent implements OnInit {
   public _ = _;
   public id: string;
+  public category: string;
   public product: Object;
 
   public isLoading = true;
@@ -23,6 +24,7 @@ export class ProductDetailComponent implements OnInit {
   ) {
 
     this.id = this.activatedRoute.snapshot.params['id'];
+    this.category = this.activatedRoute.snapshot.params['category'];
     this.productsService.getDetail(this.id).subscribe(product => {
       this.product = product;
       this.isLoading = false;

@@ -48,16 +48,11 @@
                 </div>
               </a>
               <div class="portfolio-caption">
-                <div>
-                  <a class="text-muted font-italic text-capitalize" [routerLink]="['/products', product?.category]">
-                    {{product.category}}
-                  </a>
-                </div>
                 <h5
                   [title]="product.name"
                   class="product-name my-3"
                   style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;">
-                  <a class="custom-text-black text-capitalize" [routerLink]="['/products', product?.category, product?.id]">{{product.name}}</a>
+                  <a class="custom-text-black text-capitalize" [routerLink]="['/products', product?.id]">{{product.name}}</a>
                 </h5>
                 <div class="text-center text-sm-left">
                   <a class="btn btn-primary custom-text-black btn-md btn-block text-uppercase" [href]="product?.url" target="__blank">

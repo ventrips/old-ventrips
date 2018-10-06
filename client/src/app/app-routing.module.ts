@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './pages/about/about.component';
 import { BlogComponent } from './pages/blog/blog.component';
-import { CategoryComponent } from './pages/category/category.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
@@ -26,12 +25,7 @@ const routes: Routes = [
       { path: 'products',
         children: [
           { path: '', component: ProductsComponent },
-          { path: ':category',
-            children: [
-              { path: '', component: CategoryComponent },
-              { path: ':id', component: ProductDetailComponent }
-            ]
-          }
+          { path: ':id', component: ProductDetailComponent }
         ]
       },
       { path: 'terms', component: TermsComponent },
