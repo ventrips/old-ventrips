@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^6.1.9",
     "@angular/router": "^6.1.9",
     "@fortawesome/fontawesome-free": "^5.3.1",
+    "@ng-bootstrap/ng-bootstrap": "^3.3.0",
     "@types/lodash": "^4.14.116",
     "angularfire2": "^5.0.2",
     "bootstrap": "^4.1.3",
