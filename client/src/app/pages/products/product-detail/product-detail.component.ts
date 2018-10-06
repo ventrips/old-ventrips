@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AngularFirestoreDocument, AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
+import { ProductsService } from '../../../services/firebase/products/products.service';
 import * as _ from 'lodash';
 @Component({
   selector: 'app-product-detail',
@@ -13,22 +13,24 @@ import * as _ from 'lodash';
 export class ProductDetailComponent implements OnInit {
   public _ = _;
   public id: string;
-  public detail: Object;
+  public product: Object;
+
+  public isLoading = true;
 
   constructor(
-    private db: AngularFirestore,
+    private productsService: ProductsService,
     private activatedRoute: ActivatedRoute
   ) {
+
     this.id = this.activatedRoute.snapshot.params['id'];
-    this.detail = this.getDetail(this.id);
+    this.productsService.getDetail(this.id).subscribe(product => {
+      this.product = product;
+      this.isLoading = false;
+    }, () => {
+      this.isLoading = false;
+    });
   }
 
-  ngOnInit(): void {
-  }
-
-  getDetail(id: string): any {
-    const itemDoc = this.db.doc(`products/${id}`);
-    return itemDoc.valueChanges();
-  }
+  ngOnInit(): void {}
 
 }

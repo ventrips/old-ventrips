@@ -1,29 +1,49 @@
 <section class="min-height">
   <div class="container">
-    <div class="row" *ngIf="(detail | async) as data">
-        <div class="col-lg-12">
-          <h2 class="section-heading text-capitalize break-word"><a class="custom-text-dark"[href]="data.url" target="__blank">{{data.name}}</a></h2>
+    <!-- Loading in progress -->
+    <ng-container *ngIf="isLoading">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase my-5">Loading...</h2>
         </div>
-        <div class="col-lg-6">
-          <h5>
-            <a class="text-muted font-italic text-capitalize" [routerLink]="['/products', data.category]">
-              {{data.category}}
-            </a>
-          </h5>
-          <p class="section-subheading text-muted">{{data.description}}</p>
-          <div class="my-5 text-center text-sm-left">
-            <a class="btn btn-primary custom-text-black btn-xl text-uppercase" [href]="data.url" target="__blank">
-              <div class="d-flex justify-self-sm-center">
-                <span class="align-self-center mr-3">Buy on Amazon</span>
-                <i class="fab fa-amazon fa-2x ml-auto"></i>
+    </ng-container>
+    <!-- Loading finished -->
+    <ng-container *ngIf="!isLoading">
+      <!-- No results -->
+      <ng-container *ngIf="_.isEmpty(product)">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Sorry...</h2>
+          <h3 class="section-subheading text-muted">We couldn't find this product.
+            <a class="cursor-pointer custom-text-yellow" [routerLink]="['/products']">Go back to search</a>!
+          </h3>
+        </div>
+      </ng-container>
+      <!-- Results found -->
+      <ng-container *ngIf="!_.isEmpty(product)">
+        <div class="row" *ngIf="product">
+            <div class="col-lg-12">
+              <h2 class="section-heading text-capitalize break-word"><a class="custom-text-dark"[href]="product.url" target="__blank">{{product.name}}</a></h2>
+            </div>
+            <div class="col-lg-6">
+              <h5>
+                <a class="text-muted font-italic text-capitalize" [routerLink]="['/products', product.category]">
+                  {{product.category}}
+                </a>
+              </h5>
+              <p class="section-subheading text-muted">{{product.description}}</p>
+              <div class="my-5 text-center text-sm-left">
+                <a class="btn btn-primary custom-text-black btn-xl text-uppercase" [href]="product.url" target="__blank">
+                  <div class="d-flex justify-self-sm-center">
+                    <span class="align-self-center mr-3">Buy on Amazon</span>
+                    <i class="fab fa-amazon fa-2x ml-auto"></i>
+                  </div>
+                </a>
               </div>
-            </a>
-          </div>
+            </div>
+            <div class="col-lg-6">
+              <a [href]="product.url" target="__blank"><img class="img-fluid" [src]="product.imageUrl" alt=""></a>
+            </div>
         </div>
-        <div class="col-lg-6">
-          <a [href]="data.url" target="__blank"><img class="img-fluid" [src]="data.imageUrl" alt=""></a>
-        </div>
+      </ng-container>
+    </ng-container>
     </div>
-    <app-error-not-found *ngIf="_.isNil(detail)"></app-error-not-found>
-  </div>
 </section>

@@ -1,8 +1,8 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Observable, Subject, merge } from 'rxjs';
-import { AngularFirestoreDocument, AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ProductsService } from '../../services/firebase/products/products.service';
 import * as _ from 'lodash';
 
 @Component({
@@ -20,10 +20,10 @@ export class ProductsComponent implements OnInit {
   public isLoading = true;
 
   constructor(
-    private db: AngularFirestore,
+    private productsService: ProductsService,
     private config: NgbTypeaheadConfig
   ) {
-    this.getProducts().subscribe(products => {
+    this.productsService.getProducts().subscribe(products => {
       this.products = products;
       this.searchOptions = _.map(products, (product) => product.name);
       this.isLoading = false;
@@ -35,15 +35,6 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  getProducts(): Observable<any[]> {
-    return this.db.collection('/products').snapshotChanges()
-    .pipe(map(actions => actions.map((obj: any) => {
-        const object = obj.payload.doc.data();
-        object.id = obj.payload.doc.id;
-        return object;
-    })));
   }
 
   filterSearch(data: Array<Object>): any[] {

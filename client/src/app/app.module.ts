@@ -24,6 +24,8 @@ import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { TrendsComponent } from './pages/trends/trends.component';
 import { TermsComponent } from './pages/terms/terms.component';
 import { BlogComponent } from './pages/blog/blog.component';
+
+import { ProductsService } from './services/firebase/products/products.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,9 @@ import { BlogComponent } from './pages/blog/blog.component';
     AngularFirestoreModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    ProductsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
