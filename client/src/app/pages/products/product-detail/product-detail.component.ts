@@ -4,6 +4,7 @@ import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductsService } from '../../../services/firebase/products/products.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 import * as _ from 'lodash';
 @Component({
   selector: 'app-product-detail',
@@ -20,15 +21,18 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) {
-
     this.id = this.activatedRoute.snapshot.params['id'];
     this.category = this.activatedRoute.snapshot.params['category'];
+    this.spinner.show();
     this.productsService.getDetail(this.id).subscribe(product => {
       this.product = product;
+      this.spinner.hide();
       this.isLoading = false;
     }, () => {
+      this.spinner.hide();
       this.isLoading = false;
     });
   }

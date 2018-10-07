@@ -3,6 +3,7 @@ import { Observable, Subject, merge } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ProductsService } from '../../services/firebase/products/products.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 import * as _ from 'lodash';
 
 @Component({
@@ -21,13 +22,17 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    private config: NgbTypeaheadConfig
+    private config: NgbTypeaheadConfig,
+    private spinner: NgxSpinnerService
   ) {
+    this.spinner.show();
     this.productsService.getProducts().subscribe(products => {
       this.products = products;
       this.searchOptions = _.map(products, (product) => product.name);
+      this.spinner.hide();
       this.isLoading = false;
     }, () => {
+      this.spinner.hide();
       this.isLoading = false;
     });
     // customize default values of typeaheads used by this component tree
