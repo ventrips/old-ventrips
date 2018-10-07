@@ -6,9 +6,18 @@
         <h3 class="section-subheading text-muted mb-5">Look for top recommended travel essentials with ease.</h3>
       </div>
       <div class="col-lg-12">
-        <div class="mb-5">
-          <label for="typeahead-config" class="font-weight-bold">Search for a product:</label>
-          <input id="typeahead-config" type="text" class="form-control" [(ngModel)]="searchTerm" [ngbTypeahead]="search" />    
+        <div class="form-group position-relative">
+            <label for="typeahead-config" class="font-weight-bold">Search for a product:</label>
+            <input
+              type="text"
+              id="typeahead-config"
+               class="form-control"
+               [(ngModel)]="searchTerm"
+               [ngbTypeahead]="search"
+              />
+            <div class="feedback-icon">
+              <i class="fas fa-search custom-text-dark"></i>
+            </div>
         </div>
         <hr>
       </div>
@@ -22,8 +31,8 @@
         <!-- No results -->
         <ng-container *ngIf="_.isEmpty(filterSearch(products))">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Sorry...</h2>
-            <h3 class="section-subheading text-muted">We couldn't find anything good for you at the moment with these search terms.
+            <h2 class="section-heading text-uppercase">Sorry!</h2>
+            <h3 class="section-subheading text-muted">We couldn't find anything with these search terms.
               <span class="cursor-pointer custom-text-yellow" (click)="searchTerm = undefined">Search again</span>!
             </h3>
           </div>
