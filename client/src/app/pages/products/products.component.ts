@@ -29,11 +29,11 @@ export class ProductsComponent implements OnInit {
     this.productsService.getProducts().subscribe(products => {
       this.products = products;
       this.searchOptions = _.map(products, (product) => product.name);
-      this.spinner.hide();
       this.isLoading = false;
+      this.spinner.hide();
     }, () => {
-      this.spinner.hide();
       this.isLoading = false;
+      this.spinner.hide();
     });
     // customize default values of typeaheads used by this component tree
     this.config.showHint = true;
