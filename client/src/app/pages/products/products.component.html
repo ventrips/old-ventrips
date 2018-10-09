@@ -28,7 +28,8 @@
                 </button>
                 <div ngbDropdownMenu aria-labelledby="order-by-dropdown">
                   <button
-                    class="dropdown-item cursor-pointer"
+                    class="dropdown-item"
+                    [class.cursor-pointer]="selectedOrderBy"
                     [class.active]="!selectedOrderBy"
                     [disabled]="!selectedOrderBy"
                     (click)="selectedOrderBy = undefined">
@@ -36,8 +37,9 @@
                   </button>
                   <button
                     class="dropdown-item cursor-pointer"
-                    [class.active]="option == selectedOrderBy"
-                    [disabled]="option == selectedOrderBy" *ngFor="let option of orderByOptions"
+                    [class.cursor-pointer]="option !== selectedOrderBy"
+                    [class.active]="option === selectedOrderBy"
+                    [disabled]="option === selectedOrderBy" *ngFor="let option of orderByOptions"
                     (click)="selectedOrderBy = option">
                     {{option.label}}
                 </button>
