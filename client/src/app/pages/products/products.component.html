@@ -19,34 +19,34 @@
       </div>
       <!-- Loading finished -->
       <ng-container *ngIf="!isLoading">
-        <div class="col-xs-12 col-sm-6">
-          <div class="mb-3">
-            <div ngbDropdown class="d-inline-block">
-              <button class="btn btn-primary custom-text-dark" id="order-by-dropdown" ngbDropdownToggle>
-                {{ selectedOrderBy?.label ? selectedOrderBy?.label : 'Relevance' }}
-              </button>
-              <div ngbDropdownMenu aria-labelledby="order-by-dropdown">
-                <button
-                  class="dropdown-item cursor-pointer"
-                  [class.active]="!selectedOrderBy"
-                  [disabled]="!selectedOrderBy"
-                  (click)="selectedOrderBy = undefined">
-                  Relevance
+        <div class="col-12">
+          <div class="d-flex flex-wrap">
+            <div class="my-4">
+              <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-primary custom-text-dark" id="order-by-dropdown" ngbDropdownToggle>
+                  {{ selectedOrderBy?.label ? selectedOrderBy?.label : 'Relevance' }}
                 </button>
-                <button
-                  class="dropdown-item cursor-pointer"
-                  [class.active]="option == selectedOrderBy"
-                  [disabled]="option == selectedOrderBy" *ngFor="let option of orderByOptions"
-                  (click)="selectedOrderBy = option">
-                  {{option.label}}
-              </button>
+                <div ngbDropdownMenu aria-labelledby="order-by-dropdown">
+                  <button
+                    class="dropdown-item cursor-pointer"
+                    [class.active]="!selectedOrderBy"
+                    [disabled]="!selectedOrderBy"
+                    (click)="selectedOrderBy = undefined">
+                    Relevance
+                  </button>
+                  <button
+                    class="dropdown-item cursor-pointer"
+                    [class.active]="option == selectedOrderBy"
+                    [disabled]="option == selectedOrderBy" *ngFor="let option of orderByOptions"
+                    (click)="selectedOrderBy = option">
+                    {{option.label}}
+                </button>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <div class="text-sm-right mb-3">
-            <h5 class="font-weight-bold text-capitalize">{{(products | searchBy: searchTerm).length}} Results</h5>
+            <div class="ml-auto my-4 align-self-center">
+              <h5 class="font-weight-bold text-capitalize">{{(products | searchBy: searchTerm).length}} Results</h5>
+            </div>
           </div>
         </div>
         <!-- No results -->
