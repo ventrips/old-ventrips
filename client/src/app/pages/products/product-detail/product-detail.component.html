@@ -14,10 +14,10 @@
       <!-- Results found -->
       <ng-container *ngIf="!_.isEmpty(product)">
         <div class="row" *ngIf="product">
-            <div class="col-lg-7">
-              <div class="sticky-top sticky-offset">
+            <div class="col-lg-8">
+              <div class="sticky-top sticky-offset mr-3">
                 <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb custom-bg-white px-0">
+                  <ol class="breadcrumb custom-bg-white d-inline-block px-0">
                     <li class="breadcrumb-item"><a [routerLink]="['/products']"><i class="fa fa-angle-double-left"></i> Back to Products</a></li>
                     <!-- <li class="breadcrumb-item active" aria-current="page" *ngIf="product">{{product?.name}}</li> -->
                   </ol>
@@ -40,10 +40,10 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-4">
               <div class="text-center" *ngFor="let image of product?.images">
-                  <img class="img-fluid zoom" [src]="image" alt="">
-              </div>
+                  <img class="img-fluid product-image py-5" [src]="image" alt="" #itemRef [class.zoom]="getImagePosition(itemRef)">
+              </div>    
             </div>
         </div>
       </ng-container>

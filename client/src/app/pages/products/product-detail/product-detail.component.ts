@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { ProductsService } from '../../../services/firebase/products/products.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as _ from 'lodash';
+import { Renderer } from '@angular/core';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -19,10 +20,18 @@ export class ProductDetailComponent implements OnInit {
 
   public isLoading = true;
 
+  public scrollPosition = 0;
+  @HostListener('window:scroll', ['$event'])
+  scrollHandler() {
+    this.scrollPosition = window.pageYOffset;
+  }
+
   constructor(
     private productsService: ProductsService,
     private activatedRoute: ActivatedRoute,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private render: Renderer,
+    private cdr: ChangeDetectorRef
   ) {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.category = this.activatedRoute.snapshot.params['category'];
@@ -39,4 +48,10 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  getImagePosition(itemRef) {
+    const offsetTop = 50;
+    return this.scrollPosition + offsetTop >= itemRef.offsetTop &&
+    this.scrollPosition + offsetTop <= (itemRef.offsetTop + itemRef.scrollHeight) ||
+    (this.scrollPosition + window.innerHeight) === document.body.scrollHeight;
+  }
 }
