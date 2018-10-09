@@ -22,7 +22,7 @@
                     <!-- <li class="breadcrumb-item active" aria-current="page" *ngIf="product">{{product?.name}}</li> -->
                   </ol>
                 </nav>
-                <h2 class="section-heading text-capitalize break-word"><a class="custom-text-dark" [href]="product.url" target="__blank">{{product.name}}</a></h2>
+                <h3 class="section-heading text-capitalize break-word"><a class="custom-text-dark" [href]="product.url" target="__blank">{{product.name}}</a></h3>
                 <div class="section-subheading text-muted container">
                   <ul class="list-group">
                     <li *ngFor="let feature of product.features">
@@ -30,8 +30,8 @@
                     </li>
                   </ul>
                 </div>
-                <div class="my-5 text-center text-sm-left">
-                  <a class="btn btn-primary custom-text-black btn-xl text-uppercase" [href]="product.url" target="__blank">
+                <div class="my-4 text-center text-sm-left">
+                  <a class="btn btn-primary custom-text-black btn-lg text-uppercase" [href]="product.url" target="__blank">
                     <div class="d-flex justify-self-sm-center">
                       <span class="align-self-center mr-3">Buy on Amazon</span>
                       <i class="fab fa-amazon fa-2x ml-auto"></i>
