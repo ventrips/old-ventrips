@@ -58,16 +58,11 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  filterSearch(data: Array<Object>): any[] {
-    if (_.isEmpty(this.searchTerm)) { return data; }
-    return _.filter(data, (item: Object) => _.includes(_.toLower(item['name']), _.toLower(this.searchTerm)));
-  }
-
   search = (text$: Observable<string>) =>
     text$.pipe(
       debounceTime(0),
       distinctUntilChanged(),
-      map(term => term.length < 5 ? []
+      map(term => term.length < 4 ? []
         : this.searchOptions.filter(v => v.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10))
     )
 }
