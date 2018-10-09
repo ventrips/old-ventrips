@@ -17,6 +17,22 @@ export class ProductsComponent implements OnInit {
   public searchTerm: any;
   public products: Array<Object>;
   public searchOptions: Array<String>;
+  public orderByOptions: Array<Object> = [
+    {
+      label: 'Product Name: A - Z',
+      type: 'name',
+      direction: 'asc'
+    },
+    {
+      label: 'Product Name: Z - A',
+      type: 'name',
+      direction: 'desc'
+    }
+  ];
+  public selectedOrderBy: Object;
+
+  public orderByDirection: string;
+  public orderByType: string;
 
   public isLoading = true;
 
