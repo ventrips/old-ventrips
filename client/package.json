@@ -31,6 +31,7 @@
     "jquery": "^3.3.1",
     "jquery.easing": "^1.4.1",
     "lodash": "^4.17.11",
+    "ng2-adsense": "^5.3.3",
     "ngx-spinner": "^6.1.2",
     "popper.js": "^1.14.4",
     "rxjs": "^6.3.3",
