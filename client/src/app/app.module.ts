@@ -60,9 +60,10 @@ import { SearchByPipe } from './pipes/search-by/search-by.pipe';
     AdsenseModule.forRoot({
       adClient: 'ca-pub-4642980268605791',
       // adSlot: 7259870550,
-      // display: 'inline-block',
-      // width: 320,
-      // height: 108
+      display: 'inline-block',
+      width: 320,
+      height: 108,
+      adtest: 'on'
     })
   ],
   providers: [
