@@ -9,7 +9,7 @@
     "rewrites": [
       {
         "source": "**",
-        "functiom": "ssr"
+        "function": "ssr"
       }
     ]
   },
