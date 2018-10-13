@@ -4,8 +4,8 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ProductsService } from '../../services/firebase/products/products.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import * as _ from 'lodash';
 import { SeoService } from '../../services/seo/seo.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-products',
