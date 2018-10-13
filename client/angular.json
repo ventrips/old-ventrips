@@ -21,7 +21,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "srx/robots.txt"
+              "src/robots.txt"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
