@@ -41,9 +41,10 @@ export class ProductDetailComponent implements OnInit {
     this.productsService.getDetail(this.id).subscribe(product => {
       this.product = product;
       this.seoService.addTwitterCard(
-        _.startCase(this.product['name']),
-        _.startCase(_.toString(this.product['features'])),
-        this.product['images'][0]);
+        this.product['name'],
+        _.toString(this.product['features']),
+        this.product['images'][0]
+      );
       this.spinner.hide();
       this.isLoading = false;
     }, () => {

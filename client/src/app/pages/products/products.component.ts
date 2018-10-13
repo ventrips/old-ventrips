@@ -5,6 +5,7 @@ import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ProductsService } from '../../services/firebase/products/products.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as _ from 'lodash';
+import { SeoService } from '../../services/seo/seo.service';
 
 @Component({
   selector: 'app-products',
@@ -39,8 +40,14 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private config: NgbTypeaheadConfig,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private seoService: SeoService
   ) {
+    this.seoService.addTwitterCard(
+      'Products',
+      'Search for top recommended and trending travel gears!',
+      './../../../favicon.ico'
+    );
     this.spinner.show();
     this.productsService.getProducts().subscribe(products => {
       this.products = products;

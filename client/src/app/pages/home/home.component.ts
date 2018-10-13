@@ -11,8 +11,8 @@ export class HomeComponent implements OnInit {
     private seoService: SeoService
   ) {
     this.seoService.addTwitterCard(
-      _.startCase('Welcome to Ventrips'),
-      _.startCase('Search for top recommended and trending travel gears!'),
+      'Home',
+      'A one-stop shop for all your travel essentials',
       './../../../favicon.ico'
     );
   }
