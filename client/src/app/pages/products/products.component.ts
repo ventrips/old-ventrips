@@ -43,11 +43,11 @@ export class ProductsComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private seoService: SeoService
   ) {
-    this.seoService.addTwitterCard(
-      'Products',
-      'Search for top recommended and trending travel gears!',
-      './../../../favicon.ico'
-    );
+    this.seoService.generateTags({
+      title: 'Products',
+      description: 'Search for top recommended and trending travel gears!',
+      route: 'products'
+    });
     this.spinner.show();
     this.productsService.getProducts().subscribe(products => {
       this.products = products;

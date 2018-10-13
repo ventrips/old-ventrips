@@ -40,11 +40,12 @@ export class ProductDetailComponent implements OnInit {
     this.spinner.show();
     this.productsService.getDetail(this.id).subscribe(product => {
       this.product = product;
-      this.seoService.addTwitterCard(
-        this.product['name'],
-        _.toString(this.product['features']),
-        this.product['images'][0]
-      );
+      this.seoService.generateTags({
+        title: this.product['name'],
+        description: _.toString(this.product['features']),
+        image: this.product['images'][0],
+        route: `products/${this.id}`
+      });
       this.spinner.hide();
       this.isLoading = false;
     }, () => {

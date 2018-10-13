@@ -10,11 +10,10 @@ export class HomeComponent implements OnInit {
   constructor(
     private seoService: SeoService
   ) {
-    this.seoService.addTwitterCard(
-      'Home',
-      'A one-stop shop for all your travel essentials',
-      './../../../favicon.ico'
-    );
+    this.seoService.generateTags({
+      title: 'Home Page',
+      description: 'A one-stop shop for all your travel essentials'
+    });
   }
 
   ngOnInit(): void {}
