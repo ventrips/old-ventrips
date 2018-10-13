@@ -14,7 +14,7 @@ export class SeoService {
 
     // Add Twitter Card Metatags
     this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
-    this.meta.updateTag({ name: 'twitter:site', content: '@angularfirebase' });
+    this.meta.updateTag({ name: 'twitter:site', content: '@ventrips' });
     this.meta.updateTag({ name: 'twitter:title', content: title });
     this.meta.updateTag({ name: 'twitter:description', content: description });
     this.meta.updateTag({ name: 'twitter:image', content: img });
