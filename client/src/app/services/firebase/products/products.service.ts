@@ -26,16 +26,16 @@ export class ProductsService {
 
   getDetail(id: string): any {
     const itemDoc = this.db.doc(`products/${id}`);
-    return itemDoc.valueChanges()
-    .pipe(
-      tap(product => {
-        this.seoService.generateTags({
-          title: product['name'],
-          description: _.toString(product['features']),
-          image: product['images'][0]
-        });
-      })
-    );
+    return itemDoc.valueChanges();
+    // .pipe(
+    //   tap(product => {
+    //     this.seoService.addTwitterCard({
+    //       title: product['name'],
+    //       description: _.toString(product['features']),
+    //       image: product['images'][0]
+    //     });
+    //   })
+    // );
   }
 
 }

@@ -7,6 +7,7 @@ import { ProductsService } from '../../../services/firebase/products/products.se
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as _ from 'lodash';
 import { Renderer } from '@angular/core';
+import { SeoService } from '../../../services/seo/seo.service';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -31,7 +32,8 @@ export class ProductDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private spinner: NgxSpinnerService,
     private render: Renderer,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private seoService: SeoService
   ) {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.category = this.activatedRoute.snapshot.params['category'];
@@ -44,6 +46,10 @@ export class ProductDetailComponent implements OnInit {
       this.spinner.hide();
       this.isLoading = false;
     });
+    seoService.addTwitterCard(
+      'Hippos are rad!',
+      'This is an Ionic Page about hippos and is SEO ready via Firebase Cloud Functions',
+      'https://upload.wikimedia.org/wikipedia/commons/9/98/Hippo_at_dawn.jpg');
   }
 
   ngOnInit(): void {}
