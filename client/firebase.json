@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source": "/public/**",
+        "function": "ssr"
+      },
+      {
         "source": "**",
         "function": "ssr"
       }

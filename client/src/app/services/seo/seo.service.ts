@@ -18,8 +18,8 @@ export class SeoService {
       ...config
     };
 
-    config.title = `Ventrips - ${_.startCase(config.title)}`;
-    config.description = _.startCase(config.description);
+    config.title = `Ventrips - ${config.title}`;
+    config.description = config.description;
 
     // Set HTML Document Title
     this.title.setTitle(config.title);
