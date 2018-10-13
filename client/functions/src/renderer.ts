@@ -70,7 +70,7 @@ export async function serialize(
   try {
     // Navigate to page. Wait until there are no oustanding network requests.
     response = await page.goto(requestUrl, {
-      timeout: 10000,
+      timeout: 100000,
       waitUntil: 'networkidle2'
     });
   } catch (e) {

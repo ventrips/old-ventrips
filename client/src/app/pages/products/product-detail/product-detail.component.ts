@@ -40,16 +40,16 @@ export class ProductDetailComponent implements OnInit {
     this.spinner.show();
     this.productsService.getDetail(this.id).subscribe(product => {
       this.product = product;
+      this.seoService.addTwitterCard(
+        _.startCase(this.product['name']),
+        _.startCase(_.toString(this.product['features'])),
+        this.product['images'][0]);
       this.spinner.hide();
       this.isLoading = false;
     }, () => {
       this.spinner.hide();
       this.isLoading = false;
     });
-    seoService.addTwitterCard(
-      'Hippos are rad!',
-      'This is an Ionic Page about hippos and is SEO ready via Firebase Cloud Functions',
-      'https://upload.wikimedia.org/wikipedia/commons/9/98/Hippo_at_dawn.jpg');
   }
 
   ngOnInit(): void {}
