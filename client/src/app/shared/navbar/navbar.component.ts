@@ -8,32 +8,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  public selectedNav: string;
 
   constructor(
     private router: Router
-  ) {
-    this.router.events.subscribe((route) => {
-      if (!_.isNil(route['url'])) {
-        this.selectedNav = route['url'];
-      }
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     this.smoothScrolling();
   }
 
   isHome(): boolean {
-    return _.isEqual(this.selectedNav, '/') || _.includes(this.selectedNav, 'home');
+    return _.isEqual(this.router.url, '/') || _.includes(this.router.url, 'home');
   }
 
   isActive(currentNav: string): boolean {
-    if (_.isEqual(this.selectedNav, '/') && _.includes(currentNav, 'home')) {
+    if (_.isEqual(this.router.url, '/') && _.includes(currentNav, 'home')) {
       return true;
     }
 
-    return _.includes(this.selectedNav, currentNav);
+    return _.includes(this.router.url, currentNav);
   }
 
   smoothScrolling(): void {

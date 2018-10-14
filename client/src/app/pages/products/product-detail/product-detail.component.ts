@@ -43,8 +43,7 @@ export class ProductDetailComponent implements OnInit {
       this.seoService.generateTags({
         title: this.product['name'],
         description: _.toString(this.product['features']),
-        image: this.product['images'][0],
-        route: `products/${this.id}`
+        image: this.product['images'][0]
       });
       this.spinner.hide();
       this.isLoading = false;

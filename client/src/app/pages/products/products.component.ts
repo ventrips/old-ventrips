@@ -45,8 +45,7 @@ export class ProductsComponent implements OnInit {
   ) {
     this.seoService.generateTags({
       title: 'Products',
-      description: 'Search for top recommended and trending travel gears!',
-      route: 'products'
+      description: 'Search for top recommended and trending travel gears!'
     });
     this.spinner.show();
     this.productsService.getProducts().subscribe(products => {

@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import * as _ from 'lodash';
 @Injectable({
   providedIn: 'root'
 })
 export class SeoService {
-
-  constructor(private title: Title, private meta: Meta) { }
+  constructor(
+    private title: Title,
+    private meta: Meta,
+    private router: Router
+  ) {}
 
   generateTags(config) {
     // default values
@@ -14,7 +18,7 @@ export class SeoService {
       title: 'Ventrips',
       description: 'A one-stop shop for all your travel essentials',
       image: 'https://ventrips.com/favicon.ico',
-      route: '',
+      route: this.router.url,
       ...config
     };
 
@@ -40,6 +44,6 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:title', content: config.title });
     this.meta.updateTag({ property: 'og:description', content: config.description });
     this.meta.updateTag({ property: 'og:image', content: config.image });
-    this.meta.updateTag({ property: 'og:url', content: `https://ventrips.com/${config.route}` });
+    this.meta.updateTag({ property: 'og:url', content: `https://ventrips.com${config.route}` });
   }
 }
