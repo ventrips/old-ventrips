@@ -1,4 +1,4 @@
-<section class="min-height bg-light" id="portfolio">
+<main class="min-height bg-light" id="portfolio">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -7,6 +7,7 @@
               type="text"
               id="typeahead-config"
               class="form-control form-control-lg mb-4"
+              aria-label="Search for products"
               placeholder="Search for products"
               [(ngModel)]="searchTerm"
               [ngbTypeahead]="search"
@@ -94,4 +95,4 @@
       </ng-container>
     </div>
   </div>
-</section>
+</main>
