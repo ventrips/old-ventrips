@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 declare var jQuery: any;
 import * as _ from 'lodash';
 import { Router } from '@angular/router';
+import { environment } from './../../../environments/environment';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  public environment = environment;
 
   constructor(
     private router: Router
