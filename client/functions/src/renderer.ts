@@ -70,8 +70,8 @@ export async function serialize(
   try {
     // Navigate to page. Wait until there are no oustanding network requests.
     response = await page.goto(requestUrl, {
-      timeout: 10000,
-      waitUntil: 'domcontentloaded'
+      timeout: 0,
+      waitUntil: 'networkidle0'
     });
   } catch (e) {
     console.error(e);

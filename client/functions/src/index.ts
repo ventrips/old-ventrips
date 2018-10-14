@@ -24,7 +24,7 @@ const renderURL = 'https://us-central1-ventrips-214422.cloudfunctions.net/render
   .runWith({ memory: '1GB' })
   .https.onRequest(async (request, response) => {
     const browser = await puppeteer.launch({
-      headless: true,
+      headless: false,
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 

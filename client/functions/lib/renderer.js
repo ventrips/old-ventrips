@@ -65,8 +65,8 @@ function serialize(page, requestUrl, isMobile) {
         try {
             // Navigate to page. Wait until there are no oustanding network requests.
             response = yield page.goto(requestUrl, {
-                timeout: 10000,
-                waitUntil: 'domcontentloaded'
+                timeout: 0,
+                waitUntil: 'networkidle0'
             });
         }
         catch (e) {

@@ -24,14 +24,14 @@ export class SeoService {
     // Set HTML Document Title
     this.title.setTitle(config.title);
 
-    // Add Twitter Card Metatags
+    // twitter
     this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
     this.meta.updateTag({ name: 'twitter:site', content: '@Ventrips' });
     this.meta.updateTag({ name: 'twitter:title', content: config.title });
     this.meta.updateTag({ name: 'twitter:description', content: config.description });
     this.meta.updateTag({ name: 'twitter:image', content: config.image });
 
-    // Add Facebook and other social sites
+    // facebook and other social sites
     this.meta.updateTag({ property: 'og:type', content: 'article' });
     this.meta.updateTag({ property: 'og:site_name', content: 'Ventrips' });
     this.meta.updateTag({ property: 'og:title', content: config.title });

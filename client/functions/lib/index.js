@@ -27,7 +27,7 @@ exports.render = functions
     .runWith({ memory: '1GB' })
     .https.onRequest((request, response) => __awaiter(this, void 0, void 0, function* () {
     const browser = yield puppeteer.launch({
-        headless: true,
+        headless: false,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
     const requestURL = request.query.requestURL;
@@ -37,6 +37,7 @@ exports.render = functions
 }));
 exports.ssr = functions.https.onRequest((request, response) => __awaiter(this, void 0, void 0, function* () {
     const bots = [
+        'googlebot',
         'twitterbot',
         'facebookexternalhit',
         'linkedinbot',
