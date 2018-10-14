@@ -38,6 +38,7 @@ const renderURL = 'https://us-central1-ventrips-214422.cloudfunctions.net/render
 
 export const ssr = functions.https.onRequest(async (request, response) => {
   const bots = [
+    'googlebot',
     'twitterbot',
     'facebookexternalhit',
     'linkedinbot',
