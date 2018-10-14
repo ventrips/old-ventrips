@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { AdsenseModule } from 'ng2-adsense';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -56,15 +55,7 @@ import { SearchByPipe } from './pipes/search-by/search-by.pipe';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     NgbModule,
-    NgxSpinnerModule,
-    AdsenseModule.forRoot({
-      adClient: 'ca-pub-4642980268605791',
-      // adSlot: 7259870550,
-      display: 'inline-block',
-      width: 320,
-      height: 108,
-      adtest: 'on'
-    })
+    NgxSpinnerModule
   ],
   providers: [
     ProductsService

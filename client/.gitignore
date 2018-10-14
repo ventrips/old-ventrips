@@ -4,6 +4,7 @@
 /package-lock.json
 /public
 .firebase/
+firebase-debug.log
 
 # compiled output
 /dist
