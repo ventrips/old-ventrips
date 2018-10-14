@@ -7,7 +7,7 @@
         <div class="col-lg-12 text-center">
           <h2 class="section-heading text-uppercase">Sorry...</h2>
           <h3 class="section-subheading text-muted">We couldn't find this product.
-            <a class="cursor-pointer custom-text-yellow" [routerLink]="['/products']">Back to Products</a>!
+            <a title="Back to Products" class="cursor-pointer custom-text-yellow" [routerLink]="['/products']">Back to Products</a>!
           </h3>
         </div>
       </ng-container>
@@ -18,11 +18,13 @@
               <div class="sticky-top sticky-offset mr-3">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb custom-bg-white d-inline-block px-0">
-                    <li class="breadcrumb-item"><a [routerLink]="['/products']"><i class="fa fa-angle-double-left"></i> Back to Products</a></li>
+                    <li class="breadcrumb-item"><a title="Back to Products" [routerLink]="['/products']"><i class="fa fa-angle-double-left"></i> Back to Products</a></li>
                     <!-- <li class="breadcrumb-item active" aria-current="page" *ngIf="product">{{product?.name}}</li> -->
                   </ol>
                 </nav>
-                <h3 class="section-heading text-capitalize break-word"><a class="custom-text-dark" [href]="product.url" target="__blank">{{product.name}}</a></h3>
+                <h3 class="section-heading text-capitalize break-word">
+                  <a [title]="product.name" class="custom-text-dark" [href]="product.url" target="__blank">{{product.name}}</a>
+                </h3>
                 <div class="section-subheading text-muted container">
                   <ul class="list-group">
                     <li *ngFor="let feature of product.features">
@@ -31,7 +33,7 @@
                   </ul>
                 </div>
                 <div class="my-4 text-center text-sm-left">
-                  <a class="btn btn-primary custom-text-black btn-lg text-uppercase" [href]="product.url" target="__blank">
+                  <a [title]="Buy on Amazon" class="btn btn-primary custom-text-black btn-lg text-uppercase" [href]="product.url" target="__blank">
                     <div class="d-flex justify-self-sm-center">
                       <span class="align-self-center mr-3">Buy on Amazon</span>
                       <i class="fab fa-amazon fa-2x ml-auto"></i>
