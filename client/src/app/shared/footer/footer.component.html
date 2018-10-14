@@ -2,23 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <span class="copyright" [class.custom-text-white]="isHome()">Copyright &copy; Ventrips 2018</span>
+        <span class="copyright" [class.custom-text-white]="isHome()">Copyright &copy; {{environment.name}} 2018</span>
       </div>
       <div class="col-md-4">
         <ul class="list-inline social-buttons">
-          <li class="list-inline-item">
-            <a title="Twitter" href="https://twitter.com/ventrips" target="__blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a title="Facebook" href="https://www.facebook.com/OfficialVentrips" target="__blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a title="Instagram" href="https://www.instagram.com/ventrips/" target="__blank">
-              <i class="fab fa-instagram"></i>
+          <li class="list-inline-item" *ngFor="let social of socialMedia">
+            <a [title]="social.name" [href]="social.url" target="__blank">
+              <i class="fab {{social.class}}"></i>
             </a>
           </li>
         </ul>

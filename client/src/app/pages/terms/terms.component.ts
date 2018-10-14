@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SeoService } from '../../services/seo/seo.service';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-terms',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./terms.component.scss']
 })
 export class TermsComponent implements OnInit {
+  public environment = environment;
 
-  constructor() { }
+  constructor(
+    private seoService: SeoService
+  ) {
+    this.seoService.generateTags();
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

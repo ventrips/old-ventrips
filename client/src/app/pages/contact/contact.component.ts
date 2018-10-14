@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeoService } from '../../services/seo/seo.service';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private seoService: SeoService
+  ) {
+    this.seoService.generateTags();
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

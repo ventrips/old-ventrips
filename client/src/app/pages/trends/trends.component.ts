@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { SeoService } from '../../services/seo/seo.service';
 
 @Component({
   selector: 'app-trends',
@@ -10,8 +11,12 @@ import { AngularFirestore } from 'angularfire2/firestore';
 export class TrendsComponent implements OnInit {
   public items: Observable<any[]>;
 
-  constructor(db: AngularFirestore) {
-      this.items = db.collection('/items').valueChanges();
+  constructor(
+    db: AngularFirestore,
+    private seoService: SeoService
+  ) {
+    this.seoService.generateTags();
+    this.items = db.collection('/items').valueChanges();
   }
 
   ngOnInit(): void {

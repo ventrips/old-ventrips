@@ -44,7 +44,6 @@ export class ProductsComponent implements OnInit {
     private seoService: SeoService
   ) {
     this.seoService.generateTags({
-      title: 'Products',
       description: 'Search for top recommended and trending travel gears!'
     });
     this.spinner.show();

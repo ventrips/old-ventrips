@@ -4,6 +4,9 @@
 
 export const environment = {
   production: false,
+  name: 'Ventrips',
+  slogan: 'A one-stop shop for all your travel essentials',
+  url: 'https://ventrips.com',
   firebase: {
     apiKey: 'AIzaSyBgGpL_dHoLlhRe9DvPc0aVV2m5Sq9g-Uo',
     authDomain: 'ventrips-214422.firebaseapp.com',
