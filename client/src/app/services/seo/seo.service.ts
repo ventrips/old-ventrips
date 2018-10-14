@@ -25,7 +25,6 @@ export class SeoService {
 
     config.title = `${environment.name} - ${config.title}`;
     config.description = config.description;
-    console.log(config);
 
     // Set HTML Document Title
     this.title.setTitle(config.title);
