@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as _ from 'lodash';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  public selectedNav: string;
 
-  ngOnInit() {
+  constructor(
+    private router: Router
+  ) {
+    this.router.events.subscribe((route) => {
+      if (!_.isNil(route['url'])) {
+        this.selectedNav = route['url'];
+      }
+    });
+  }
+
+  ngOnInit(): void {}
+
+  isHome(): boolean {
+    return _.isEqual(this.selectedNav, '/') || _.includes(this.selectedNav, 'home');
   }
 
 }
