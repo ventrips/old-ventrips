@@ -33,13 +33,13 @@ main {
     padding: 100px 0
 }
 
-main h2.main-heading {
+main h2.section-heading {
     font-size: 40px;
     margin-top: 0;
     margin-bottom: 20px
 }
 
-main h3.main-subheading {
+main h3.section-subheading {
     font-size: 16px;
     font-weight: 400;
     font-style: italic;
@@ -185,6 +185,7 @@ header.masthead {
 
 header.masthead .intro-text {
     padding-top: 150px;
+    padding-bottom: 150px
 }
 
 header.masthead .intro-text .intro-lead-in {
@@ -204,6 +205,10 @@ header.masthead .intro-text .intro-heading {
 }
 
 @media (min-width:768px) {
+    /* header.masthead .intro-text {
+        padding-top: 150px;
+        padding-bottom: 150px
+    } */
     header.masthead .intro-text .intro-lead-in {
         font-size: 40px;
         font-style: italic;
@@ -593,7 +598,7 @@ main#contact {
     background-position: center
 }
 
-main#contact .main-heading {
+main#contact .section-heading {
     color: #fff
 }
 
