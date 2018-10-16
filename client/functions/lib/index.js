@@ -40,7 +40,8 @@ exports.render = functions
     });
     const requestURL = request.query.requestURL;
     const page = yield browser.newPage();
-    const { status, content } = yield renderer_1.serialize(page, requestURL, false);
+    const renderer = new renderer_1.Renderer(browser);
+    const { status, content } = yield renderer.serialize(requestURL, false);
     response.status(status).send(content);
 }));
 exports.ssr = functions.https.onRequest((request, response) => __awaiter(this, void 0, void 0, function* () {

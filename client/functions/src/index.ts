@@ -6,7 +6,7 @@ import * as _ from 'lodash';
 
 import * as functions from 'firebase-functions';
 import * as puppeteer from 'puppeteer';
-import { serialize } from './renderer';
+import { Renderer, ScreenshotError } from './renderer';
 import * as fetch from 'node-fetch';
 
 const admin = require('firebase-admin');
@@ -18,7 +18,6 @@ const db = admin.firestore();
 
 const appURL = 'https://ventrips-214422.firebaseapp.com/';
 const renderURL = 'https://us-central1-ventrips-214422.cloudfunctions.net/render';
-
 
   export const render = functions
   .runWith({ memory: '1GB' })
@@ -39,7 +38,9 @@ const renderURL = 'https://us-central1-ventrips-214422.cloudfunctions.net/render
     const requestURL = request.query.requestURL;
 
     const page = await browser.newPage();
-    const { status, content } = await serialize(page, requestURL, false);
+    const renderer = new Renderer(browser);
+
+    const { status, content } = await renderer.serialize(requestURL, false);
 
     response.status(status).send(content);
   });
