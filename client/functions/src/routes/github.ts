@@ -56,8 +56,8 @@ export class GitHubRoutes {
                 }
                 console.log(responseBody);
                 const collectionName = 'items';
-                // Utils.postBatchDocuments(db, responseBody, collectionName, req, res);
-                res.status(200).send(JSON.stringify(responseBody, null, 4));
+                Utils.postBatchDocuments(db, responseBody, collectionName, req, res);
+                // res.status(200).send(JSON.stringify(responseBody, null, 4));
             } catch (error) {
                 console.log(error);
                 res.status(500).send(error);
