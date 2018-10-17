@@ -16,7 +16,7 @@
         "function": "ssr"
       },
       {
-        "source": "/api/**",
+        "source": "webApi/api/**",
         "function": "api"
       }
     ]
