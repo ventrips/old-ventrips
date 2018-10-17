@@ -42,7 +42,7 @@ export class YouTubeRoutes {
                     };
                     responseBody.push(obj);
                 }
-                res.status(200).send(responseBody);
+                res.status(200).send(JSON.stringify(responseBody, null, 4));
             } catch (error) {
                 console.log(error);
                 res.status(500).send(error);
