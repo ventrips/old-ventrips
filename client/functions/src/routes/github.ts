@@ -7,21 +7,21 @@ export class GitHubRoutes {
 
         app.route('/trending/github')
         .get((req: any, res: any) => {
-            let url = 'https://github.com/trending';
+            let requestUrl = 'https://github.com/trending';
             if (!_.isNil(req.params.topic)) {
-                url += `/${req.params.topic}`;
+                requestUrl += `/${req.params.topic}`;
             }
-            this.getTrendingGitHubRepos(db, url, req, res);
+            this.getTrendingGitHubRepos(db, requestUrl, req, res);
         });
 
         // app.route('/github/topics/:topic')
         // .get((req: any, res: any) => {
         //     const url = `https://github.com/topics/${req.params.topic}`;
-        //     // this.getTrendingGitHubRepos(req, res, url);
+        //     // this.getTrendingGitHubRepos(requestUrl, req, res);
         // });
     }
 
-    private getTrendingGitHubRepos(db: any, url: string, req: any, res: any): void {
+    private getTrendingGitHubRepos(db: any, requestUrl: string, req: any, res: any): void {
         (async function main() {
             try {
                 const responseBody: any[] = [];
@@ -29,7 +29,7 @@ export class GitHubRoutes {
                 const page = await browser.newPage();
                 // tslint:disable-next-line:max-line-length
                 page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36');
-                await page.goto(url);
+                await page.goto(requestUrl);
                 await page.waitForSelector('.repo-list li');
                 const sections = await page.$$('.repo-list li');
                 for (let i = 0; i < sections.length; i++) {
@@ -43,15 +43,21 @@ export class GitHubRoutes {
                         '.py-1',
                         (item: any) => item.innerText.trim().replace(/\n/g, ' '),
                     );
+                    const url = await section.$eval(
+                        'h3 a',
+                        (item: any) => `https://github.com${item.getAttribute('href')}`,
+                    );
                     const obj = {
                         description,
                         name,
+                        url
                     };
                     responseBody.push(obj);
                 }
                 console.log(responseBody);
                 const collectionName = 'items';
-                Utils.postBatchDocuments(db, responseBody, collectionName, req, res);
+                // Utils.postBatchDocuments(db, responseBody, collectionName, req, res);
+                res.status(200).send(JSON.stringify(responseBody, null, 4));
             } catch (error) {
                 console.log(error);
                 res.status(500).send(error);
