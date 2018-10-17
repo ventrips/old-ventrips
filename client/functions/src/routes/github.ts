@@ -1,9 +1,9 @@
 import * as _ from 'lodash';
 import * as puppeteer from 'puppeteer';
-
+import * as Utils from './../utils/utils';
 export class GitHubRoutes {
 
-    public routes(app: any): void {
+    public routes(app: any, db: any): void {
 
         app.route('/trending/github')
         .get((req: any, res: any) => {
@@ -11,7 +11,7 @@ export class GitHubRoutes {
             if (!_.isNil(req.params.topic)) {
                 url += `/${req.params.topic}`;
             }
-            this.getTrendingGitHubRepos(req, res, url);
+            this.getTrendingGitHubRepos(db, url, req, res);
         });
 
         // app.route('/github/topics/:topic')
@@ -21,7 +21,7 @@ export class GitHubRoutes {
         // });
     }
 
-    private getTrendingGitHubRepos(req: any, res: any, url: string): void {
+    private getTrendingGitHubRepos(db: any, url: string, req: any, res: any): void {
         (async function main() {
             try {
                 const responseBody: any[] = [];
@@ -50,7 +50,8 @@ export class GitHubRoutes {
                     responseBody.push(obj);
                 }
                 console.log(responseBody);
-                res.status(200).send(JSON.stringify(responseBody, null, 4));
+                const collectionName = 'items';
+                Utils.postBatchDocuments(db, responseBody, collectionName, req, res);
             } catch (error) {
                 console.log(error);
                 res.status(500).send(error);
