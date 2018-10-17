@@ -79,8 +79,9 @@ export const ssr = functions.https.onRequest(async (request, response) => {
 
   const getTrendingGitHubRepos = function() {
   const deferred = Q.defer();
-  const baseUrl = 'https://github.com/trending';
-  Request(baseUrl, function (error, response, body) {
+  const baseUrl = 'https://github.com';
+  const trendingUrl = `${baseUrl}/trending`
+  Request(trendingUrl, function (error, response, body) {
     if (!error && _.isEqual(response.statusCode, 200)) {
       const $ = cheerio.load(body);
       const trendingGitHubRepos = [];
