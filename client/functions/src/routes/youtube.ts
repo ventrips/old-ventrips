@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import puppeteer from 'puppeteer';
+import * as puppeteer from 'puppeteer';
 export class YouTubeRoutes {
     public routes(app: any): void {
 
