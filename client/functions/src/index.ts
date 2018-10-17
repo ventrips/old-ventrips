@@ -22,27 +22,27 @@ const renderURL = 'https://us-central1-ventrips-214422.cloudfunctions.net/render
 export const render = functions
 .runWith({ memory: '1GB' })
 .https.onRequest(async (request, response) => {
-const browser = await puppeteer.launch({
-    headless: true,
-    args: [
-    '--disable-gpu',
-    '--disable-dev-shm-usage',
-    '--disable-setuid-sandbox',
-    '--no-first-run',
-    '--no-sandbox',
-    '--no-zygote',
-    '--single-process'
-    ]
-});
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: [
+        '--disable-gpu',
+        '--disable-dev-shm-usage',
+        '--disable-setuid-sandbox',
+        '--no-first-run',
+        '--no-sandbox',
+        '--no-zygote',
+        '--single-process'
+        ]
+    });
 
-const requestURL = request.query.requestURL;
+    const requestURL = request.query.requestURL;
 
-const page = await browser.newPage();
-const renderer = new Renderer(browser);
+    const page = await browser.newPage();
+    const renderer = new Renderer(browser);
 
-const { status, content } = await renderer.serialize(requestURL, false);
+    const { status, content } = await renderer.serialize(requestURL, false);
 
-response.status(status).send(content);
+    response.status(status).send(content);
 });
 
 export const ssr = functions.https.onRequest(async (request, response) => {
