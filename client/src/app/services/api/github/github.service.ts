@@ -19,7 +19,7 @@ export class GitHubService {
   }
 
   getTrendingGitHubRepos = function(): Observable<any> {
-    return this.http.get(`${environment.cloudFunctionsUrl}/postTrendingGitHubRepos`, { headers: this.headers })
+    return this.http.get(`${environment.url}/api/trending/github`, { headers: this.headers })
     .pipe(map((response: Response) => response));
   };
 }
