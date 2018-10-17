@@ -1,12 +1,11 @@
 // SSR
 import * as puppeteer from 'puppeteer';
-import { Renderer, ScreenshotError } from './seo/renderer';
+import { Renderer } from './seo/renderer';
 import * as fetch from 'node-fetch';
 
 // FIREBASE
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
-import * as firebaseHelper from 'firebase-functions-helper';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { ContactsRoutes } from './routes/contacts';
@@ -37,7 +36,6 @@ export const render = functions
 
     const requestURL = request.query.requestURL;
 
-    const page = await browser.newPage();
     const renderer = new Renderer(browser);
 
     const { status, content } = await renderer.serialize(requestURL, false);

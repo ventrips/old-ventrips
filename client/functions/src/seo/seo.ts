@@ -1,6 +1,6 @@
 // SSR
 import * as puppeteer from 'puppeteer';
-import { Renderer, ScreenshotError } from './renderer';
+import { Renderer } from './renderer';
 import * as fetch from 'node-fetch';
 import * as functions from 'firebase-functions';
 
@@ -26,7 +26,6 @@ export const render = functions
 
     const requestURL = request.query.requestURL;
 
-    const page = await browser.newPage();
     const renderer = new Renderer(browser);
 
     const { status, content } = await renderer.serialize(requestURL, false);

@@ -75,15 +75,15 @@ export class Renderer {
 
     const page = await this.browser.newPage();
 
-    page.setViewport({width: 1000, height: 1000, isMobile});
+    page.setViewport({width: 1000, height: 1000, isMobile}).catch();
 
     if (isMobile) {
-      page.setUserAgent(MOBILE_USERAGENT);
+      page.setUserAgent(MOBILE_USERAGENT).catch();
     }
 
-    page.evaluateOnNewDocument('customElements.forcePolyfill = true');
-    page.evaluateOnNewDocument('ShadyDOM = {force: true}');
-    page.evaluateOnNewDocument('ShadyCSS = {shimcssproperties: true}');
+    page.evaluateOnNewDocument('customElements.forcePolyfill = true').catch();
+    page.evaluateOnNewDocument('ShadyDOM = {force: true}').catch();
+    page.evaluateOnNewDocument('ShadyCSS = {shimcssproperties: true}').catch();
 
     let response: puppeteer.Response|null = null;
     // Capture main frame response. This is used in the case that rendering
@@ -161,10 +161,10 @@ export class Renderer {
     const page = await this.browser.newPage();
 
     page.setViewport(
-        {width: dimensions.width, height: dimensions.height, isMobile});
+        {width: dimensions.width, height: dimensions.height, isMobile}).catch();
 
     if (isMobile) {
-      page.setUserAgent(MOBILE_USERAGENT);
+      page.setUserAgent(MOBILE_USERAGENT).catch();
     }
 
     let response: puppeteer.Response|null = null;
@@ -192,7 +192,7 @@ export class Renderer {
         Object.assign({}, options, {type: 'jpeg', encoding: 'binary'});
     // Screenshot returns a buffer based on specified encoding above.
     // https://github.com/GoogleChrome/puppeteer/blob/v1.8.0/docs/api.md#pagescreenshotoptions
-    const buffer = await page.screenshot(screenshotOptions) as Buffer;
+    const buffer = await page.screenshot(screenshotOptions);
     return buffer;
   }
 }

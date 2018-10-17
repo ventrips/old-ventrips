@@ -1,5 +1,4 @@
 import * as firebaseHelper from 'firebase-functions-helper';
-import * as functions from 'firebase-functions';
 
 export class ContactsRoutes {
 

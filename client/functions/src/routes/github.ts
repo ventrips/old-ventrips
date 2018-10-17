@@ -28,7 +28,8 @@ export class GitHubRoutes {
                 const browser = await puppeteer.launch({ headless: true });
                 const page = await browser.newPage();
                 // tslint:disable-next-line:max-line-length
-                page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36');
+                page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
+                .catch();
                 await page.goto(requestUrl);
                 await page.waitForSelector('.repo-list li');
                 const sections = await page.$$('.repo-list li');
@@ -62,7 +63,7 @@ export class GitHubRoutes {
                 console.log(error);
                 res.status(500).send(error);
             }
-        })();
+        })().catch();
     }
 
 }
