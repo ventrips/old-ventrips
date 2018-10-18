@@ -60,7 +60,6 @@ export class GitHubRoutes {
                 'h3 a',
                 (item: any) => item.innerText.trim().replace(/\n/g, ' '),
             );
-            // const url = baseUrl + selection.attr('href');
             const description = await section.$eval(
                 '.py-1',
                 (item: any) => item.innerText.trim().replace(/\n/g, ' '),
