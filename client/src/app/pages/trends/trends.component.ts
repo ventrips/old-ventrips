@@ -33,10 +33,12 @@ export class TrendsComponent implements OnInit {
   ngOnInit(): void {}
 
   postTrendingGitHubRepos(): void {
+    if (!this.authService.isAdmin()) { return; }
+
     this.isLoading = true;
     this.spinner.show();
     this.gitHubService.postTrendingGitHubRepos().subscribe((response) => {
-      this.toastrService.success(`${response.length} Results`, 'Data Loaded!');
+      this.toastrService.success(`${response.length} Results`, 'Trends Data Loaded!');
       this.isLoading = false;
       this.spinner.hide();
     }, (error) => {
