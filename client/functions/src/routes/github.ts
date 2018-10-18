@@ -41,7 +41,7 @@ export class GitHubRoutes {
         });
 
         app.route('/github/topics/:topic')
-        .POST((req: any, res: any) => {
+        .post((req: any, res: any) => {
             const requestUrl = `https://github.com/topics/${req.params.topic}`;
             this.getTrendingGitHubRepos(requestUrl).then(data => {
                 const collectionName = 'items';
