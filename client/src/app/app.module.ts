@@ -31,7 +31,7 @@ import { TrendsComponent } from './pages/trends/trends.component';
 import { TermsComponent } from './pages/terms/terms.component';
 import { BlogComponent } from './pages/blog/blog.component';
 
-import { AuthService } from './services/auth/auth.service';
+import { AuthService } from './services/firebase/auth/auth.service';
 import { ProductsService } from './services/firebase/products/products.service';
 import { OrderByPipe } from './pipes/order-by/order-by.pipe';
 import { SearchByPipe } from './pipes/search-by/search-by.pipe';
