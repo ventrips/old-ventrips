@@ -27,6 +27,8 @@ export class GitHubRoutes {
             this.getTrendingGitHubRepos(requestUrl).then(data => {
                 const collectionName = 'items';
                 Utils.postBatchDocuments(db, data, collectionName, req, res);
+            }).catch(error => {
+                res.send(JSON.stringify(error, null, 4));
             });
         });
 
