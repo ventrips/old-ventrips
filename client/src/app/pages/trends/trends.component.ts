@@ -22,11 +22,13 @@ export class TrendsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.gitHubService.getTrendingGitHubRepos().subscribe((response) => {
+  }
+
+  postTrendingGitHubRepos(): void {
+    this.gitHubService.postTrendingGitHubRepos().subscribe((response) => {
       console.log('response', response);
     }, (error) => {
       console.log('error', error);
     });
   }
-
 }
