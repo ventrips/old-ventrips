@@ -1,6 +1,8 @@
 import * as _ from 'lodash';
 import * as puppeteer from 'puppeteer';
 import * as Utils from './../utils/utils';
+import * as cors from 'cors';
+const corsHandler = cors({origin: true});
 export class GitHubRoutes {
 
     public routes(app: any, db: any): void {
@@ -12,7 +14,9 @@ export class GitHubRoutes {
                 requestUrl += `/${req.params.topic}`;
             }
             this.getTrendingGitHubRepos(requestUrl).then(data => {
-                res.send(JSON.stringify(data, null, 4));
+                corsHandler(req, res, () => {
+                    res.send(JSON.stringify(data, null, 4));
+                });
             }).catch(error => {
                 res.send(JSON.stringify(error, null, 4));
             });
