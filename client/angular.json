@@ -26,6 +26,7 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss",
               "src/assets/css/custom.css"
             ],
@@ -59,7 +60,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ventrips:build"
+            "browserTarget": "ventrips:build",
+            "port": 13214
           },
           "configurations": {
             "production": {

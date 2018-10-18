@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { SeoService } from '../../services/seo/seo.service';
 import { GitHubService } from '../../services/api/github/github.service';
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-trends',
@@ -10,10 +12,13 @@ import { GitHubService } from '../../services/api/github/github.service';
   styleUrls: ['./trends.component.scss']
 })
 export class TrendsComponent implements OnInit {
+  public isLoading = false;
   public items: Observable<any[]>;
 
   constructor(
-    db: AngularFirestore,
+    private db: AngularFirestore,
+    private spinner: NgxSpinnerService,
+    private toastrService: ToastrService,
     private seoService: SeoService,
     private gitHubService: GitHubService
   ) {
@@ -21,14 +26,20 @@ export class TrendsComponent implements OnInit {
     this.items = db.collection('/items').valueChanges();
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   postTrendingGitHubRepos(): void {
+    this.isLoading = true;
+    this.spinner.show();
     this.gitHubService.postTrendingGitHubRepos().subscribe((response) => {
-      console.log('response', response);
+      this.toastrService.success(`${response.length} Results`, 'Success!');
+      this.isLoading = false;
+      this.spinner.hide();
     }, (error) => {
-      console.log('error', error);
+      this.toastrService.error(error, 'Error!');
+      this.isLoading = false;
+      this.spinner.hide();
     });
   }
+
 }

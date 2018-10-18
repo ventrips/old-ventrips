@@ -14,12 +14,10 @@ export class GitHubService {
 
   constructor(
     private http: HttpClient
-  ) {
-    this.headers = new Headers({'Content-Type': 'application/json'});
-  }
+  ) {}
 
   postTrendingGitHubRepos = function(): Observable<any> {
-    return this.http.post(`${environment.url}/api/trending/github`, { headers: this.headers })
+    return this.http.post(`${environment.url}/api/trending/github`)
     .pipe(map((response: Response) => response));
   };
 }
