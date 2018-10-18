@@ -30,27 +30,6 @@ export class GitHubRoutes {
             });
         });
 
-        app.route('/github/topics/:topic')
-        .get((req: any, res: any) => {
-            const requestUrl = `https://github.com/topics/${req.params.topic}`;
-            this.getTrendingGitHubRepos(requestUrl).then(data => {
-                res.send(JSON.stringify(data, null, 4));
-            }).catch(error => {
-                res.send(JSON.stringify(error, null, 4));
-            });
-        });
-
-        app.route('/github/topics/:topic')
-        .post((req: any, res: any) => {
-            const requestUrl = `https://github.com/topics/${req.params.topic}`;
-            this.getTrendingGitHubRepos(requestUrl).then(data => {
-                const collectionName = 'items';
-                Utils.postBatchDocuments(db, data, collectionName, req, res);
-            }).catch(error => {
-                res.send(JSON.stringify(error, null, 4));
-            });
-        });
-
     }
 
     async getTrendingGitHubRepos(requestUrl): Promise<Array<String>> {
@@ -68,14 +47,15 @@ export class GitHubRoutes {
             ]
         });
         const page = await browser.newPage();
-        // tslint:disable-next-line:max-line-length
-        page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
-        .catch();
+
+        page.setUserAgent(
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+        ).catch();
+
         await page.goto(requestUrl);
         await page.waitForSelector('.repo-list li');
         const sections = await page.$$('.repo-list li');
-        for (let i = 0; i < sections.length; i++) {
-            const section = sections[i];
+        for (const section of sections) {
             const name = await section.$eval(
                 'h3 a',
                 (item: any) => item.innerText.trim().replace(/\n/g, ' '),
@@ -95,7 +75,7 @@ export class GitHubRoutes {
                 url
             };
             responseBody.push(obj);
-        }
+        };
         await browser.close();
 
         return responseBody;
