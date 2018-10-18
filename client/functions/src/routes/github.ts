@@ -11,70 +11,93 @@ export class GitHubRoutes {
             if (!_.isNil(req.params.topic)) {
                 requestUrl += `/${req.params.topic}`;
             }
-            this.getTrendingGitHubRepos(db, requestUrl, req, res);
+            this.getTrendingGitHubRepos(requestUrl).then(data => {
+                res.send(JSON.stringify(data, null, 4));
+            }).catch(error => {
+                res.send(JSON.stringify(error, null, 4));
+            });
         });
 
-        // app.route('/github/topics/:topic')
-        // .get((req: any, res: any) => {
-        //     const url = `https://github.com/topics/${req.params.topic}`;
-        //     // this.getTrendingGitHubRepos(requestUrl, req, res);
-        // });
-    }
-
-    private getTrendingGitHubRepos(db: any, requestUrl: string, req: any, res: any): void {
-        (async function main() {
-            try {
-                const responseBody: any[] = [];
-                const browser = await puppeteer.launch({
-                    headless: true,
-                    args: [
-                    '--disable-gpu',
-                    '--disable-dev-shm-usage',
-                    '--disable-setuid-sandbox',
-                    '--no-first-run',
-                    '--no-sandbox',
-                    '--no-zygote',
-                    '--single-process'
-                    ]
-                });
-                const page = await browser.newPage();
-                // tslint:disable-next-line:max-line-length
-                page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
-                .catch();
-                await page.goto(requestUrl);
-                await page.waitForSelector('.repo-list li');
-                const sections = await page.$$('.repo-list li');
-                for (let i = 0; i < sections.length; i++) {
-                    const section = sections[i];
-                    const name = await section.$eval(
-                        'h3 a',
-                        (item: any) => item.innerText.trim().replace(/\n/g, ' '),
-                    );
-                    // const url = baseUrl + selection.attr('href');
-                    const description = await section.$eval(
-                        '.py-1',
-                        (item: any) => item.innerText.trim().replace(/\n/g, ' '),
-                    );
-                    const url = await section.$eval(
-                        'h3 a',
-                        (item: any) => `https://github.com${item.getAttribute('href')}`,
-                    );
-                    const obj = {
-                        description,
-                        name,
-                        url
-                    };
-                    responseBody.push(obj);
-                }
-                console.log(responseBody);
-                const collectionName = 'items';
-                Utils.postBatchDocuments(db, responseBody, collectionName, req, res);
-                // res.status(200).send(JSON.stringify(responseBody, null, 4));
-            } catch (error) {
-                console.log(error);
-                res.status(500).send(error);
+        app.route('/trending/github')
+        .post((req: any, res: any) => {
+            let requestUrl = 'https://github.com/trending';
+            if (!_.isNil(req.params.topic)) {
+                requestUrl += `/${req.params.topic}`;
             }
-        })().catch();
+            this.getTrendingGitHubRepos(requestUrl).then(data => {
+                const collectionName = 'items';
+                Utils.postBatchDocuments(db, data, collectionName, req, res);
+            });
+        });
+
+        app.route('/github/topics/:topic')
+        .get((req: any, res: any) => {
+            const requestUrl = `https://github.com/topics/${req.params.topic}`;
+            this.getTrendingGitHubRepos(requestUrl).then(data => {
+                res.send(JSON.stringify(data, null, 4));
+            }).catch(error => {
+                res.send(JSON.stringify(error, null, 4));
+            });
+        });
+
+        app.route('/github/topics/:topic')
+        .POST((req: any, res: any) => {
+            const requestUrl = `https://github.com/topics/${req.params.topic}`;
+            this.getTrendingGitHubRepos(requestUrl).then(data => {
+                const collectionName = 'items';
+                Utils.postBatchDocuments(db, data, collectionName, req, res);
+            }).catch(error => {
+                res.send(JSON.stringify(error, null, 4));
+            });
+        });
+
     }
 
+    async getTrendingGitHubRepos(requestUrl): Promise<Array<String>> {
+        const responseBody: any[] = [];
+        const browser = await puppeteer.launch({
+            headless: true,
+            args: [
+            '--disable-gpu',
+            '--disable-dev-shm-usage',
+            '--disable-setuid-sandbox',
+            '--no-first-run',
+            '--no-sandbox',
+            '--no-zygote',
+            '--single-process'
+            ]
+        });
+        const page = await browser.newPage();
+        // tslint:disable-next-line:max-line-length
+        page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
+        .catch();
+        await page.goto(requestUrl);
+        await page.waitForSelector('.repo-list li');
+        const sections = await page.$$('.repo-list li');
+        for (let i = 0; i < sections.length; i++) {
+            const section = sections[i];
+            const name = await section.$eval(
+                'h3 a',
+                (item: any) => item.innerText.trim().replace(/\n/g, ' '),
+            );
+            // const url = baseUrl + selection.attr('href');
+            const description = await section.$eval(
+                '.py-1',
+                (item: any) => item.innerText.trim().replace(/\n/g, ' '),
+            );
+            const url = await section.$eval(
+                'h3 a',
+                (item: any) => `https://github.com${item.getAttribute('href')}`,
+            );
+            const obj = {
+                description,
+                name,
+                url
+            };
+            responseBody.push(obj);
+        }
+        await browser.close();
+
+        return responseBody;
+    }
 }

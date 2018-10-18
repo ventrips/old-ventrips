@@ -11,11 +11,11 @@ export function postBatchDocuments(db: any, data: object[], collectionName: stri
   writeBatch.commit().then(() => {
     console.log('Successfully executed batch.');
     corsHandler(req, res, () => {
-      res.status(200).send(JSON.stringify(data, null, 4));
+      res.send(JSON.stringify(data, null, 4));
     });
   }).catch(error => {
     console.error('Failed to execute batch.')
-    console.log(error);
+    res.send(JSON.stringify(error, null, 4));
   });
 }
 

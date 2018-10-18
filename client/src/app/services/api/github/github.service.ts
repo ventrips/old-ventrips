@@ -18,8 +18,8 @@ export class GitHubService {
     this.headers = new Headers({'Content-Type': 'application/json'});
   }
 
-  getTrendingGitHubRepos = function(): Observable<any> {
-    return this.http.get(`${environment.url}/api/trending/github`, { headers: this.headers })
+  postTrendingGitHubRepos = function(): Observable<any> {
+    return this.http.post(`${environment.url}/api/trending/github`, { headers: this.headers })
     .pipe(map((response: Response) => response));
   };
 }
