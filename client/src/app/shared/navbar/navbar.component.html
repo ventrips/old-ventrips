@@ -36,9 +36,14 @@
             <a title="Contact" class="nav-link" [ngClass]="{'active': isActive('/contact')}"
               [routerLink]="['/contact']">Contact</a>
           </li> -->
-          <li class="nav-item" *ngIf="authService?.isAdmin()">
-            <a title="Admin" class="nav-link" [ngClass]="{'active': isActive('/admin')}"
+          <li class="nav-item" *ngIf="authService?.getUser()">
+            <a *ngIf="authService?.isAdmin()" title="Admin" class="nav-link" [ngClass]="{'active': isActive('/admin')}"
               [routerLink]="['/admin']">
+              <span class="text-capitalize mr-3">Admin</span>
+              <img class="rounded-circle avatar" [src]="authService?.getPhotoURL()" [alt]="authService?.getPhotoURL()">
+            </a>
+            <a *ngIf="!authService?.isAdmin()" title="User" class="nav-link" [ngClass]="{'active': isActive('/home')}"
+              [routerLink]="['/home']">
               <img class="rounded-circle avatar" [src]="authService?.getPhotoURL()" [alt]="authService?.getPhotoURL()">
             </a>
           </li>
