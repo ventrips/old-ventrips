@@ -4,12 +4,12 @@
       <div class="col-lg-12 text-center">
         <h2 class="section-heading text-uppercase">Trends</h2>
         <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-        <button *ngIf="authService.isAdmin()" class="btn btn-primary" (click)="postTrendingGitHubRepos()" [disabled]="isLoading">Reload</button>
+        <button *ngIf="authService?.isAdmin()" class="btn btn-primary" (click)="postTrendingGitHubRepos()" [disabled]="isLoading">Reload</button>
       </div>
       <div class="col-lg-12">
         <div class="my-5" *ngFor="let item of items | async">
-          <a [title]="item.name" class="break-word d-inline-block" [href]="item.url" target="__blank"><h4>{{item.name}}</h4></a>
-          <p class="card-text mb-auto break-word">{{item.description}}</p>
+          <a [title]="item?.name" class="break-word d-inline-block" [href]="item?.url" target="__blank"><h4>{{item?.name}}</h4></a>
+          <p class="card-text mb-auto break-word">{{item?.description}}</p>
         </div>
       </div>
     </div>

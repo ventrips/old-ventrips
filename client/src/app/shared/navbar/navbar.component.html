@@ -36,6 +36,12 @@
             <a title="Contact" class="nav-link" [ngClass]="{'active': isActive('/contact')}"
               [routerLink]="['/contact']">Contact</a>
           </li> -->
+          <li class="nav-item" *ngIf="authService?.isAdmin()">
+            <a title="Admin" class="nav-link" [ngClass]="{'active': isActive('/admin')}"
+              [routerLink]="['/admin']">
+              <img class="rounded-circle avatar" [src]="authService?.getPhotoURL()" [alt]="authService?.getPhotoURL()">
+            </a>
+          </li>
         </ul>
       </div>
     </div>

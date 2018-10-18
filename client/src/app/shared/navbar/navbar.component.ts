@@ -3,6 +3,7 @@ declare var jQuery: any;
 import * as _ from 'lodash';
 import { Router } from '@angular/router';
 import { environment } from './../../../environments/environment';
+import { AuthService } from '../../services/firebase/auth/auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,7 +13,8 @@ export class NavbarComponent implements OnInit {
   public environment = environment;
 
   constructor(
-    private router: Router
+    private router: Router,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {

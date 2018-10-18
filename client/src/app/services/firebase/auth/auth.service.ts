@@ -34,6 +34,14 @@ export class AuthService {
     return this.user;
   }
 
+  getDisplayName(): string {
+    return this.user['displayName'];
+  }
+
+  getPhotoURL(): string {
+    return this.user['photoURL'];
+  }
+
   getAdmins(): Array<string> {
     return this.admins;
   }
