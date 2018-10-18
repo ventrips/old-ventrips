@@ -22,7 +22,7 @@ export const render = functions
 .runWith({ memory: '1GB' })
 .https.onRequest(async (request, response) => {
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: false,
         args: [
         '--disable-gpu',
         '--disable-dev-shm-usage',
