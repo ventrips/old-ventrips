@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './pages/about/about.component';
+import { AdminComponent } from './pages/admin/admin.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { ProductsComponent } from './pages/products/products.component';
@@ -18,8 +20,10 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'about', component: AboutComponent },
+      { path: 'admin', component: AdminComponent },
       { path: 'blog', component: BlogComponent },
       { path: 'contact', component: ContactComponent },
+      { path: 'login', component: LoginComponent },
       { path: 'portfolio', component: PortfolioComponent },
       { path: 'privacy', component: PrivacyComponent },
       { path: 'products',
