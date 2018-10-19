@@ -3,6 +3,17 @@ body {
     overflow-x: hidden;
 }
 
+.custom-modal-full-width {
+    .modal-dialog {
+        max-width: none;
+        margin: 0;
+    }
+    .modal-content {
+        border-radius: 0;
+        border: 0;
+    }
+}
+
 .cursor-pointer {
     cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, Input } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
@@ -10,6 +10,7 @@ import * as _ from 'lodash';
   selector: 'app-edit-mode',
   templateUrl: './edit-mode.component.html',
   styleUrls: ['./edit-mode.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   entryComponents: [ EditModalComponent ]
 })
 export class EditModeComponent implements OnInit {
@@ -30,7 +31,7 @@ export class EditModeComponent implements OnInit {
   openEditModal() {
     const modalRef = this.modalService.open(
       EditModalComponent,
-      { size: 'lg', centered: true, backdrop: 'static' }
+      { size: 'lg', centered: true, backdrop: 'static', windowClass: 'custom-modal-full-width' }
     );
 
     modalRef.componentInstance.id = this.id;

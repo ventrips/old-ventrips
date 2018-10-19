@@ -40,11 +40,11 @@
             <a *ngIf="authService?.isAdmin()" title="Admin" class="nav-link" [ngClass]="{'active': isActive('/admin')}"
               [routerLink]="['/admin']">
               <span class="text-capitalize mr-3">Admin</span>
-              <img class="rounded-circle avatar" [src]="authService?.getPhotoURL()" [alt]="authService?.getPhotoURL()">
+              <img class="rounded-circle avatar" [src]="authService?.getPhotoURL()" alt="Avatar">
             </a>
             <a *ngIf="!authService?.isAdmin()" title="User" class="nav-link" [ngClass]="{'active': isActive('/home')}"
               [routerLink]="['/home']">
-              <img class="rounded-circle avatar" [src]="authService?.getPhotoURL()" [alt]="authService?.getPhotoURL()">
+              <img class="rounded-circle avatar" [src]="authService?.getPhotoURL()" alt="Avatar">
             </a>
           </li>
         </ul>

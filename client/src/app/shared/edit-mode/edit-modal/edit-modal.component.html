@@ -5,20 +5,30 @@
   </button>
 </div>
 <div class="modal-body">
-  <section class="row">
-    <div class="col-12" *ngFor="let key of keys">
-      <h5 class="text-capitalize my-2">{{key}}</h5>
-      <div *ngIf="!_.isArray(data[key])">
-          <input type="text" class="form-control" placeholder="Edit Input" [(ngModel)]="data[key]">
-      </div>
-      <div class="row" *ngIf="_.isArray(data[key])">
-        <div class="col-12" *ngFor="let item of data[key]; let index = index">
-          <input type="text" class="form-control my-2" placeholder="Edit Input" [(ngModel)]="data[key][index]">
+  <div class="row">
+    <div class="col-xs-12 col-6">
+      <section class="row">
+        <div class="col-12" *ngFor="let key of keys">
+          <h5 class="text-capitalize my-2">{{key}}</h5>
+          <div *ngIf="!_.isArray(data[key])">
+            <input type="text" class="form-control" placeholder="Edit Input" [(ngModel)]="data[key]">
+          </div>
+          <div class="row" *ngIf="_.isArray(data[key])">
+            <div class="col-12" *ngFor="let item of data[key]; let index = index">
+              <input type="text" class="form-control my-2" placeholder="Edit Input" [(ngModel)]="data[key][index]">
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
-  </section>
+    <div class="col-xs-12 col-6">
+      <h4>Code Preview</h4>
+      <pre class="bg-light p-5">{{data | json}}</pre>
+    </div>
+  </div>
 </div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+<div class="modal-footer d-flex flex-wrap">
+  <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+  <button type="button" class="btn btn-light ml-auto" (click)="dismiss()">Cancel</button>
+  <button type="button" class="btn btn-primary ml-auto" (click)="save()">Save</button>
 </div>
