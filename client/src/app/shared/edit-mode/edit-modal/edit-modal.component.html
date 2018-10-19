@@ -7,7 +7,7 @@
 <div class="modal-body">
   <section class="row">
     <div class="col-12" *ngFor="let key of keys">
-      <div class="text-capitalize">{{key}}</div>
+      <h5 class="text-capitalize my-2">{{key}}</h5>
       <div *ngIf="!_.isArray(data[key])">
           <input type="text" class="form-control" placeholder="Edit Input" [(ngModel)]="data[key]">
       </div>
@@ -20,5 +20,7 @@
   </section>
 </div>
 <div class="modal-footer">
+  <pre>ID: {{id | json }}</pre>
+  <pre>COLLECTION: {{collection | json }}</pre>
   <button type="button" class="btn btn-primary" (click)="close()">Save</button>
 </div>

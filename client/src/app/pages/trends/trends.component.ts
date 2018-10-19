@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../../services/firebase/auth/auth.service';
+import { ProductsService } from '../../services/firebase/products/products.service';
 
 @Component({
   selector: 'app-trends',
@@ -14,20 +15,30 @@ import { AuthService } from '../../services/firebase/auth/auth.service';
   styleUrls: ['./trends.component.scss']
 })
 export class TrendsComponent implements OnInit {
-  public items: Observable<any[]>;
-  public isLoading = false;
+  public collection = 'items';
+  public trends: Array<Object>;
+  public isLoading = true;
 
   constructor(
     private db: AngularFirestore,
     private spinner: NgxSpinnerService,
     private seoService: SeoService,
     private gitHubService: GitHubService,
+    private productsService: ProductsService,
     private angularFireAuth: AngularFireAuth,
     private toastrService: ToastrService,
     public authService: AuthService
   ) {
-    this.seoService.generateTags();
-    this.items = db.collection('/items').valueChanges();
+    this.seoService.generateTags('View trending GitHub repositories!');
+    this.spinner.show();
+    this.productsService.getCollection(this.collection).subscribe(trends => {
+      this.trends = trends;
+      this.isLoading = false;
+      this.spinner.hide();
+    }, () => {
+      this.isLoading = false;
+      this.spinner.hide();
+    });
   }
 
   ngOnInit(): void {}

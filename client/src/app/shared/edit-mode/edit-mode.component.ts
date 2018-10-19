@@ -13,7 +13,9 @@ import * as _ from 'lodash';
   entryComponents: [ EditModalComponent ]
 })
 export class EditModeComponent implements OnInit {
-  @Input() ref: string;
+  @Input() id: string;
+  @Input() collection: string;
+  @Input() title: string;
   @Input() data: any;
 
   constructor(
@@ -31,8 +33,9 @@ export class EditModeComponent implements OnInit {
       { size: 'lg', centered: true, backdrop: 'static' }
     );
 
+    modalRef.componentInstance.id = this.id;
+    modalRef.componentInstance.collection = this.collection;
     modalRef.componentInstance.title = this.data.name;
-    modalRef.componentInstance.ref = this.ref;
     modalRef.componentInstance.data = _.cloneDeep(this.data);
 
     modalRef.result.then((result?) => {

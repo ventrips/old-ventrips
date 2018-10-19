@@ -15,6 +15,7 @@ import * as _ from 'lodash';
 })
 export class ProductsComponent implements OnInit {
   public _ = _;
+  public collection = 'products';
   public searchTerm: any;
   public products: Array<Object>;
   public searchOptions: Array<String>;
@@ -47,7 +48,7 @@ export class ProductsComponent implements OnInit {
       description: 'Search for top recommended and trending travel gears!'
     });
     this.spinner.show();
-    this.productsService.getProducts().subscribe(products => {
+    this.productsService.getCollection(this.collection).subscribe(products => {
       this.products = products;
       this.searchOptions = _.map(products, (product) => product.name);
       this.isLoading = false;

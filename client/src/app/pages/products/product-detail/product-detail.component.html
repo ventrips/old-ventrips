@@ -23,7 +23,7 @@
                   </ol>
                 </nav>
                 <!-- Edit Mode -->
-                <app-edit-mode class="text-sm-right" [data]="product"></app-edit-mode>
+                <app-edit-mode class="text-sm-right" [id]="product?.id" [collection]="collection" [title]="product?.name" [data]="product"></app-edit-mode>
                 <h3 class="section-heading text-capitalize break-word">
                   <a [title]="product.name" class="custom-text-dark" [href]="product.url" target="__blank">{{product.name}}</a>
                 </h3>

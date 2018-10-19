@@ -15,8 +15,8 @@ export class ProductsService {
     private seoService: SeoService
   ) { }
 
-  getProducts(): Observable<any[]> {
-    return this.db.collection('/products').snapshotChanges()
+  getCollection(collection: string): Observable<any[]> {
+    return this.db.collection(`/${collection}`).snapshotChanges()
     .pipe(map(actions => actions.map((obj: any) => {
         const object = obj.payload.doc.data();
         object.id = obj.payload.doc.id;
@@ -24,8 +24,8 @@ export class ProductsService {
     })));
   }
 
-  getDetail(id: string): any {
-    const itemDoc = this.db.doc(`products/${id}`);
+  getDocumentById(collection: string, id: string): any {
+    const itemDoc = this.db.doc(`${collection}/${id}`);
     return itemDoc.valueChanges();
     // .pipe(
     //   tap(product => {

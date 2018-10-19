@@ -15,6 +15,7 @@ import { SeoService } from '../../../services/seo/seo.service';
 })
 export class ProductDetailComponent implements OnInit {
   public _ = _;
+  public collection = 'products';
   public id: string;
   public category: string;
   public product: Object;
@@ -38,7 +39,7 @@ export class ProductDetailComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.category = this.activatedRoute.snapshot.params['category'];
     this.spinner.show();
-    this.productsService.getDetail(this.id).subscribe(product => {
+    this.productsService.getDocumentById(this.collection, this.id).subscribe(product => {
       this.product = product;
       this.seoService.generateTags({
         title: this.product['name'],

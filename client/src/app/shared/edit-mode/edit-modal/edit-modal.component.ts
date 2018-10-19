@@ -20,6 +20,7 @@ export class EditModalComponent implements OnInit {
 
   ngOnInit() {
     this.keys = _.keys(this.data);
+    _.pull(this.keys, 'id');
   }
 
   close(reason?: any): void {
