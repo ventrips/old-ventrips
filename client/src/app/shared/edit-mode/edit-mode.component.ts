@@ -36,12 +36,15 @@ export class EditModeComponent implements OnInit {
     modalRef.componentInstance.id = this.id;
     modalRef.componentInstance.collection = this.collection;
     modalRef.componentInstance.title = this.data.name;
-    modalRef.componentInstance.data = _.cloneDeep(this.data);
+    // Make Copy of Data and Remove ID
+    const dataCopy = _.omit(_.cloneDeep(this.data), ['id']);
+    modalRef.componentInstance.data = dataCopy;
+
 
     modalRef.result.then((result?) => {
-      this.toastr.success('Saved!');
+      this.toastr.success(`Saved!`, result);
     }, (reason?) => {
-      this.toastr.info('Edit Canceled!');
+      this.toastr.info(`Edit Canceled!`, reason);
     });
   }
 }

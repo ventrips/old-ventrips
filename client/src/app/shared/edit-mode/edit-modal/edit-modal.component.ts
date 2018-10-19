@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFirestore } from 'angularfire2/firestore';
 import * as _ from 'lodash';
 
 @Component({
@@ -16,12 +17,24 @@ export class EditModalComponent implements OnInit {
   public _ = _;
 
   constructor(
-    private activeModal: NgbActiveModal
+    private activeModal: NgbActiveModal,
+    private db: AngularFirestore
   ) { }
 
   ngOnInit() {
     this.keys = _.keys(this.data);
-    _.pull(this.keys, 'id');
+  }
+
+  save(reason?: any): void {
+    this.db
+    .collection(this.collection)
+    .doc(this.id)
+    .update(this.data)
+    .then((result) => {
+      this.close(reason);
+    }).catch((error) => {
+      this.dismiss(error);
+    });
   }
 
   close(reason?: any): void {
