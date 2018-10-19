@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <section class="row">
+    <div class="col-12" *ngFor="let key of keys">
+      <div class="text-capitalize">{{key}}</div>
+      <div *ngIf="!_.isArray(data[key])">
+          <input type="text" class="form-control" placeholder="Edit Input" [(ngModel)]="data[key]">
+      </div>
+      <div class="row" *ngIf="_.isArray(data[key])">
+        <div class="col-12" *ngFor="let item of data[key]; let index = index">
+          <input type="text" class="form-control my-2" placeholder="Edit Input" [(ngModel)]="data[key][index]">
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="close()">Save</button>
+</div>
