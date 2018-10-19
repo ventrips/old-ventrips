@@ -8,6 +8,8 @@
       </div>
       <div class="col-lg-12">
         <div class="my-5" *ngFor="let item of items | async">
+          <!-- Edit Mode -->
+          <app-edit-mode class="text-sm-right" [data]="item"></app-edit-mode>
           <a [title]="item?.name" class="break-word d-inline-block" [href]="item?.url" target="__blank"><h4>{{item?.name}}</h4></a>
           <p class="card-text mb-auto break-word">{{item?.description}}</p>
         </div>
