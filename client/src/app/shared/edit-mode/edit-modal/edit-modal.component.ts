@@ -8,8 +8,9 @@ import * as _ from 'lodash';
   styleUrls: ['./edit-modal.component.scss']
 })
 export class EditModalComponent implements OnInit {
+  public id: string;
+  public collection: string;
   public title: string;
-  public ref: string;
   public data: Object;
   public keys = [];
   public _ = _;
