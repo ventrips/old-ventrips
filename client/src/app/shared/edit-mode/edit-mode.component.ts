@@ -31,7 +31,7 @@ export class EditModeComponent implements OnInit {
   openEditModal() {
     const modalRef = this.modalService.open(
       EditModalComponent,
-      { size: 'lg', centered: true, backdrop: 'static', windowClass: 'custom-modal-full-width' }
+      { size: 'lg', centered: true, backdrop: 'static' }
     );
 
     modalRef.componentInstance.id = this.id;
