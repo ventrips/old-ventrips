@@ -37,6 +37,7 @@ import { OrderByPipe } from './pipes/order-by/order-by.pipe';
 import { SearchByPipe } from './pipes/search-by/search-by.pipe';
 import { AdminComponent } from './pages/admin/admin.component';
 import { LoginComponent } from './pages/login/login.component';
+import { EditModeComponent } from './shared/edit-mode/edit-mode.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -87,7 +88,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     OrderByPipe,
     SearchByPipe,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    EditModeComponent
   ],
   imports: [
     BrowserModule,

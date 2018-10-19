@@ -1,0 +1,17 @@
+<div class="custom-text-yellow cursor-pointer edit-mode-label">
+  <span *ngIf="!isEdit" (click)="showEdit()"><i class="fa fa-pen"></i> Edit</span>
+  <span *ngIf="isEdit" (click)="hideEdit()"><i class="fa fa-times-circle"></i> Cancel</span>
+</div>
+<section class="row" *ngIf="isEdit">
+  <div class="col-12" *ngFor="let key of keys">
+    <div class="text-capitalize">{{key}}</div>
+    <div *ngIf="!_.isArray(tempData[key])">
+        <input type="text" class="form-control" placeholder="Edit Input" [(ngModel)]="tempData[key]">
+    </div>
+    <div class="row" *ngIf="_.isArray(tempData[key])">
+      <div class="col-12" *ngFor="let item of tempData[key]; let index = index">
+        <input type="text" class="form-control my-2" placeholder="Edit Input" [(ngModel)]="tempData[key][index]">
+      </div>
+    </div>
+  </div>
+</section>
