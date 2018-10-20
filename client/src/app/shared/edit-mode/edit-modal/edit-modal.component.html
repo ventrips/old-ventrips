@@ -6,22 +6,31 @@
 </div>
 <div class="modal-body">
   <div class="row">
-    <div class="col-xs-12 col-6">
+    <div class="col-xs-12 col-lg-6">
       <section class="row">
-        <div class="col-12" *ngFor="let key of keys">
+        <div class="col-12" *ngFor="let key of keys; let parentIndex = index">
           <h5 class="text-capitalize my-2">{{key}}</h5>
           <div *ngIf="!_.isArray(data[key])">
             <input type="text" class="form-control" placeholder="Edit Input" [(ngModel)]="data[key]">
           </div>
           <div class="row" *ngIf="_.isArray(data[key])">
-            <div class="col-12" *ngFor="let item of data[key]; let index = index">
-              <input type="text" class="form-control my-2" placeholder="Edit Input" [(ngModel)]="data[key][index]">
+            <div class="col-12" *ngFor="let item of data[key]; let childIndex = index; trackBy: customTrackBy">
+              <input type="text" class="form-control my-2" placeholder="Edit Input" [(ngModel)]="data[key][childIndex]">
+            </div>
+            <div class="col-12">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Add Input" aria-label="Add Input"
+                [(ngModel)]="newInput">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button" (click)="addNewInput(key, newInput)">Add</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </div>
-    <div class="col-xs-12 col-6">
+    <div class="col-xs-12 col-lg-6">
       <h4>Code Preview</h4>
       <pre class="bg-light p-5">{{data | json}}</pre>
     </div>

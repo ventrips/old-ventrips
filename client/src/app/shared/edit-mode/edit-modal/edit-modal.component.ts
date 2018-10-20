@@ -15,6 +15,7 @@ export class EditModalComponent implements OnInit {
   public data: Object;
   public keys = [];
   public _ = _;
+  newInput;
 
   constructor(
     private activeModal: NgbActiveModal,
@@ -23,6 +24,14 @@ export class EditModalComponent implements OnInit {
 
   ngOnInit() {
     this.keys = _.keys(this.data);
+  }
+
+  customTrackBy(index: number, obj: any): any {
+    return index;
+  }
+
+  addNewInput(key: string, value: string): void {
+    this.data[key].push(value);
   }
 
   save(reason?: any): void {
