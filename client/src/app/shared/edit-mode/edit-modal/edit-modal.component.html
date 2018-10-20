@@ -8,21 +8,27 @@
   <div class="row">
     <div class="col-xs-12 col-lg-6">
       <section class="row">
-        <div class="col-12" *ngFor="let key of keys; let parentIndex = index">
+        <div class="col-12" *ngFor="let key of keys">
           <h5 class="text-capitalize my-2">{{key}}</h5>
           <div *ngIf="!_.isArray(data[key])">
             <input type="text" class="form-control" placeholder="Edit Input" [(ngModel)]="data[key]">
           </div>
           <div class="row" *ngIf="_.isArray(data[key])">
-            <div class="col-12" *ngFor="let item of data[key]; let childIndex = index; trackBy: customTrackBy">
-              <input type="text" class="form-control my-2" placeholder="Edit Input" [(ngModel)]="data[key][childIndex]">
+            <div class="col-12" *ngFor="let item of data[key]; let index = index; trackBy: customTrackBy">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Edit Input" aria-label="Add Input"
+                [(ngModel)]="data[key][index]">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button" (click)="deleteInput(data[key], data[key][index])"><i class="fa fa-minus"></i></button>
+                </div>
+              </div>
             </div>
             <div class="col-12">
               <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Add Input" aria-label="Add Input"
-                [(ngModel)]="newInput">
+                [(ngModel)]="data[key][index + 1]" name="key-{{index}}">
                 <div class="input-group-append">
-                  <button class="btn btn-primary" type="button" (click)="addNewInput(key, newInput)">Add</button>
+                  <button class="btn btn-primary" type="button" (click)="addInput(key, data[key][index + 1]); data[key][index + 1] = undefined"><i class="fa fa-plus"></i></button>
                 </div>
               </div>
             </div>

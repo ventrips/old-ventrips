@@ -30,7 +30,11 @@ export class EditModalComponent implements OnInit {
     return index;
   }
 
-  addNewInput(key: string, value: string): void {
+  deleteInput(list: Array<string>, value: string): void {
+    _.pull(list, value);
+  }
+
+  addInput(key: string, value: string): void {
     this.data[key].push(value);
   }
 
