@@ -11,7 +11,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
+import { SplashComponent } from './pages/splash/splash.component';
 
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -73,7 +73,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    SplashComponent,
     NavbarComponent,
     FooterComponent,
     AboutComponent,
@@ -103,7 +103,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     NgxSpinnerModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right',
+      positionClass: 'toast-bottom-left',
       preventDuplicates: true,
     }),
     AngularFireModule.initializeApp(environment.firebase),

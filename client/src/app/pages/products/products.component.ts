@@ -5,6 +5,7 @@ import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ProductsService } from '../../services/firebase/products/products.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SeoService } from '../../services/seo/seo.service';
+import { environment } from './../../../environments/environment';
 import * as _ from 'lodash';
 
 @Component({
@@ -15,6 +16,7 @@ import * as _ from 'lodash';
 })
 export class ProductsComponent implements OnInit {
   public _ = _;
+  public environment = environment;
   public collection = 'products';
   public searchTerm: any;
   public products: Array<Object>;

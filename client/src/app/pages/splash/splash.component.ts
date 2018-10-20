@@ -3,11 +3,11 @@ import { SeoService } from '../../services/seo/seo.service';
 import * as _ from 'lodash';
 import { environment } from './../../../environments/environment';
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-splash',
+  templateUrl: './splash.component.html',
+  styleUrls: ['./splash.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class SplashComponent implements OnInit {
   public environment = environment;
 
   constructor(

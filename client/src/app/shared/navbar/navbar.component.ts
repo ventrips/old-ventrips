@@ -21,16 +21,16 @@ export class NavbarComponent implements OnInit {
     this.smoothScrolling();
   }
 
-  isHome(): boolean {
-    return _.isEqual(this.router.url, '/') || _.includes(this.router.url, 'home');
+  showBar(): boolean {
+    return _.isEqual(this.router.url, '/') || _.includes(this.router.url, 'splash');
   }
 
   isActive(currentNav: string): boolean {
-    if (_.isEqual(this.router.url, '/') && _.includes(currentNav, 'home')) {
+    if (_.isEqual(this.router.url, '')) {
       return true;
     }
 
-    return _.includes(this.router.url, currentNav);
+    return _.isEqual(this.router.url, currentNav);
   }
 
   smoothScrolling(): void {

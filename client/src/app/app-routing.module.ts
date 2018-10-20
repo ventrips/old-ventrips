@@ -5,7 +5,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { HomeComponent } from './pages/home/home.component';
+import { SplashComponent } from './pages/splash/splash.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: '', component: HomeComponent },
+      { path: 'splash', component: SplashComponent },
       { path: 'about', component: AboutComponent },
       { path: 'admin', component: AdminComponent },
       { path: 'blog', component: BlogComponent },
@@ -26,12 +26,8 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'portfolio', component: PortfolioComponent },
       { path: 'privacy', component: PrivacyComponent },
-      { path: 'products',
-        children: [
-          { path: '', component: ProductsComponent },
-          { path: ':id', component: ProductDetailComponent }
-        ]
-      },
+      { path: '', component: ProductsComponent },
+      { path: 'products/:id', component: ProductDetailComponent },
       { path: 'terms', component: TermsComponent },
       { path: 'trends', component: TrendsComponent },
     ]
