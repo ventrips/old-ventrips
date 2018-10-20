@@ -4,6 +4,20 @@
 
 .avatar {
     width: auto;
-    height: 20px;
+    height: 2.5em;
     padding: 0;
+}
+
+.nav-item.dropdown {
+    padding: 0.6em;
+
+    .nav-link.dropdown-toggle {
+        padding: 0 !important;
+    }
+    .nav-link.dropdown-toggle::after {
+        margin-left: 1em;
+    }
+    .dropdown-menu.show {
+        left: 3.3em;
+    }
 }

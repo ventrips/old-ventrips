@@ -5,6 +5,7 @@ import { map, tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import * as _ from 'lodash';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class AuthService {
   private user: Object;
 
   constructor(
+    private router: Router,
     private db: AngularFirestore,
     private toastrService: ToastrService,
     private angularFireAuth: AngularFireAuth
@@ -25,6 +27,8 @@ export class AuthService {
       if (!_.isNil(user)) {
         this.user = user;
         this.toastrService.info(`Welcome, ${this.user['displayName']}`);
+      } else {
+        this.user = undefined;
       }
     });
   }
@@ -55,6 +59,12 @@ export class AuthService {
 
   isAdmin(): boolean {
     return !_.isNil(this.admins) && !_.isNil(this.user) && _.includes(this.admins, this.user['uid']);
+  }
+
+  signOut(): void {
+    this.angularFireAuth.auth.signOut().then(() => {
+      this.router.navigate(['']);
+    });
   }
 
 }
