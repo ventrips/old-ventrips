@@ -402,7 +402,7 @@ header.masthead .intro-text .intro-heading {
 
 .timeline>li {
     position: relative;
-    min-height-100vh: 50px;
+    min-height: 50px;
     margin-bottom: 50px
 }
 
@@ -501,7 +501,7 @@ header.masthead .intro-text .intro-heading {
         left: 50%
     }
     .timeline>li {
-        min-height-100vh: 100px;
+        min-height: 100px;
         margin-bottom: 100px
     }
     .timeline>li .timeline-panel {
@@ -530,7 +530,7 @@ header.masthead .intro-text .intro-heading {
 
 @media (min-width:992px) {
     .timeline>li {
-        min-height-100vh: 150px
+        min-height: 150px
     }
     .timeline>li .timeline-panel {
         padding: 0 20px 20px
@@ -552,7 +552,7 @@ header.masthead .intro-text .intro-heading {
 
 @media (min-width:1200px) {
     .timeline>li {
-        min-height-100vh: 170px
+        min-height: 170px
     }
     .timeline>li .timeline-panel {
         padding: 0 20px 20px 100px
