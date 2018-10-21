@@ -1,4 +1,5 @@
 <section class="min-height-100vh">
+  <div id="amzn-assoc-ad-c7ff1457-d243-4c60-af84-c5eb24e84b18" class="container py-3"></div>
   <div class="container">
     <!-- Loading finished -->
     <ng-container *ngIf="!isLoading">
@@ -14,43 +15,46 @@
       <!-- Results found -->
       <ng-container *ngIf="!_.isEmpty(product)">
         <div class="row" *ngIf="product">
-            <div class="col-lg-8">
-              <div class="sticky-top sticky-offset mr-3">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb custom-bg-white d-inline-block px-0">
-                    <li class="breadcrumb-item"><a title="Back to Products" [routerLink]="['/products']"><i class="fa fa-angle-double-left"></i> Back to Products</a></li>
-                    <!-- <li class="breadcrumb-item active" aria-current="page" *ngIf="product">{{product?.name}}</li> -->
-                  </ol>
-                </nav>
-                <!-- Edit Mode -->
-                <app-edit-mode class="text-sm-right" [id]="id" [collection]="collection" [title]="product?.name" [data]="product"></app-edit-mode>
-                <h3 class="section-heading text-capitalize break-word">
-                  <a [title]="product.name" class="custom-text-dark" [href]="product.url" target="__blank">{{product.name}}</a>
-                </h3>
-                <div class="section-subheading text-muted container">
-                  <ul class="list-group">
-                    <li *ngFor="let feature of product.features">
-                      {{feature}}
-                    </li>
-                  </ul>
-                </div>
-                <div class="my-4 text-center text-sm-left">
-                  <a title="Buy on Amazon" class="btn btn-primary custom-text-black btn-lg text-uppercase" [href]="product.url" target="__blank">
-                    <div class="d-flex justify-self-sm-center">
-                      <span class="align-self-center mr-3">Buy on Amazon</span>
-                      <i class="fab fa-amazon fa-2x ml-auto"></i>
-                    </div>
-                  </a>
-                </div>
+          <div class="col-lg-8">
+            <div class="sticky-top sticky-offset mr-3">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb custom-bg-white d-inline-block px-0">
+                  <li class="breadcrumb-item">
+                    <a title="Back to Products" [routerLink]="['/products']">
+                      <i class="fa fa-angle-double-left"></i> Back to Products</a>
+                  </li>
+                  <!-- <li class="breadcrumb-item active" aria-current="page" *ngIf="product">{{product?.name}}</li> -->
+                </ol>
+              </nav>
+              <!-- Edit Mode -->
+              <app-edit-mode class="text-sm-right" [id]="id" [collection]="collection" [title]="product?.name" [data]="product"></app-edit-mode>
+              <h3 class="section-heading text-capitalize break-word">
+                <a [title]="product.name" class="custom-text-dark" [href]="product.url" target="__blank">{{product.name}}</a>
+              </h3>
+              <div class="section-subheading text-muted container">
+                <ul class="list-group">
+                  <li *ngFor="let feature of product.features">
+                    {{feature}}
+                  </li>
+                </ul>
+              </div>
+              <div class="my-4 text-center text-sm-left">
+                <a title="Buy on Amazon" class="btn btn-primary custom-text-black btn-lg text-uppercase" [href]="product.url" target="__blank">
+                  <div class="d-flex justify-self-sm-center">
+                    <span class="align-self-center mr-3">Buy on Amazon</span>
+                    <i class="fab fa-amazon fa-2x ml-auto"></i>
+                  </div>
+                </a>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="text-center" *ngFor="let image of product?.images">
-                  <img class="img-fluid product-image py-5" [src]="image" alt="" #itemRef [class.zoom]="getImagePosition(itemRef)">
-              </div>    
+          </div>
+          <div class="col-lg-4">
+            <div class="text-center" *ngFor="let image of product?.images">
+              <img class="img-fluid product-image py-5" [src]="image" alt="" #itemRef [class.zoom]="getImagePosition(itemRef)">
             </div>
+          </div>
         </div>
       </ng-container>
     </ng-container>
-    </div>
+  </div>
 </section>
