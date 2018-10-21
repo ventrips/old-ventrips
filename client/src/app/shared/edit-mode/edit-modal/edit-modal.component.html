@@ -71,6 +71,12 @@
   <!-- <button type="button" class="btn btn-light ml-auto" (click)="dismiss()">Cancel</button> -->
   <button type="button" class="btn ml-auto" (click)="save()"
     [ngClass]="{ 'btn-primary': isValid(), 'btn-secondary': !isValid() }"
-    [disabled]="!isValid()">Save
-  </button>
+    [disabled]="!isValid()">
+      <span *ngIf="isNew">
+        <i class="fa fa-plus-circle"></i> Create
+      </span>
+      <span *ngIf="!isNew">
+        <i class="fa fa-save"></i> Update
+      </span>
+    </button>
 </div>

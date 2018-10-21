@@ -1,6 +1,8 @@
 <div class="my-2">
-  <span *ngIf="!isNew" class="custom-text-yellow cursor-pointer edit-mode-label" (click)="openEditModal()">
+  <button *ngIf="!isNew" class="btn btn-primary" (click)="openEditModal()">
     <i class="fa fa-pen mr-2"></i> <span>Edit</span>
-  </span>
-  <button *ngIf="isNew" class="btn btn-primary mx-auto" (click)="openEditModal()">Create</button>
+  </button>
+  <button *ngIf="isNew" class="btn btn-primary mx-auto" (click)="openEditModal()">
+    <i class="fa fa-plus-circle"></i> Create
+  </button>
 </div>
