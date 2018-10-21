@@ -14,7 +14,7 @@ export class EditModalComponent implements OnInit {
   public id: string;
   public collection: string;
   public title: string;
-  public data: Product = new Product();
+  public data: any;
   public isNew: boolean;
   public keys = [];
   public _ = _;
@@ -27,7 +27,9 @@ export class EditModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.data = _.assign(new Product(), this.data);
+    if (_.includes(this.collection, 'products')) {
+      this.data = _.assign(new Product(), this.data);
+    }
     this.keys = _.keys(this.data);
   }
 
