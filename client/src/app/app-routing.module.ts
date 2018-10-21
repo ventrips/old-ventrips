@@ -14,13 +14,15 @@ import { ProductDetailComponent } from './pages/products/product-detail/product-
 import { TrendsComponent } from './pages/trends/trends.component';
 import { TermsComponent } from './pages/terms/terms.component';
 
+import { AdminGuard } from './services/guards/admin-guard/admin-guard.service';
+
 const routes: Routes = [
   {
     path: '',
     children: [
       { path: 'splash', component: SplashComponent },
       { path: 'about', component: AboutComponent },
-      { path: 'admin', component: AdminComponent },
+      { path: 'admin', component: AdminComponent, canActivate: [ AdminGuard ] },
       { path: 'blog', component: BlogComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'login', component: LoginComponent },
