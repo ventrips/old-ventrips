@@ -81,6 +81,7 @@ export class EditModalComponent implements OnInit {
 
   delete(): void {
     if (!this.authService.isAdmin()) { return; }
+
     const modalRef = this.modalService.open(
       ConfirmModalComponent,
       { size: 'sm', centered: true, backdrop: 'static' }
