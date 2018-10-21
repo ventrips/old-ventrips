@@ -14,23 +14,13 @@ export class AdminGuard implements CanActivate {
   ) { }
 
   canActivate() {
-      // Redirect to Login if user is not authenticated
-      if (!this.authService.isAuthenticated()) {
-        this.router.navigate(['/login']);
-
-        return false;
-      }
-
-      // Redirect non-admin user to home screen
-      if (!this.authService.isAdmin()) {
-        this.router.navigate(['/']);
-
-        return false;
-      }
-
       // Access Admin Screens if user is an admin
       if (this.authService.isAdmin()) {
         return true;
       }
-   }
+
+      // Redirect to home screen if user is not an admin
+      this.router.navigate(['/']);
+      return false;
+    }
 }
