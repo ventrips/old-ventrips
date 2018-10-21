@@ -10,3 +10,12 @@
 .light-blue-backdrop {
     background-color: #5cb3fd;
 }
+
+.custom-input-group {
+    input {
+        border-right: 0;
+    }
+    .input-group-text {
+        background-color: white;
+    }
+}
