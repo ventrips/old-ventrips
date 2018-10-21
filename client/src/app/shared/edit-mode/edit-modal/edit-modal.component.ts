@@ -47,10 +47,10 @@ export class EditModalComponent implements OnInit {
     if (!this.authService.isAdmin()) { return; }
     const modalRef = this.modalService.open(
       ConfirmModalComponent,
-      { size: 'sm', centered: true, backdrop: 'static' }
+      { size: 'lg', centered: true, backdrop: 'static' }
     );
     modalRef.componentInstance.title = `Delete ${_.upperCase(key)}: ${_.upperCase(value)}`;
-    modalRef.componentInstance.text = `Are you sure you want to delete ${_.upperCase(value)} from ${_.upperCase(key)}?`;
+    modalRef.componentInstance.text = `Are you sure you want to delete ${_.upperCase(value)}?`;
     modalRef.result.then((result?) => {
       _.pull(list, value);
     }, (reason?) => {});
@@ -98,10 +98,10 @@ export class EditModalComponent implements OnInit {
 
     const modalRef = this.modalService.open(
       ConfirmModalComponent,
-      { size: 'sm', centered: true, backdrop: 'static' }
+      { size: 'lg', centered: true, backdrop: 'static' }
     );
-    modalRef.componentInstance.title = `Delete ${this.data.name}`;
-    modalRef.componentInstance.text = `Are you sure you want to delete ${this.data.name}?`;
+    modalRef.componentInstance.title = `Delete ${_.upperCase(this.collection)}: ${_.upperCase(this.data.name)}`;
+    modalRef.componentInstance.text = `Are you sure you want to delete ${_.upperCase(this.data.name)}`;
     modalRef.result.then((result?) => {
       this.db
       .collection(this.collection)
