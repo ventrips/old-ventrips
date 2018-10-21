@@ -43,6 +43,12 @@ export class EditModalComponent implements OnInit {
     this.data[key].push(value);
   }
 
+  isValid(): boolean {
+    return _.every(this.keys, (key) => {
+      return !_.isEmpty(this.data[key]);
+    });
+  }
+
   save(): void {
     if (!this.authService.isAdmin()) { return; }
 

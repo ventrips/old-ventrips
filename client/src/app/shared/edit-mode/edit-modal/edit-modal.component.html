@@ -9,7 +9,7 @@
     <div class="col-xs-12 col-lg-6">
       <div class="row">
         <div class="col-12" *ngFor="let key of keys">
-          <h5 class="text-capitalize my-2">{{key}}</h5>
+          <h5 class="text-capitalize my-2">{{key}} <span class="text-danger">*</span></h5>
           <div *ngIf="!_.isArray(data[key])">
             <input type="text" class="form-control" placeholder="Add Input" [(ngModel)]="data[key]">
           </div>
@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-lg-6">
-      <h4>Code Preview</h4>
+      <h4>JSON Preview</h4>
       <pre class="bg-light p-5">{{data | json}}</pre>
     </div>
   </div>
@@ -45,5 +45,8 @@
 <div class="modal-footer d-flex flex-wrap">
   <button *ngIf="!isNew" type="button" class="btn btn-danger" (click)="delete()">Delete</button>
   <!-- <button type="button" class="btn btn-light ml-auto" (click)="dismiss()">Cancel</button> -->
-  <button type="button" class="btn btn-primary ml-auto" (click)="save()">Save</button>
+  <button type="button" class="btn ml-auto" (click)="save()"
+    [ngClass]="{ 'btn-primary': isValid(), 'btn-secondary': !isValid() }"
+    [disabled]="!isValid()">Save
+  </button>
 </div>
