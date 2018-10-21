@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { Observable, Subject, merge } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from '../../services/firebase/auth/auth.service';
 import { ProductsService } from '../../services/firebase/products/products.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SeoService } from '../../services/seo/seo.service';
@@ -41,6 +42,7 @@ export class ProductsComponent implements OnInit {
   public isLoading = true;
 
   constructor(
+    public authService: AuthService,
     private productsService: ProductsService,
     private config: NgbTypeaheadConfig,
     private spinner: NgxSpinnerService,

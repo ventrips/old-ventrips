@@ -3,11 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AuthService } from '../../../services/firebase/auth/auth.service';
 import { ProductsService } from '../../../services/firebase/products/products.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as _ from 'lodash';
 import { Renderer } from '@angular/core';
 import { SeoService } from '../../../services/seo/seo.service';
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -29,6 +31,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   constructor(
+    public authService: AuthService,
     private productsService: ProductsService,
     private activatedRoute: ActivatedRoute,
     private spinner: NgxSpinnerService,

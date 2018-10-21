@@ -29,6 +29,8 @@ export class EditModeComponent implements OnInit {
   ngOnInit(): void {}
 
   openEditModal() {
+    if (!this.authService.isAuthenticated()) { return; }
+
     const modalRef = this.modalService.open(
       EditModalComponent,
       { size: 'lg', centered: true, backdrop: 'static' }

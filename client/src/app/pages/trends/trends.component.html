@@ -9,7 +9,7 @@
       <div class="col-lg-12">
         <div class="my-5" *ngFor="let trend of trends">
           <!-- Edit Mode -->
-          <app-edit-mode class="text-sm-right" [id]="trend?.id" [collection]="collection" [title]="trend?.name" [data]="trend"></app-edit-mode>
+          <app-edit-mode *ngIf="authService.isAdmin()" class="text-sm-right" [id]="trend?.id" [collection]="collection" [title]="trend?.name" [data]="trend"></app-edit-mode>
           <a [title]="trend?.name" class="break-word d-inline-block" [href]="trend?.url" target="__blank"><h4>{{trend?.name}}</h4></a>
           <p class="card-text mb-auto break-word">{{trend?.description}}</p>
         </div>
