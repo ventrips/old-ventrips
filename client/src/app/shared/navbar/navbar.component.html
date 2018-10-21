@@ -10,7 +10,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a title="Home" class="nav-link" [ngClass]="{'active': isActive('/')}"
-              [routerLink]="['/']">Home</a>
+              [routerLink]="['/']"><i class="fa fa-home"></i> Home</a>
           </li>
           <!-- <li class="nav-item">
             <a title="Splash" class="nav-link" [ngClass]="{'active': isActive('/splash')}"
@@ -18,7 +18,7 @@
           </li> -->
           <li class="nav-item">
             <a title="Trends" class="nav-link" [ngClass]="{'active': isActive('/trends')}"
-              [routerLink]="['/trends']">Trends</a>
+              [routerLink]="['/trends']"><i class="fa fa-chart-line"></i> Trends</a>
           </li>
           <!-- <li class="nav-item">
             <a title="Blog" class="nav-link" [ngClass]="{'active': isActive('/blog')}"
@@ -44,15 +44,17 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <ng-container *ngIf="authService?.isAdmin()">
-                <a class="dropdown-item" title="Admin" [routerLink]="['/admin']" [ngClass]="{'active': isActive('/admin')}">Admin</a>
+                <a class="dropdown-item" title="Admin" [routerLink]="['/admin']" [ngClass]="{'active': isActive('/admin')}">
+                  <i class="fa fa-user-secret"></i> Admin
+                </a>
                 <div class="dropdown-divider"></div>    
               </ng-container>
-              <a class="dropdown-item" (click)="authService.signOut()">Log Out</a>
+              <a class="dropdown-item" (click)="authService.signOut()"><i class="fa fa-sign-out-alt"></i> Log Out</a>
             </div>
           </li>
           <li class="nav-item" *ngIf="!authService?.getUser()">
             <a title="Log In" class="nav-link" [ngClass]="{'active': isActive('/login')}" [routerLink]="['/login']">
-              Log In
+              <i class="fa fa-sign-in-alt"></i> Log In
             </a>
           </li>
         </ul>
