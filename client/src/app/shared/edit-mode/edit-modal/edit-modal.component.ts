@@ -40,11 +40,25 @@ export class EditModalComponent implements OnInit {
     return index;
   }
 
-  deleteInput(list: Array<string>, value: string): void {
-    _.pull(list, value);
+  deleteInput(key: string, index: string): void {
+    const list = this.data[key];
+    const value = this.data[key][index];
+
+    if (!this.authService.isAdmin()) { return; }
+    const modalRef = this.modalService.open(
+      ConfirmModalComponent,
+      { size: 'sm', centered: true, backdrop: 'static' }
+    );
+    modalRef.componentInstance.title = `Delete ${_.upperCase(key)}: ${_.upperCase(value)}`;
+    modalRef.componentInstance.text = `Are you sure you want to delete ${_.upperCase(value)} from ${_.upperCase(key)}?`;
+    modalRef.result.then((result?) => {
+      _.pull(list, value);
+    }, (reason?) => {});
   }
 
   addInput(key: string, value: string): void {
+    if (!this.authService.isAdmin()) { return; }
+
     this.data[key].push(value);
   }
 
