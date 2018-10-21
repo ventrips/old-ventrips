@@ -34,8 +34,8 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  isHome(): boolean {
-    return _.isEqual(this.router.url, '/') || _.includes(this.router.url, 'home');
+  showInverse(): boolean {
+    return _.includes(this.router.url, 'splash');
   }
 
 }

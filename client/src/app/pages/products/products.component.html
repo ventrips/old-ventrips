@@ -1,22 +1,19 @@
-<section class="image-background">
-  <header class="masthead">
-    <!-- <div class="video-background">
-      <div class="video-foreground">
-        <iframe title="Video Background" src="https://www.youtube.com/embed/ZCDY0SmSIrI?showinfo=0&controls=0&rel=0&autoplay=1&loop=1&mute=1&modestbranding=1&playlist=ZCDY0SmSIrI" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div> -->
-    <div class="container">
-      <div class="intro-text">
-        <div class="intro-heading text-uppercase ventrips">{{environment.name}}</div>
-        <div class="intro-lead-in">{{environment.slogan}}</div>
-      </div>
-    </div>
-  </header>
-</section>
 <main class="min-height-100vh bg-light" id="portfolio">
-  <div id="amzn-assoc-ad-c7ff1457-d243-4c60-af84-c5eb24e84b18" class="container py-3"></div>
-  <div class="container">
+  <section class="image-background">
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-heading text-uppercase ventrips">{{environment.name}}</div>
+          <div class="intro-lead-in">{{environment.slogan}}</div>
+        </div>
+      </div>
+    </header>
+  </section>
+  <div class="container py-5">
     <div class="row">
+      <div class="col-lg-12">
+        <div id="amzn-assoc-ad-c7ff1457-d243-4c60-af84-c5eb24e84b18"></div>
+      </div>
       <div class="col-lg-12">
         <div class="form-group position-relative">
             <input
@@ -72,9 +69,9 @@
         <ng-container *ngIf="_.isEmpty((products | searchBy: searchTerm))">
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">Sorry!</h2>
-            <h3 class="section-subheading text-muted">We couldn't find anything with these search terms.
+            <p class="section-subheading text-muted">We couldn't find anything with these search terms.
               <span class="cursor-pointer custom-text-yellow" (click)="searchTerm = undefined">Clear and search again</span>!
-            </h3>
+            </p>
           </div>
         </ng-container>
         <!-- Results found -->
@@ -82,7 +79,7 @@
           <div class="col-lg-4 col-md-6 col-xs-12 portfolio-item"
             *ngFor="let product of (products | searchBy: searchTerm | orderBy: selectedOrderBy?.type: selectedOrderBy?.direction)">
               <!-- Edit Mode -->
-              <app-edit-mode class="text-sm-right" [id]="product?.id" [collection]="collection" [title]="product?.name" [data]="product"></app-edit-mode>
+              <app-edit-mode class="text-sm-left" [id]="product?.id" [collection]="collection" [title]="product?.name" [data]="product"></app-edit-mode>
               <a [title]="product.name" class="portfolio-link custom-bg-white" [routerLink]="['/products', product?.id]">
                 <div class="portfolio-hover">
                   <div class="portfolio-hover-content">
