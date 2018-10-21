@@ -49,8 +49,8 @@ export class EditModalComponent implements OnInit {
       ConfirmModalComponent,
       { size: 'lg', centered: true, backdrop: 'static' }
     );
-    modalRef.componentInstance.title = `Delete ${_.upperCase(key)}: ${_.upperCase(value)}`;
-    modalRef.componentInstance.text = `Are you sure you want to delete ${_.upperCase(value)}?`;
+    modalRef.componentInstance.title = `Delete ${_.toUpper(key)}: ${_.toUpper(value)}`;
+    modalRef.componentInstance.text = `Are you sure you want to delete ${_.toUpper(value)}?`;
     modalRef.result.then((result?) => {
       _.pull(list, value);
     }, (reason?) => {});
@@ -100,8 +100,8 @@ export class EditModalComponent implements OnInit {
       ConfirmModalComponent,
       { size: 'lg', centered: true, backdrop: 'static' }
     );
-    modalRef.componentInstance.title = `Delete ${_.upperCase(this.collection)}: ${_.upperCase(this.data.name)}`;
-    modalRef.componentInstance.text = `Are you sure you want to delete ${_.upperCase(this.data.name)}`;
+    modalRef.componentInstance.title = `Delete ${_.toUpper(this.collection)}: ${_.toUpper(this.data.name)}`;
+    modalRef.componentInstance.text = `Are you sure you want to delete ${_.toUpper(this.data.name)}`;
     modalRef.result.then((result?) => {
       this.db
       .collection(this.collection)
