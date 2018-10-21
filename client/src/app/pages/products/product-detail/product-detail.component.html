@@ -31,13 +31,24 @@
               <h3 class="section-heading text-capitalize break-word">
                 <a [title]="product.name" class="custom-text-dark" [href]="product.url" target="__blank">{{product.name}}</a>
               </h3>
-              <div class="section-subheading text-muted container">
+              <div class="section-subheading text-muted my-3 container">
                 <ul class="list-group">
                   <li *ngFor="let feature of product.features">
                     {{feature}}
                   </li>
                 </ul>
               </div>
+              <!-- Share Buttons -->
+              <share-buttons [theme]="'default'"
+              [include]="['facebook','twitter','google','linkedin','pinterest','reddit','tumblr','whatsapp','messenger','telegram','vk','stumble','xing','sms','email','copy','print']"
+              [exclude]="['vk','stumble','xing']"
+              [show]="3"
+              [showText]="true"
+              [showCount]="true"
+              [size]="4"
+              [url]="url"
+              [autoSetMeta]="false"
+              ></share-buttons>
               <div class="my-4 text-center text-sm-left">
                 <a title="Buy on Amazon" class="btn btn-primary custom-text-black btn-lg text-uppercase" [href]="product.url" target="__blank">
                   <div class="d-flex justify-self-sm-center">

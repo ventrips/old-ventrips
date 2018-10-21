@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ShareButtonsModule } from '@ngx-share/buttons';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -40,6 +41,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { EditModeComponent } from './shared/edit-mode/edit-mode.component';
 import { EditModalComponent } from './shared/edit-mode/edit-modal/edit-modal.component';
 import { ConfirmModalComponent } from './shared/edit-mode/confirm-modal/confirm-modal.component';
+import { HttpClientJsonpModule } from '@angular/common/http';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -108,7 +110,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    HttpClientModule,
+    HttpClientJsonpModule,
+    ShareButtonsModule.forRoot()
   ],
   providers: [
     ProductsService,

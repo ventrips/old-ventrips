@@ -6,9 +6,12 @@ import { map } from 'rxjs/operators';
 import { AuthService } from '../../../services/firebase/auth/auth.service';
 import { ProductsService } from '../../../services/firebase/products/products.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import * as _ from 'lodash';
 import { Renderer } from '@angular/core';
 import { SeoService } from '../../../services/seo/seo.service';
+import { Router } from '@angular/router';
+import * as _ from 'lodash';
+import { environment } from './../../../../environments/environment';
+
 
 @Component({
   selector: 'app-product-detail',
@@ -21,7 +24,8 @@ export class ProductDetailComponent implements OnInit {
   public id: string;
   public category: string;
   public product: Object;
-
+  public environment = environment;
+  public url: string;
   public isLoading = true;
 
   public scrollPosition = 0;
@@ -37,8 +41,10 @@ export class ProductDetailComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private render: Renderer,
     private cdr: ChangeDetectorRef,
-    private seoService: SeoService
+    private seoService: SeoService,
+    private router: Router
   ) {
+    this.url = `${this.environment.url}${this.router.url}`;
     this.id = this.activatedRoute.snapshot.params['id'];
     this.category = this.activatedRoute.snapshot.params['category'];
     this.spinner.show();
