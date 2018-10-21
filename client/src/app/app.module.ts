@@ -47,9 +47,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     {
       scopes: [
         'public_profile',
-        'email',
-        'user_likes',
-        'user_friends'
+        'email'
       ],
       customParameters: {
         'auth_type': 'reauthenticate'
@@ -65,8 +63,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
     // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
-  tosUrl: '<your-tos-link>',
-  privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
+  tosUrl: 'https://ventrips.com/terms',
+  privacyPolicyUrl: 'https://ventrips.com/privacy',
   credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM
 };
 

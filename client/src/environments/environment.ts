@@ -10,7 +10,7 @@ export const environment = {
   cloudFunctionsUrl: 'https://us-central1-ventrips-214422.cloudfunctions.net',
   firebase: {
     apiKey: 'AIzaSyBgGpL_dHoLlhRe9DvPc0aVV2m5Sq9g-Uo',
-    authDomain: 'ventrips-214422.firebaseapp.com',
+    authDomain: 'ventrips.com',
     databaseURL: 'https://ventrips-214422.firebaseio.com',
     projectId: 'ventrips-214422',
     storageBucket: 'ventrips-214422.appspot.com',
