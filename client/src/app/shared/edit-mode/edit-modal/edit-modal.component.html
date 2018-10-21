@@ -67,7 +67,7 @@
   </div>
 </div>
 <div class="modal-footer d-flex flex-wrap">
-  <button *ngIf="!isNew" type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+  <button *ngIf="!isNew" type="button" class="btn btn-danger" (click)="delete()"><i class="fa fa-trash-alt"></i> Delete</button>
   <!-- <button type="button" class="btn btn-light ml-auto" (click)="dismiss()">Cancel</button> -->
   <button type="button" class="btn ml-auto" (click)="save()"
     [ngClass]="{ 'btn-primary': isValid(), 'btn-secondary': !isValid() }"
