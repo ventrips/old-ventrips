@@ -58,8 +58,16 @@ export class EditModalComponent implements OnInit {
 
   addInput(key: string, value: string): void {
     if (!this.authService.isAdmin()) { return; }
-
+    if (_.isNil(value) || _.isEmpty(value)) { return; }
     this.data[key].push(value);
+  }
+
+  getInputType(key: string): string {
+    if (_.includes(_.toLower(key), 'url')) {
+      return 'url';
+    } else {
+      return 'text';
+    }
   }
 
   isValid(): boolean {

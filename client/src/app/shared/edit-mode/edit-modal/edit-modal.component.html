@@ -11,13 +11,13 @@
         <div class="col-12" *ngFor="let key of keys">
           <h5 class="text-capitalize my-2">{{key}} <span class="text-danger">*</span></h5>
           <div *ngIf="!_.isArray(data[key])">
-            <input type="text" class="form-control" placeholder="Add Input" [(ngModel)]="data[key]">
+            <input [type]="getInputType(key)" class="form-control" placeholder="Add {{key}}" [(ngModel)]="data[key]" [required]="true">
           </div>
           <div class="row" *ngIf="_.isArray(data[key])">
             <div class="col-12" *ngFor="let item of data[key]; let index = index; trackBy: customTrackBy">
               <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Add Input" aria-label="Add Input"
-                [(ngModel)]="data[key][index]">
+                <input [type]="getInputType(key)" class="form-control" placeholder="Add {{key}}" aria-label="Add Input"
+                [(ngModel)]="data[key][index]" [required]="true">
                 <div class="input-group-append">
                   <button class="btn btn-danger" type="button" (click)="deleteInput(key, index)"><i class="fa fa-trash"></i></button>
                 </div>
@@ -25,10 +25,14 @@
             </div>
             <div class="col-12">
               <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Add Input" aria-label="Add Input"
-                [(ngModel)]="data[key][index + 1]" name="key-{{index}}">
+                <input [type]="getInputType(key)" class="form-control" placeholder="Add {{key}}" aria-label="Add Input"
+                [(ngModel)]="data[key][index + 1]" name="key-{{index}}" [required]="true">
                 <div class="input-group-append">
-                  <button class="btn btn-primary" type="button" (click)="addInput(key, data[key][index + 1]); data[key][index + 1] = undefined"><i class="fa fa-plus"></i></button>
+                  <button
+                  class="btn" 
+                  [ngClass]="{ 'btn-primary': !_.isEmpty(data[key][index + 1]), 'btn-secondary': _.isEmpty(data[key][index + 1]) }"
+                  [disabled]="_.isEmpty(data[key][index + 1])"
+                  type="button" (click)="addInput(key, data[key][index + 1]); data[key][index + 1] = undefined"><i class="fa fa-plus"></i></button>
                 </div>
               </div>
             </div>
