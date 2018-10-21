@@ -17,12 +17,12 @@ export class FooterComponent implements OnInit {
       url: `https://twitter.com/${_.startCase(environment.name)}`
     },
     {
-      name: 'Twitter',
+      name: 'Facebook',
       class: 'fab fa-facebook-f',
       url: `https://facebook.com/Official${_.startCase(environment.name)}`
     },
     {
-      name: 'Facebook',
+      name: 'Instagram',
       class: 'fab fa-instagram',
       url: `https://www.instagram.com/${_.startCase(environment.name)}`
     },
