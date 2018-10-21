@@ -39,6 +39,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { EditModeComponent } from './shared/edit-mode/edit-mode.component';
 import { EditModalComponent } from './shared/edit-mode/edit-modal/edit-modal.component';
+import { ConfirmModalComponent } from './shared/edit-mode/confirm-modal/confirm-modal.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -89,7 +90,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AdminComponent,
     LoginComponent,
     EditModeComponent,
-    EditModalComponent
+    EditModalComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,
@@ -113,7 +115,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AuthService
   ],
   entryComponents: [
-    EditModalComponent
+    EditModalComponent,
+    ConfirmModalComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -24,7 +24,6 @@ export class EditModeComponent implements OnInit {
     private modalService: NgbModal,
     private toastr: ToastrService,
     public authService: AuthService
-
   ) {}
 
   ngOnInit(): void {}

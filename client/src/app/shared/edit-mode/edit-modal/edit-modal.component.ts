@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Product } from './../../../interfaces/product';
 import { AuthService } from '../../../services/firebase/auth/auth.service';
+import { ConfirmModalComponent } from './../confirm-modal/confirm-modal.component';
 import * as _ from 'lodash';
 
 @Component({
@@ -21,6 +23,7 @@ export class EditModalComponent implements OnInit {
   newInput;
 
   constructor(
+    private modalService: NgbModal,
     private activeModal: NgbActiveModal,
     private db: AngularFirestore,
     private authService: AuthService
@@ -78,15 +81,23 @@ export class EditModalComponent implements OnInit {
 
   delete(): void {
     if (!this.authService.isAdmin()) { return; }
-    this.db
-    .collection(this.collection)
-    .doc(this.id)
-    .delete()
-    .then(() => {
-      this.close(`Deleted ${this.data.name}`);
-    }).catch((error) => {
-      this.dismiss(error);
-    });
+    const modalRef = this.modalService.open(
+      ConfirmModalComponent,
+      { size: 'sm', centered: true, backdrop: 'static' }
+    );
+    modalRef.componentInstance.title = `Delete ${this.data.name}`;
+    modalRef.componentInstance.text = `Are you sure you want to delete ${this.data.name}?`;
+    modalRef.result.then((result?) => {
+      this.db
+      .collection(this.collection)
+      .doc(this.id)
+      .delete()
+      .then(() => {
+        this.close(`Deleted ${this.data.name}`);
+      }).catch((error) => {
+        this.dismiss(error);
+      });
+    }, (reason?) => {});
   }
 
   close(reason?: any): void {
