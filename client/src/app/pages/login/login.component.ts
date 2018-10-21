@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     this.angularFireAuth.authState.subscribe((user) => {
       if (!_.isNil(user)) {
         this.toastrService.success('You are logged in');
-        this.router.navigate(['/products']);
+        this.router.navigate(['/']);
       }
     });
 
