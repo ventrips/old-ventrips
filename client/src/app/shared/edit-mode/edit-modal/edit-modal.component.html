@@ -43,7 +43,7 @@
   </div>
 </div>
 <div class="modal-footer d-flex flex-wrap">
-  <!-- <button type="button" class="btn btn-danger" (click)="delete()">Delete</button> -->
+  <button *ngIf="!isNew" type="button" class="btn btn-danger" (click)="delete()">Delete</button>
   <!-- <button type="button" class="btn btn-light ml-auto" (click)="dismiss()">Cancel</button> -->
   <button type="button" class="btn btn-primary ml-auto" (click)="save()">Save</button>
 </div>

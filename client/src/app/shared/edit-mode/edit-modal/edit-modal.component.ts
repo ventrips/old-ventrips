@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { Product } from './../../../interfaces/product';
+import { AuthService } from '../../../services/firebase/auth/auth.service';
 import * as _ from 'lodash';
 
 @Component({
@@ -12,17 +14,20 @@ export class EditModalComponent implements OnInit {
   public id: string;
   public collection: string;
   public title: string;
-  public data: Object;
+  public data: Product = new Product();
+  public isNew: boolean;
   public keys = [];
   public _ = _;
   newInput;
 
   constructor(
     private activeModal: NgbActiveModal,
-    private db: AngularFirestore
-  ) { }
+    private db: AngularFirestore,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
+    this.data = _.assign(new Product(), this.data);
     this.keys = _.keys(this.data);
   }
 
@@ -38,13 +43,39 @@ export class EditModalComponent implements OnInit {
     this.data[key].push(value);
   }
 
-  save(reason?: any): void {
+  save(): void {
+    if (!this.authService.isAdmin()) { return; }
+
+    if (!this.isNew) {
+      this.db
+      .collection(this.collection)
+      .doc(this.id)
+      .update(JSON.parse(JSON.stringify(this.data)))
+      .then(() => {
+        this.close(`Saved ${this.data.name}`);
+      }).catch((error) => {
+        this.dismiss(error);
+      });
+    } else {
+      this.db
+      .collection(this.collection)
+      .add(JSON.parse(JSON.stringify(this.data)))
+      .then(() => {
+        this.close(`Added ${this.data.name}`);
+      }).catch((error) => {
+        this.dismiss(error);
+      });
+    }
+  }
+
+  delete(): void {
+    if (!this.authService.isAdmin()) { return; }
     this.db
     .collection(this.collection)
     .doc(this.id)
-    .update(this.data)
-    .then((result) => {
-      this.close(reason);
+    .delete()
+    .then(() => {
+      this.close(`Deleted ${this.data.name}`);
     }).catch((error) => {
       this.dismiss(error);
     });

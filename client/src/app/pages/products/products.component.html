@@ -65,6 +65,11 @@
             </div>
           </div>
         </div>
+        <!-- Create New -->
+        <div class="col-12" *ngIf="authService.isAdmin()">
+          <app-edit-mode class="text-sm-right" [isNew]="true" [collection]="collection"></app-edit-mode>
+        </div>
+  
         <!-- No results -->
         <ng-container *ngIf="_.isEmpty((products | searchBy: searchTerm))">
           <div class="col-lg-12 text-center">

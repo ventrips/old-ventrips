@@ -24,8 +24,6 @@ export class LoginComponent implements OnInit {
       if (!_.isNil(user)) {
         this.toastrService.success('You are logged in');
         this.router.navigate(['/products']);
-      } else {
-        this.toastrService.success('You are not logged in');
       }
     });
 

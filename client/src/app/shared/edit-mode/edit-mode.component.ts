@@ -18,6 +18,7 @@ export class EditModeComponent implements OnInit {
   @Input() collection: string;
   @Input() title: string;
   @Input() data: any;
+  @Input() isNew: boolean;
 
   constructor(
     private modalService: NgbModal,
@@ -29,25 +30,31 @@ export class EditModeComponent implements OnInit {
   ngOnInit(): void {}
 
   openEditModal() {
-    if (!this.authService.isAuthenticated()) { return; }
+    if (!this.authService.isAdmin()) { return; }
 
     const modalRef = this.modalService.open(
       EditModalComponent,
       { size: 'lg', centered: true, backdrop: 'static' }
     );
 
-    modalRef.componentInstance.id = this.id;
+    if (!this.isNew) {
+      modalRef.componentInstance.id = this.id;
+      modalRef.componentInstance.title = this.data.name;
+    } else {
+      modalRef.componentInstance.title = 'Create New Product';
+      modalRef.componentInstance.isNew = this.isNew;
+    }
+
     modalRef.componentInstance.collection = this.collection;
-    modalRef.componentInstance.title = this.data.name;
     // Make Copy of Data and Remove ID
     const dataCopy = _.omit(_.cloneDeep(this.data), ['id']);
     modalRef.componentInstance.data = dataCopy;
 
 
     modalRef.result.then((result?) => {
-      this.toastr.success(`Saved!`, result);
+      this.toastr.success(result, `Success!`);
     }, (reason?) => {
-      this.toastr.info(`Edit Canceled!`, reason);
+      this.toastr.info(reason, `Dismissed`);
     });
   }
 }
