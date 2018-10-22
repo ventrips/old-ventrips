@@ -30,7 +30,7 @@ import { ProductDetailComponent } from './pages/products/product-detail/product-
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { TrendsComponent } from './pages/trends/trends.component';
 import { TermsComponent } from './pages/terms/terms.component';
-import { BlogComponent } from './pages/blog/blog.component';
+import { ReviewsComponent } from './pages/reviews/reviews.component';
 
 import { AuthService } from './services/firebase/auth/auth.service';
 import { ProductsService } from './services/firebase/products/products.service';
@@ -86,7 +86,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     PrivacyComponent,
     TermsComponent,
     TrendsComponent,
-    BlogComponent,
+    ReviewsComponent,
     OrderByPipe,
     SearchByPipe,
     AdminComponent,

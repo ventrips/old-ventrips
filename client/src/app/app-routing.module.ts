@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './pages/about/about.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { BlogComponent } from './pages/blog/blog.component';
+import { ReviewsComponent } from './pages/reviews/reviews.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { SplashComponent } from './pages/splash/splash.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -23,7 +23,7 @@ const routes: Routes = [
       { path: 'splash', component: SplashComponent },
       { path: 'about', component: AboutComponent },
       { path: 'admin', component: AdminComponent, canActivate: [ AdminGuard ] },
-      { path: 'blog', component: BlogComponent },
+      { path: 'reviews', component: ReviewsComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'login', component: LoginComponent },
       { path: 'portfolio', component: PortfolioComponent },
