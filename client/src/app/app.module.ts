@@ -100,6 +100,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ScrollingModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
