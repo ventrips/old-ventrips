@@ -21,8 +21,9 @@ export class NavbarComponent implements OnInit {
     this.smoothScrolling();
   }
 
-  showBar(): boolean {
-    return _.isEqual(this.router.url, '/') || _.includes(this.router.url, 'splash');
+  showBlackBar(): boolean {
+    const excludes = ['/', '/products', '/reviews', '/splash'];
+    return !_.includes(excludes, this.router.url);
   }
 
   isActive(currentNav: string): boolean {

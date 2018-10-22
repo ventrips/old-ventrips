@@ -3,7 +3,7 @@
     <header class="masthead">
       <div class="container">
         <div class="intro-text">
-          <div class="intro-heading text-uppercase ventrips">{{environment.name}}</div>
+          <div class="intro-heading text-uppercase ventrips">Products</div>
           <div class="intro-lead-in">{{environment.slogan}}</div>
         </div>
       </div>
@@ -11,9 +11,6 @@
   </section>
   <div class="container py-5">
     <div class="row">
-      <div class="col-lg-12">
-        <div id="amzn-assoc-ad-c7ff1457-d243-4c60-af84-c5eb24e84b18"></div>
-      </div>
       <div class="col-lg-12">
         <div class="form-group position-relative">
             <input
@@ -101,14 +98,6 @@
                   style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;">
                   <a [title]="product.name" class="custom-text-black text-capitalize" [routerLink]="['/products', product?.id]">{{product.name}}</a>
                 </h5>
-                <div class="text-center text-sm-left">
-                  <a title="Buy on Amazon" class="btn btn-primary custom-text-black btn-md btn-block text-uppercase" [href]="product?.url" target="__blank">
-                    <div class="d-flex justify-self-sm-center">
-                      <span class="align-self-center mr-3">Buy on Amazon</span>
-                      <i class="fab fa-amazon fa-2x ml-auto"></i>
-                    </div>
-                  </a>
-                </div>
                 <div class="my-2">
                   <!-- Share Buttons -->
                   <share-buttons [theme]="'default'"
@@ -118,6 +107,14 @@
                   url="{{environment.url}}{{'/products/'}}{{product?.id}}"
                   [autoSetMeta]="true"
                   ></share-buttons>
+                </div>
+                <div class="text-sm-left">
+                  <a title="Buy on Amazon" class="btn btn-primary custom-text-black btn-md btn-block text-uppercase" [href]="product?.url" target="__blank">
+                    <div class="d-flex justify-self-sm-center">
+                      <span class="align-self-center mr-3">Buy on Amazon</span>
+                      <i class="fab fa-amazon fa-2x ml-auto"></i>
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>
