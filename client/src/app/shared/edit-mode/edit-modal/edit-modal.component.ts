@@ -70,8 +70,14 @@ export class EditModalComponent implements OnInit {
     }
   }
 
+  // Ignores default
+  isDefault(key: string): boolean {
+    return _.includes(['created', 'uid'], key);
+  }
+
   isValid(): boolean {
     return _.every(this.keys, (key) => {
+      if (this.isDefault(key)) { return true; }
       return !_.isEmpty(this.data[key]);
     });
   }

@@ -1,0 +1,42 @@
+<section class="min-height-100vh">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb custom-bg-white d-inline-block px-0">
+        <li class="breadcrumb-item">
+          <a title="Back to {{collection}}" [routerLink]="['/', collection]">
+            <i class="fa fa-angle-double-left"></i> Back to <span class="text-capitalize">{{collection}}</span></a>
+        </li>
+      </ol>
+    </nav>
+    <div>
+      <!-- Edit Mode -->
+      <app-edit-mode *ngIf="authService.isAdmin()" [id]="article?.id" [collection]="collection" [title]="article?.title" [data]="article"></app-edit-mode>
+      <h6>
+        <a [title]="article?.category" class="text-capitalize" [routerLink]="['/']" [queryParams]="{ category: article?.category}">
+          {{article?.category}}
+        </a>
+      </h6>
+      <h6 class="text-secondary text-capitalize">{{article?.created | date: 'medium'}}</h6>
+      <small>
+        <a class="text-muted text-capitalize" [routerLink]="['/authors', article?.uid]">{{article?.displayName}}</a>
+      </small>
+      <h4>
+        <a [title]="article?.title" class="custom-text-black text-capitalize" [routerLink]="[article?.id]">{{article?.title}}</a>
+      </h4>
+      <p>
+        {{article?.content}}
+      </p>
+      <!-- Share Buttons -->
+      <share-buttons [theme]="'default'"
+      [include]="['facebook','twitter', 'google', 'copy', 'email', 'sms','messenger','telegram', 'reddit', 'tumblr', 'pinterest', 'linkedin', 'whatsapp', 'vk','stumble','xing', 'print']"
+      [exclude]="['email', 'sms','messenger','telegram', 'reddit', 'tumblr', 'pinterest', 'linkedin', 'whatsapp', 'vk','stumble','xing', 'print']"
+      [show]="4"
+      [showText]="true"
+      [showCount]="true"
+      [size]="1"
+      url="{{environment.url}}{{url}}"
+      [autoSetMeta]="true"
+      ></share-buttons>
+    </div>
+  </div>
+</section>

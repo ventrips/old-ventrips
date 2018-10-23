@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './pages/about/about.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { ReviewsComponent } from './pages/reviews/reviews.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { SplashComponent } from './pages/splash/splash.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -15,6 +14,8 @@ import { TrendsComponent } from './pages/trends/trends.component';
 import { TermsComponent } from './pages/terms/terms.component';
 
 import { AdminGuard } from './services/guards/admin-guard/admin-guard.service';
+import { ArticlesComponent } from './pages/articles/articles.component';
+import { ArticleDetailComponent } from './pages/articles/article-detail/article-detail.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
       { path: 'splash', component: SplashComponent },
       { path: 'about', component: AboutComponent },
       { path: 'admin', component: AdminComponent, canActivate: [ AdminGuard ] },
-      { path: 'reviews', component: ReviewsComponent },
+      { path: 'reviews', component: ArticlesComponent },
+      { path: 'reviews/:id', component: ArticleDetailComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'login', component: LoginComponent },
       { path: 'portfolio', component: PortfolioComponent },

@@ -8,56 +8,58 @@
   <div class="row">
     <div class="col-xs-12 col-lg-6">
       <div class="row">
-        <div class="col-12" *ngFor="let key of keys">
-          <h5 class="text-capitalize my-2">{{key}}</h5>
-          <div *ngIf="!_.isArray(data[key])">
-            <div class="input-group custom-input-group mb-3">
-              <input [type]="getInputType(key)" class="form-control" placeholder="Add {{key}}" [(ngModel)]="data[key]" [required]="true">      
-              <div class="input-group-append">
-                <span class="input-group-text">
-                  <i class="fa"
-                    [ngClass]="{ 'fa-check text-success': !_.isEmpty(data[key]), 'fa-asterisk text-danger': _.isEmpty(data[key]) }"></i>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="row" *ngIf="_.isArray(data[key])">
-            <div class="col-12" *ngFor="let item of data[key]; let index = index; trackBy: customTrackBy">
+        <ng-container *ngFor="let key of keys">
+          <div class="col-12" *ngIf="!isDefault(key)">
+            <h5 class="text-capitalize my-2">{{key}}</h5>
+            <div *ngIf="!_.isArray(data[key])">
               <div class="input-group custom-input-group mb-3">
-                <input [type]="getInputType(key)" class="form-control" placeholder="Add {{key}}" aria-label="Add Input"
-                [(ngModel)]="data[key][index]" [required]="true">
+                <input [type]="getInputType(key)" class="form-control" placeholder="Add {{key}}" [(ngModel)]="data[key]" [required]="true">      
                 <div class="input-group-append">
                   <span class="input-group-text">
                     <i class="fa"
                       [ngClass]="{ 'fa-check text-success': !_.isEmpty(data[key]), 'fa-asterisk text-danger': _.isEmpty(data[key]) }"></i>
                   </span>
                 </div>
-                <div class="input-group-append">
-                  <button class="btn btn-danger" type="button" (click)="deleteInput(key, index)"><i class="fa fa-trash-alt"></i></button>
-                </div>
               </div>
             </div>
-            <div class="col-12">
-              <div class="input-group custom-input-group mb-3">
-                <input [type]="getInputType(key)" class="form-control" placeholder="Add {{key}}" aria-label="Add Input"
-                [(ngModel)]="data[key][index + 1]" name="key-{{index}}" [required]="true">
-                <div class="input-group-append">
-                  <span class="input-group-text">
-                    <i class="fa"
-                      [ngClass]="{ 'fa-check text-success': !_.isEmpty(data[key][index + 1]), 'fa-asterisk text-danger': _.isEmpty(data[key][index + 1]) }"></i>
-                  </span>
+            <div class="row" *ngIf="_.isArray(data[key])">
+              <div class="col-12" *ngFor="let item of data[key]; let index = index; trackBy: customTrackBy">
+                <div class="input-group custom-input-group mb-3">
+                  <input [type]="getInputType(key)" class="form-control" placeholder="Add {{key}}" aria-label="Add Input"
+                  [(ngModel)]="data[key][index]" [required]="true">
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="fa"
+                        [ngClass]="{ 'fa-check text-success': !_.isEmpty(data[key]), 'fa-asterisk text-danger': _.isEmpty(data[key]) }"></i>
+                    </span>
+                  </div>
+                  <div class="input-group-append">
+                    <button class="btn btn-danger" type="button" (click)="deleteInput(key, index)"><i class="fa fa-trash-alt"></i></button>
+                  </div>
                 </div>
-                <div class="input-group-append">
-                  <button
-                  class="btn" 
-                  [ngClass]="{ 'btn-primary': !_.isEmpty(data[key][index + 1]), 'btn-secondary': _.isEmpty(data[key][index + 1]) }"
-                  [disabled]="_.isEmpty(data[key][index + 1])"
-                  type="button" (click)="addInput(key, data[key][index + 1]); data[key][index + 1] = undefined"><i class="fa fa-plus"></i></button>
+              </div>
+              <div class="col-12">
+                <div class="input-group custom-input-group mb-3">
+                  <input [type]="getInputType(key)" class="form-control" placeholder="Add {{key}}" aria-label="Add Input"
+                  [(ngModel)]="data[key][index + 1]" name="key-{{index}}" [required]="true">
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="fa"
+                        [ngClass]="{ 'fa-check text-success': !_.isEmpty(data[key][index + 1]), 'fa-asterisk text-danger': _.isEmpty(data[key][index + 1]) }"></i>
+                    </span>
+                  </div>
+                  <div class="input-group-append">
+                    <button
+                    class="btn" 
+                    [ngClass]="{ 'btn-primary': !_.isEmpty(data[key][index + 1]), 'btn-secondary': _.isEmpty(data[key][index + 1]) }"
+                    [disabled]="_.isEmpty(data[key][index + 1])"
+                    type="button" (click)="addInput(key, data[key][index + 1]); data[key][index + 1] = undefined"><i class="fa fa-plus"></i></button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </ng-container>
       </div>
     </div>
     <div class="col-xs-12 col-lg-6">

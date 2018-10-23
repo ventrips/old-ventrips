@@ -38,7 +38,7 @@ export class EditModeComponent implements OnInit {
 
     if (!this.isNew) {
       modalRef.componentInstance.id = this.id;
-      modalRef.componentInstance.title = this.data.name;
+      modalRef.componentInstance.title = this.title;
     } else {
       modalRef.componentInstance.title = 'Create New Product';
       modalRef.componentInstance.isNew = this.isNew;

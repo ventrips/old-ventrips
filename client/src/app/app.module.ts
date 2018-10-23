@@ -32,7 +32,6 @@ import { ProductDetailComponent } from './pages/products/product-detail/product-
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { TrendsComponent } from './pages/trends/trends.component';
 import { TermsComponent } from './pages/terms/terms.component';
-import { ReviewsComponent } from './pages/reviews/reviews.component';
 
 import { AuthService } from './services/firebase/auth/auth.service';
 import { ProductsService } from './services/firebase/products/products.service';
@@ -44,6 +43,11 @@ import { EditModeComponent } from './shared/edit-mode/edit-mode.component';
 import { EditModalComponent } from './shared/edit-mode/edit-modal/edit-modal.component';
 import { ConfirmModalComponent } from './shared/edit-mode/confirm-modal/confirm-modal.component';
 import { HttpClientJsonpModule } from '@angular/common/http';
+
+import { ArticlesComponent } from './pages/articles/articles.component';
+import { ArticleDetailComponent } from './pages/articles/article-detail/article-detail.component';
+import { ArticleBannerComponent } from './pages/articles/article-banner/article-banner.component';
+import { ArticleCardsComponent } from './pages/articles/article-cards/article-cards.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -88,14 +92,17 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     PrivacyComponent,
     TermsComponent,
     TrendsComponent,
-    ReviewsComponent,
     OrderByPipe,
     SearchByPipe,
     AdminComponent,
     LoginComponent,
     EditModeComponent,
     EditModalComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    ArticlesComponent,
+    ArticleDetailComponent,
+    ArticleBannerComponent,
+    ArticleCardsComponent
   ],
   imports: [
     BrowserModule,

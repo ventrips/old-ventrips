@@ -1,0 +1,33 @@
+#article-cards {
+    .article-card-image {
+        min-height: 12em;
+    }
+    .article-card-title {
+        min-height: 2em;
+    }
+    .article-card-content {
+        min-height: 7em;
+    }
+}
+
+// Medium devices (tablets, 768px and down)
+@media (max-width: 768px) {
+    #article-card-image {
+        .article-card-title {
+            display: flex !important;
+        }
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}

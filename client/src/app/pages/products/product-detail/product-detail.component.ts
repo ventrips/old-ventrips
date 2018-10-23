@@ -44,7 +44,7 @@ export class ProductDetailComponent implements OnInit {
     private seoService: SeoService,
     private router: Router
   ) {
-    this.url = `${this.environment.url}${this.router.url}`;
+    this.url = this.router.url;
     this.id = this.activatedRoute.snapshot.params['id'];
     this.category = this.activatedRoute.snapshot.params['category'];
     this.spinner.show();
