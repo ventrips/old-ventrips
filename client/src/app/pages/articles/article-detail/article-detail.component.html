@@ -20,8 +20,8 @@
       <small>
         <a class="text-muted text-capitalize" [routerLink]="['/authors', article?.uid]">{{article?.displayName}}</a>
       </small>
-      <h4>
-        <a [title]="article?.title" class="custom-text-black text-capitalize" [routerLink]="[article?.id]">{{article?.title}}</a>
+      <h4 class="custom-text-black text-capitalize">
+        {{article?.title}}
       </h4>
       <p>
         {{article?.content}}
