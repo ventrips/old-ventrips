@@ -27,7 +27,11 @@
       <h4 class="custom-text-black text-capitalize">
         {{article?.title}}
       </h4>
-      <p [innerHTML]="article?.content"></p>
+      <div>
+        <p *ngIf="!isEdit" [innerHTML]="article?.content"></p>
+        <quill-editor *ngIf="isEdit" [(ngModel)]="article.content"></quill-editor>
+      </div>
+
       <!-- Share Buttons -->
       <share-buttons [theme]="'default'"
       [include]="['facebook','twitter', 'google', 'copy', 'email', 'sms','messenger','telegram', 'reddit', 'tumblr', 'pinterest', 'linkedin', 'whatsapp', 'vk','stumble','xing', 'print']"
