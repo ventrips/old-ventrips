@@ -8,6 +8,12 @@
         </li>
       </ol>
     </nav>
+    <!-- Edit Mode -->
+    <div class="my-2">
+      <button *ngIf="authService.isAdmin()" class="btn btn-primary btn-md" (click)="isEdit = !isEdit">
+        <i class="mr-2 fa" [class.fa-pen]="!isEdit" [class.fa-save]="isEdit"></i> <span>{{ (!isEdit) ? 'Edit' : 'Save' }}</span>
+      </button>
+    </div>
     <div>
       <h6>
         <a [title]="article?.category" class="text-capitalize" [routerLink]="['/']" [queryParams]="{ category: article?.category}">
