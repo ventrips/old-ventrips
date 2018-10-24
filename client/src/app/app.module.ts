@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { QuillModule } from 'ngx-quill';
 import { ShareButtonsModule } from '@ngx-share/buttons';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -113,6 +114,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AppRoutingModule,
     AngularFirestoreModule,
     NgbModule,
+    QuillModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({

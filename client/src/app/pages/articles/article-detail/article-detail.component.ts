@@ -29,7 +29,7 @@ export class ArticleDetailComponent implements OnInit {
       displayName: faker.name.findName(),
       title: faker.hacker.phrase(),
       category: faker.company.bsNoun(),
-      content: faker.random.words(),
+      content: `${faker.random.words()}`,
       created: faker.date.recent(),
       imageUrl: faker.image.imageUrl(),
       id: faker.random.uuid()

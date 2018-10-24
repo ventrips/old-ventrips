@@ -1,7 +1,5 @@
 <div id="article-cards" class="row">
   <div class="col-xs-12 col-md-6 col-lg-4 " *ngFor="let card of cards">
-    <!-- Edit Mode -->
-    <app-edit-mode *ngIf="authService.isAdmin()" [id]="card?.id" [collection]="collection" [title]="card?.title" [data]="card"></app-edit-mode>
     <div class="card mb-4 box-shadow">
       <a [title]="card?.title" [routerLink]="[card?.id]">
         <img class="card-img-top article-card-image" [src]="card?.imageUrl" [alt]="card?.title">

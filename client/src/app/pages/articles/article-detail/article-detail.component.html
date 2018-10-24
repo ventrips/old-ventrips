@@ -9,8 +9,6 @@
       </ol>
     </nav>
     <div>
-      <!-- Edit Mode -->
-      <app-edit-mode *ngIf="authService.isAdmin()" [id]="article?.id" [collection]="collection" [title]="article?.title" [data]="article"></app-edit-mode>
       <h6>
         <a [title]="article?.category" class="text-capitalize" [routerLink]="['/']" [queryParams]="{ category: article?.category}">
           {{article?.category}}
@@ -23,9 +21,7 @@
       <h4 class="custom-text-black text-capitalize">
         {{article?.title}}
       </h4>
-      <p>
-        {{article?.content}}
-      </p>
+      <p [innerHTML]="article?.content"></p>
       <!-- Share Buttons -->
       <share-buttons [theme]="'default'"
       [include]="['facebook','twitter', 'google', 'copy', 'email', 'sms','messenger','telegram', 'reddit', 'tumblr', 'pinterest', 'linkedin', 'whatsapp', 'vk','stumble','xing', 'print']"
