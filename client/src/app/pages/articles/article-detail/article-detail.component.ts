@@ -3,11 +3,12 @@ import { AuthService } from '../../../services/firebase/auth/auth.service';
 import { SeoService } from '../../../services/seo/seo.service';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from './../../../../environments/environment';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 import * as faker from 'faker';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ArticlesService } from '../../../services/firebase/articles/articles.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-article-detail',
@@ -15,10 +16,14 @@ import { ArticlesService } from '../../../services/firebase/articles/articles.se
   styleUrls: ['./article-detail.component.scss']
 })
 export class ArticleDetailComponent implements OnInit {
+  public _ = _;
   public environment = environment;
   public collection: string;
   public article: Object;
+  public articleCopy: Object;
   public url: string;
+  public id: string;
+  public isLoading = true;
 
   constructor(
     private seoService: SeoService,
@@ -26,24 +31,26 @@ export class ArticleDetailComponent implements OnInit {
     private articlesService: ArticlesService,
     private db: AngularFirestore,
     private toastr: ToastrService,
-    private router: Router
+    private spinner: NgxSpinnerService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     this.url = this.router.url;
+    this.id = this.activatedRoute.snapshot.params['id'];
     this.collection = this.router.url.split('/')[1];
-    this.article = {
-      uid: faker.random.uuid(),
-      displayName: faker.name.findName(),
-      title: faker.hacker.phrase(),
-      category: faker.company.bsNoun(),
-      content: `${faker.random.words()}`,
-      created: faker.date.recent(),
-      imageUrl: faker.image.imageUrl(),
-      id: faker.random.uuid()
-    };
-    this.seoService.generateTags({
-      title: this.article['title'],
-      description: _.toString(this.article['content']),
-      image: this.article['imageUrl']
+    this.spinner.show();
+    this.articlesService.getDocumentById(this.collection, this.id).subscribe(article => {
+      this.article = article;
+      this.seoService.generateTags({
+        title: this.article['title'],
+        description: _.toString(this.article['content']),
+        image: this.article['imageUrl']
+      });
+      this.spinner.hide();
+      this.isLoading = false;
+    }, () => {
+      this.spinner.hide();
+      this.isLoading = false;
     });
   }
 
@@ -61,7 +68,7 @@ export class ArticleDetailComponent implements OnInit {
 
   update(): void {
     if (!this.authService.isAdmin()) { return; }
-    this.articlesService.updateDocument(this.collection, this.article['id'], this.article)
+    this.articlesService.updateDocument(this.collection, this.id, this.article)
     .then(() => {
       this.toastr.success(`Added ${this.article['title']}`);
     }).catch((error) => {
