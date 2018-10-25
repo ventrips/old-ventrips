@@ -3,7 +3,7 @@ import { AuthService } from '../../../services/firebase/auth/auth.service';
 import { environment } from './../../../../environments/environment';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
-import * as faker from 'faker'
+import * as faker from 'faker';
 
 @Component({
   selector: 'app-article-cards',

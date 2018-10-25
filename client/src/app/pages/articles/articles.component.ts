@@ -37,22 +37,6 @@ export class ArticlesComponent implements OnInit {
       this.isLoading = false;
       this.spinner.hide();
     });
-
-    this.articles = Array(10)
-      .fill(10)
-      // tslint:disable-next-line:no-shadowed-variable
-      .map(_ => {
-        return {
-          uid: faker.random.uuid(),
-          displayName: faker.name.findName(),
-          title: faker.hacker.phrase(),
-          category: faker.company.bsNoun(),
-          content: faker.random.words(),
-          created: faker.date.recent(),
-          imageUrl: faker.image.imageUrl(),
-          id: faker.random.uuid()
-        };
-      });
   }
 
   ngOnInit(): void {}
