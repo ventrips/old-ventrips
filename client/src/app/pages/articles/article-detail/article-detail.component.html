@@ -14,24 +14,25 @@
         <i class="mr-2 fa" [class.fa-pen]="!isEdit" [class.fa-save]="isEdit"></i> <span>{{ (!isEdit) ? 'Edit' : 'Save' }}</span>
       </button>
     </div>
-    <div>
+    <!-- Edit Mode: OFF -->
+    <ng-container *ngIf="!isEdit">
+      <!-- Category -->
       <h6>
         <a [title]="article?.category" class="text-capitalize" [routerLink]="['/']" [queryParams]="{ category: article?.category}">
           {{article?.category}}
         </a>
       </h6>
+      <!-- Created -->
       <h6 class="text-secondary text-capitalize">{{article?.created | date: 'medium'}}</h6>
       <small>
         <a class="text-muted text-capitalize" [routerLink]="['/authors', article?.uid]">{{article?.displayName}}</a>
       </small>
+      <!-- Title -->
       <h4 class="custom-text-black text-capitalize">
         {{article?.title}}
       </h4>
-      <div>
-        <p *ngIf="!isEdit" [innerHTML]="article?.content"></p>
-        <quill-editor *ngIf="isEdit" [(ngModel)]="article.content"></quill-editor>
-      </div>
-
+      <!-- Content -->
+      <p [innerHTML]="article?.content"></p>
       <!-- Share Buttons -->
       <share-buttons [theme]="'default'"
       [include]="['facebook','twitter', 'google', 'copy', 'email', 'sms','messenger','telegram', 'reddit', 'tumblr', 'pinterest', 'linkedin', 'whatsapp', 'vk','stumble','xing', 'print']"
@@ -43,6 +44,18 @@
       url="{{environment.url}}{{url}}"
       [autoSetMeta]="true"
       ></share-buttons>
-    </div>
+    </ng-container>
+    <!-- Edit Mode: ON -->
+    <ng-container *ngIf="isEdit">
+      <!-- Category -->
+      <h4 class="mb-2">Category</h4>
+      <input type="text" class="form-control mb-2" placeholder="Add a category" [(ngModel)]="article.category">
+      <!-- Title -->
+      <h4>Title</h4>
+      <input type="text" class="form-control mb-2" placeholder="Add a title" [(ngModel)]="article.title">      
+      <!-- Content -->
+      <h4>Content</h4>
+      <quill-editor class="mb-2" [(ngModel)]="article.content"></quill-editor>
+    </ng-container>
   </div>
 </section>
