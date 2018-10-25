@@ -21,12 +21,12 @@
           </h6>
           <h6 class="text-secondary text-capitalize">{{card?.created | date: 'medium'}}</h6>
           <h4 class="article-card-title"
-            style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+            style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; max-height: 6em;">
             <a [title]="card?.title" class="custom-text-black text-capitalize" [routerLink]="[card?.id]">{{card?.title}}</a>
           </h4>
           <p
             class="card-text article-card-content"
-            style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;"
+            style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; max-height: 4em;"
             [innerHTML]="card?.content">
           </p>
           <!-- Share Buttons -->
