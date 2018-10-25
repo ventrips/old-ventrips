@@ -9,9 +9,12 @@
       </ol>
     </nav>
     <!-- Edit Mode -->
-    <div class="my-2">
-      <button *ngIf="authService.isAdmin()" class="btn btn-primary btn-md" (click)="isEdit = !isEdit">
-        <i class="mr-2 fa" [class.fa-pen]="!isEdit" [class.fa-save]="isEdit"></i> <span>{{ (!isEdit) ? 'Edit' : 'Save' }}</span>
+    <div class="my-2" *ngIf="authService.isAdmin()" >
+      <button *ngIf="!isEdit" class="btn btn-primary btn-md" (click)="isEdit = true">
+        <i class="mr-2 fa fa-pen"></i> <span>Edit</span>
+      </button>
+      <button *ngIf="isEdit" class="btn btn-primary btn-md" (click)="save(); isEdit = false">
+        <i class="mr-2 fa fa-save"></i> <span>Save</span>
       </button>
     </div>
     <!-- Edit Mode: OFF -->

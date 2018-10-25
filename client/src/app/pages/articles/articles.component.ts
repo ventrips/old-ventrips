@@ -4,6 +4,8 @@ import { environment } from './../../../environments/environment';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
 import * as faker from 'faker';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ArticlesService } from '../../services/firebase/articles/articles.service';
 
 @Component({
   selector: 'app-articles',
@@ -16,13 +18,26 @@ export class ArticlesComponent implements OnInit {
   public collection: string;
   public articles: Array<Object>;
   public url: string;
+  public isLoading = true;
   constructor(
     private seoService: SeoService,
+    private articlesService: ArticlesService,
+    private spinner: NgxSpinnerService,
     private router: Router
   ) {
     this.url = this.router.url;
     this.collection = this.router.url.split('/')[1];
     this.seoService.generateTags();
+    this.spinner.show();
+    this.articlesService.getCollection(this.collection).subscribe(articles => {
+      this.articles = articles;
+      this.isLoading = false;
+      this.spinner.hide();
+    }, () => {
+      this.isLoading = false;
+      this.spinner.hide();
+    });
+
     this.articles = Array(10)
       .fill(10)
       // tslint:disable-next-line:no-shadowed-variable

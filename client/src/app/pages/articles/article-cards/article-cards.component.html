@@ -1,33 +1,43 @@
-<div id="article-cards" class="row">
-  <div class="col-md-4" *ngFor="let card of cards">
-    <div class="card mb-4 box-shadow">
-      <a [title]="card?.title" [routerLink]="[card?.id]">
-        <img class="card-img-top article-card-image" [src]="card?.imageUrl" [alt]="card?.title">
-      </a>
-      <div class="card-body">
-        <h6>
-          <a [title]="card?.category" class="text-capitalize" [routerLink]="['/']" [queryParams]="{ category: card?.category}">
-            {{card?.category}}
-          </a>
-        </h6>
-        <h6 class="text-secondary text-capitalize">{{card?.created | date: 'medium'}}</h6>
-        <h4 class="article-card-title"
-          style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-          <a [title]="card?.title" class="custom-text-black text-capitalize" [routerLink]="[card?.id]">{{card?.title}}</a>
-        </h4>
-        <p
-          class="card-text article-card-content"
-          style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;">
-          {{card?.content}}
-        </p>
-        <!-- Share Buttons -->
-        <share-buttons [theme]="'default'"
-        [include]="['facebook','twitter', 'google', 'copy']"
-        [showCount]="true"
-        [size]="1"
-        url="{{environment.url}}{{'/reviews/'}}{{card?.id}}"
-        [autoSetMeta]="true"
-        ></share-buttons>
+<div id="article-cards">
+  <!-- No results -->
+  <div class="row" *ngIf="_.isEmpty(cards)">
+    <div class="col-lg-12 text-center">
+      <h2 class="section-heading text-uppercase">Sorry...</h2>
+      <p class="section-subheading text-muted">No results found.</p>
+    </div>
+  </div>
+  <!-- Results -->
+  <div class="row" *ngIf="!_.isEmpty(cards)">
+    <div class="col-md-4" *ngFor="let card of cards">
+      <div class="card mb-4 box-shadow">
+        <a [title]="card?.title" [routerLink]="[card?.id]">
+          <img class="card-img-top article-card-image" [src]="card?.imageUrl" [alt]="card?.title">
+        </a>
+        <div class="card-body">
+          <h6>
+            <a [title]="card?.category" class="text-capitalize" [routerLink]="['/']" [queryParams]="{ category: card?.category}">
+              {{card?.category}}
+            </a>
+          </h6>
+          <h6 class="text-secondary text-capitalize">{{card?.created | date: 'medium'}}</h6>
+          <h4 class="article-card-title"
+            style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+            <a [title]="card?.title" class="custom-text-black text-capitalize" [routerLink]="[card?.id]">{{card?.title}}</a>
+          </h4>
+          <p
+            class="card-text article-card-content"
+            style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;">
+            {{card?.content}}
+          </p>
+          <!-- Share Buttons -->
+          <share-buttons [theme]="'default'"
+          [include]="['facebook','twitter', 'google', 'copy']"
+          [showCount]="true"
+          [size]="1"
+          url="{{environment.url}}{{'/reviews/'}}{{card?.id}}"
+          [autoSetMeta]="true"
+          ></share-buttons>
+        </div>
       </div>
     </div>
   </div>
