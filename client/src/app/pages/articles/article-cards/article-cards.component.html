@@ -9,11 +9,11 @@
   <!-- Results -->
   <div class="row" *ngIf="!_.isEmpty(cards)">
     <div class="col-md-4" *ngFor="let card of cards">
-      <div class="card mb-4 box-shadow">
+      <div class="card mb-4 box-shadow article-card">
         <a [title]="card?.title" [routerLink]="[card?.id]">
           <img class="card-img-top article-card-image" [src]="card?.imageUrl" [alt]="card?.title">
         </a>
-        <div class="card-body">
+        <div class="card-body article-card-body">
           <h6>
             <a [title]="card?.category" class="text-capitalize" [routerLink]="['/']" [queryParams]="{ category: card?.category}">
               {{card?.category}}
