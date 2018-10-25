@@ -18,7 +18,7 @@
           <button *ngIf="isEdit" class="btn btn-outline-dark btn-md" (click)="isEdit = false; articleCopy = undefined">
             <i class="mr-2 fa fa-times"></i> <span>Cancel</span>
           </button>
-        </div>  
+        </div>
         <!-- Edit Mode: OFF -->
         <ng-container *ngIf="!isEdit">
           <!-- Bread Crumbs -->
@@ -47,6 +47,8 @@
           </h4>
           <!-- Content -->
           <p [innerHTML]="article?.content"></p>
+          <!-- Image -->
+          <img class="img-fluid mb-3" [src]="article?.imageUrl" title="Image" alt="Image">
           <!-- Share Buttons -->
           <share-buttons [theme]="'default'"
           [include]="['facebook','twitter', 'google', 'copy', 'email', 'sms','messenger','telegram', 'reddit', 'tumblr', 'pinterest', 'linkedin', 'whatsapp', 'vk','stumble','xing', 'print']"
@@ -61,6 +63,9 @@
         </ng-container>
         <!-- Edit Mode: ON -->
         <ng-container *ngIf="isEdit">
+          <!-- Image -->
+          <h4>Image</h4>
+          <input type="text" class="form-control mb-2" placeholder="Add an image url" [(ngModel)]="articleCopy.imageUrl">      
           <!-- Category -->
           <h4 class="mb-2">Category</h4>
           <input type="text" class="form-control mb-2" placeholder="Add a category" [(ngModel)]="articleCopy.category">
