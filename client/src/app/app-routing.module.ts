@@ -22,6 +22,8 @@ const routes: Routes = [
       { path: 'splash', component: SplashComponent },
       { path: 'about', component: AboutComponent },
       { path: 'admin', component: AdminComponent, canActivate: [ AdminGuard ] },
+      { path: 'reviews', component: ProductsComponent },
+      { path: 'reviews/:id', component: ProductDetailComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'login', component: LoginComponent },
       { path: 'portfolio', component: PortfolioComponent },

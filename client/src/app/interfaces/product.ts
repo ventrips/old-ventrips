@@ -4,6 +4,7 @@ export interface IProduct {
     category: String;
     features: Array<String>;
     images: Array<String>;
+    content: String;
 }
 
 export class Product implements IProduct {
@@ -12,4 +13,5 @@ export class Product implements IProduct {
     category = '';
     features = [];
     images = [];
+    content = '';
 }

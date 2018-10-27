@@ -82,22 +82,23 @@
             *ngFor="let product of (products | searchBy: searchTerm | orderBy: selectedOrderBy?.type: selectedOrderBy?.direction)">
               <!-- Edit Mode -->
               <app-edit-mode *ngIf="authService.isAdmin()" class="text-sm-left" [id]="product?.id" [collection]="collection" [title]="product?.name" [data]="product"></app-edit-mode>
-              <a [title]="product.name" class="portfolio-link custom-bg-white" [routerLink]="['/products', product?.id]">
+              <a [title]="product?.name" class="portfolio-link custom-bg-white" [routerLink]="['/products', product?.id]">
                 <div class="portfolio-hover">
                   <div class="portfolio-hover-content">
                     <!-- <i class="fas fa-link fa-3x"></i> -->
                   </div>
                 </div>
                 <div class="text-center product-image">
-                  <img [src]="product.images[0]" alt="">
+                  <img [src]="product?.images[0]" alt="">
                 </div>
               </a>
               <div class="portfolio-caption">
                 <h5
                   class="product-name my-3"
                   style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;">
-                  <a [title]="product.name" class="custom-text-black text-capitalize" [routerLink]="['/products', product?.id]">{{product.name}}</a>
+                  <a [title]="product?.name" class="custom-text-black text-capitalize" [routerLink]="['/products', product?.id]">{{product.name}}</a>
                 </h5>
+                <p class="product-content" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;">{{product?.content}}</p>
                 <div class="my-2">
                   <!-- Share Buttons -->
                   <share-buttons [theme]="'default'"
