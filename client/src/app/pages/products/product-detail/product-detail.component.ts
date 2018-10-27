@@ -57,7 +57,7 @@ export class ProductDetailComponent implements OnInit {
     this.productsService.getDocumentById(this.collection, this.id).subscribe(product => {
       this.product = product;
       this.seoService.generateTags({
-        title: this.product['name'],
+        title: this.product['title'],
         description: _.toString(this.product['features']),
         image: this.product['images'][0]
       });
