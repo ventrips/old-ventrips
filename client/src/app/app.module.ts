@@ -45,11 +45,6 @@ import { EditModalComponent } from './shared/edit-mode/edit-modal/edit-modal.com
 import { ConfirmModalComponent } from './shared/edit-mode/confirm-modal/confirm-modal.component';
 import { HttpClientJsonpModule } from '@angular/common/http';
 
-import { ArticlesComponent } from './pages/articles/articles.component';
-import { ArticleDetailComponent } from './pages/articles/article-detail/article-detail.component';
-import { ArticleBannerComponent } from './pages/articles/article-banner/article-banner.component';
-import { ArticleCardsComponent } from './pages/articles/article-cards/article-cards.component';
-
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
   signInOptions: [
@@ -99,11 +94,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     LoginComponent,
     EditModeComponent,
     EditModalComponent,
-    ConfirmModalComponent,
-    ArticlesComponent,
-    ArticleDetailComponent,
-    ArticleBannerComponent,
-    ArticleCardsComponent
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,
