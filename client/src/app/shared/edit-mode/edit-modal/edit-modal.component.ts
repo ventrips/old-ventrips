@@ -70,11 +70,16 @@ export class EditModalComponent implements OnInit {
   }
 
   getInputType(key: string): string {
-    if (_.includes(_.toLower(key), 'url')) {
-      return 'url';
-    } else {
-      return 'text';
+    let value;
+    switch (_.toLower(key)) {
+      case 'url':
+        value = 'url';
+        break;
+      case 'text':
+        value = 'text';
+        break;
     }
+    return value;
   }
 
   // Ignores default
