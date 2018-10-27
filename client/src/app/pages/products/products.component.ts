@@ -8,6 +8,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { SeoService } from '../../services/seo/seo.service';
 import { environment } from './../../../environments/environment';
 import * as _ from 'lodash';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -18,7 +19,7 @@ import * as _ from 'lodash';
 export class ProductsComponent implements OnInit {
   public _ = _;
   public environment = environment;
-  public collection = 'products';
+  public collection: string;
   public searchTerm: any;
   public products: Array<Object>;
   public searchOptions: Array<String>;
@@ -46,8 +47,16 @@ export class ProductsComponent implements OnInit {
     private productsService: ProductsService,
     private config: NgbTypeaheadConfig,
     private spinner: NgxSpinnerService,
-    private seoService: SeoService
+    private seoService: SeoService,
+    private router: Router
   ) {
+    this.collection = this.router.url.split('/')[1];
+    if (_.isEmpty(this.collection)) {
+      this.collection = 'products';
+    }
+  }
+
+  ngOnInit(): void {
     this.seoService.generateTags({
       description: 'Search for top recommended and trending travel gears!'
     });
@@ -63,9 +72,6 @@ export class ProductsComponent implements OnInit {
     });
     // customize default values of typeaheads used by this component tree
     this.config.showHint = true;
-  }
-
-  ngOnInit(): void {
   }
 
   search = (text$: Observable<string>) =>

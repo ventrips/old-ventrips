@@ -20,7 +20,7 @@ import { environment } from './../../../../environments/environment';
 })
 export class ProductDetailComponent implements OnInit {
   public _ = _;
-  public collection = 'products';
+  public collection: string;
   public id: string;
   public category: string;
   public product: Object;
@@ -43,8 +43,14 @@ export class ProductDetailComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private seoService: SeoService,
     private router: Router
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.url = this.router.url;
+    this.collection = this.router.url.split('/')[1];
+    if (_.isEmpty(this.collection)) {
+      this.collection = 'products';
+    }
     this.id = this.activatedRoute.snapshot.params['id'];
     this.category = this.activatedRoute.snapshot.params['category'];
     this.spinner.show();
@@ -62,8 +68,6 @@ export class ProductDetailComponent implements OnInit {
       this.isLoading = false;
     });
   }
-
-  ngOnInit(): void {}
 
   getImagePosition(itemRef) {
     const offsetTop = 50;
