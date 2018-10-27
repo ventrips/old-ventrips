@@ -23,13 +23,13 @@
                     <a title="Back to Products" [routerLink]="['/']">
                       <i class="fa fa-angle-double-left"></i> Back to Products</a>
                   </li>
-                  <!-- <li class="breadcrumb-item active" aria-current="page" *ngIf="product">{{product?.name}}</li> -->
+                  <!-- <li class="breadcrumb-item active" aria-current="page" *ngIf="product">{{product?.title}}</li> -->
                 </ol>
               </nav>
               <!-- Edit Mode -->
-              <app-edit-mode *ngIf="authService.isAdmin()" class="text-sm-left" [id]="id" [collection]="collection" [title]="product?.name" [data]="product"></app-edit-mode>
+              <app-edit-mode *ngIf="authService.isAdmin()" class="text-sm-left" [id]="id" [collection]="collection" [title]="product?.title" [data]="product"></app-edit-mode>
               <h3 class="section-heading text-capitalize break-word">
-                <a [title]="product.name" class="custom-text-dark" [href]="product.url" target="__blank">{{product.name}}</a>
+                <a [title]="product.title" class="custom-text-dark" [href]="product.url" target="__blank">{{product.title}}</a>
               </h3>
               <div class="section-subheading text-muted my-3 container">
                 <ul class="list-group">

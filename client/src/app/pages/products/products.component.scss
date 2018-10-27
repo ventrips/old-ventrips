@@ -15,12 +15,27 @@
     margin-top: 0;
 }
 
-.product-image {
-    overflow: hidden;
-
-    img {
-        height: 250px;
-        width: auto;    
+.product-card {
+    .product-card-body {
+        border-top: 0.5em solid #fed136;
+    }
+    .product-card-link {
+        .product-card-image {
+            min-height: 15em;
+            max-height: 15em;
+            width: auto;
+        }
+        padding: 2em 0;
+        text-align: center;
+        overflow: hidden;
+    }
+    .product-card-title {
+        min-height: 7em;
+        max-height: 7em;
+    }
+    .product-card-content {
+        min-height: 7em;
+        max-height: 7em;
     }
 }
 
@@ -33,16 +48,14 @@
 
 // Medium devices (tablets, 768px and down)
 @media (max-width: 768px) {
-    .product-name {
+    .product-card-title {
         display: flex !important;
     }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-    .product-name {
-        min-height: 6rem;
-    }
+
 }
 
 // Large devices (desktops, 992px and up)

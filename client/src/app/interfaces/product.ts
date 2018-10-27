@@ -1,5 +1,5 @@
 export interface IProduct {
-    name: String;
+    title: String;
     url: String;
     category: String;
     features: Array<String>;
@@ -8,7 +8,7 @@ export interface IProduct {
 }
 
 export class Product implements IProduct {
-    name = '';
+    title = '';
     url = '';
     category = '';
     features = [];
