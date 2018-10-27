@@ -27,15 +27,19 @@ export class ProductsService {
   getDocumentById(collection: string, id: string): any {
     const itemDoc = this.db.doc(`${collection}/${id}`);
     return itemDoc.valueChanges();
-    // .pipe(
-    //   tap(product => {
-    //     this.seoService.addTwitterCard({
-    //       title: product['name'],
-    //       description: _.toString(product['features']),
-    //       image: product['images'][0]
-    //     });
-    //   })
-    // );
+  }
+
+  createDocument(collection: string, data: object): Promise<any> {
+    return this.db
+    .collection(collection)
+    .add(JSON.parse(JSON.stringify(data)));
+  }
+
+  updateDocument(collection: string, id: string, data: object): Promise<any> {
+    return this.db
+    .collection(collection)
+    .doc(id)
+    .update(JSON.parse(JSON.stringify(data)));
   }
 
 }

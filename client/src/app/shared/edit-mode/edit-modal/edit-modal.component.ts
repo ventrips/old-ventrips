@@ -7,6 +7,7 @@ import { Article } from './../../../interfaces/article';
 import { AuthService } from '../../../services/firebase/auth/auth.service';
 import { ConfirmModalComponent } from './../confirm-modal/confirm-modal.component';
 import * as _ from 'lodash';
+import { ProductsService } from '../../../services/firebase/products/products.service';
 
 @Component({
   selector: 'app-edit-modal',
@@ -27,7 +28,8 @@ export class EditModalComponent implements OnInit {
     private modalService: NgbModal,
     private activeModal: NgbActiveModal,
     private db: AngularFirestore,
-    private authService: AuthService
+    private authService: AuthService,
+    private productsService: ProductsService
   ) {}
 
   ngOnInit() {
@@ -91,19 +93,14 @@ export class EditModalComponent implements OnInit {
     if (!this.authService.isAdmin()) { return; }
 
     if (!this.isNew) {
-      this.db
-      .collection(this.collection)
-      .doc(this.id)
-      .update(JSON.parse(JSON.stringify(this.data)))
+      this.productsService.updateDocument(this.collection, this.id, this.data)
       .then(() => {
         this.close(`Saved ${this.data.name}`);
       }).catch((error) => {
         this.dismiss(error);
       });
     } else {
-      this.db
-      .collection(this.collection)
-      .add(JSON.parse(JSON.stringify(this.data)))
+      this.productsService.createDocument(this.collection, this.data)
       .then(() => {
         this.close(`Added ${this.data.name}`);
       }).catch((error) => {
