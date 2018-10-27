@@ -119,10 +119,7 @@ export class EditModalComponent implements OnInit {
     modalRef.componentInstance.title = `Delete ${_.toUpper(this.collection)}: ${_.toUpper(this.data.name)}`;
     modalRef.componentInstance.text = `Are you sure you want to delete ${_.toUpper(this.data.name)}`;
     modalRef.result.then((result?) => {
-      this.db
-      .collection(this.collection)
-      .doc(this.id)
-      .delete()
+      this.productsService.deleteDocument(this.collection, this.id)
       .then(() => {
         this.close(`Deleted ${this.data.name}`);
       }).catch((error) => {

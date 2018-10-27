@@ -42,4 +42,10 @@ export class ProductsService {
     .update(JSON.parse(JSON.stringify(data)));
   }
 
+  deleteDocument(collection: string, id: string): Promise<any> {
+    return this.db
+    .collection(collection)
+    .doc(id)
+    .delete();
+  }
 }
