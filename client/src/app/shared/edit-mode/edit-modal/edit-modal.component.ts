@@ -77,7 +77,7 @@ export class EditModalComponent implements OnInit {
 
   // Ignores default keys
   isDefault(key: string): boolean {
-    return _.includes(['dateCreated', 'uid', 'displayName'], key);
+    return _.includes(['dateCreated', 'id', 'uid', 'author'], key);
   }
 
   isValid(): boolean {
@@ -89,6 +89,9 @@ export class EditModalComponent implements OnInit {
 
   save(): void {
     if (!this.authService.isAdmin()) { return; }
+    this.data.uid = this.authService.getUid();
+    this.data.author = this.authService.getDisplayName();
+    this.data.dateCreated = new Date();
 
     if (!this.isNew) {
       this.productsService.updateDocument(this.collection, this.id, this.data)

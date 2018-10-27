@@ -37,6 +37,10 @@ export class AuthService {
     return this.user;
   }
 
+  getUid(): String {
+    return this.user['uid'];
+  }
+
   getDisplayName(): string {
     return this.user['displayName'];
   }
