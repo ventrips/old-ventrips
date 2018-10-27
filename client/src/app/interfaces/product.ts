@@ -7,7 +7,7 @@ export interface IProduct {
     thumbnail: String;
     dateCreated: String;
     uid: String;
-    displayName: String;
+    author: String;
     content: String;
 }
 
@@ -20,6 +20,6 @@ export class Product implements IProduct {
     thumbnail = '';
     dateCreated = '';
     uid = '';
-    displayName = '';
+    author = '';
     content = '';
 }
