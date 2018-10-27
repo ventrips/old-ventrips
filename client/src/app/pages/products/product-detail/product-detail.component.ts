@@ -48,7 +48,7 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.url = this.router.url;
     this.collection = this.router.url.split('/')[1];
-    if (_.isEmpty(this.collection)) {
+    if (_.isEmpty(this.collection) || _.isNil(this.collection)) {
       this.collection = 'products';
     }
     this.id = this.activatedRoute.snapshot.params['id'];

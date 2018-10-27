@@ -51,7 +51,7 @@ export class ProductsComponent implements OnInit {
     private router: Router
   ) {
     this.collection = this.router.url.split('/')[1];
-    if (_.isEmpty(this.collection)) {
+    if (_.isEmpty(this.collection) || _.isNil(this.collection)) {
       this.collection = 'products';
     }
   }
