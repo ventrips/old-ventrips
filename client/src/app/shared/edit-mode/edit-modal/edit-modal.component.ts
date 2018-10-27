@@ -3,7 +3,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Product } from './../../../interfaces/product';
-import { Article } from './../../../interfaces/article';
 import { AuthService } from '../../../services/firebase/auth/auth.service';
 import { ConfirmModalComponent } from './../confirm-modal/confirm-modal.component';
 import * as _ from 'lodash';
@@ -33,13 +32,7 @@ export class EditModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (_.includes(['products'], this.collection)) {
-      this.data = _.assign(new Product(), this.data);
-    }
-    if (_.includes(['reviews'], this.collection)) {
-      this.data = _.assign(new Article(), this.data);
-    }
-
+    this.data = _.assign(new Product(), this.data);
     this.keys = _.keys(this.data);
   }
 
