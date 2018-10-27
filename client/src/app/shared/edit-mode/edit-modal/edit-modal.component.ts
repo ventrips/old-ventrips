@@ -75,9 +75,9 @@ export class EditModalComponent implements OnInit {
     return value;
   }
 
-  // Ignores default
+  // Ignores default keys
   isDefault(key: string): boolean {
-    return _.includes(['created', 'uid', 'displayName'], key);
+    return _.includes(['dateCreated', 'uid', 'displayName'], key);
   }
 
   isValid(): boolean {
