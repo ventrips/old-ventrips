@@ -96,14 +96,14 @@ export class EditModalComponent implements OnInit {
     if (!this.isNew) {
       this.productsService.updateDocument(this.collection, this.id, this.data)
       .then(() => {
-        this.close(`Saved ${this.data.name}`);
+        this.close(`Saved ${this.data.title}`);
       }).catch((error) => {
         this.dismiss(error);
       });
     } else {
       this.productsService.createDocument(this.collection, this.data)
       .then(() => {
-        this.close(`Added ${this.data.name}`);
+        this.close(`Added ${this.data.title}`);
       }).catch((error) => {
         this.dismiss(error);
       });

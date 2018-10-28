@@ -72,15 +72,16 @@
                 <img class="card-img-top product-card-image" [src]="product?.thumbnail" [alt]="product?.title">
               </a>
               <div class="card-body product-card-body">
-                <!-- <h6>
-                  <a [title]="card?.category" class="text-capitalize" [routerLink]="['/']" [queryParams]="{ category: card?.category}">
-                    {{card?.category}}
+                <h6>
+                  <a [title]="product?.category" class="text-capitalize" [routerLink]="['/']" [queryParams]="{ category: product?.category}">
+                    {{product?.category}}
                   </a>
-                </h6> -->
-                <!-- <h6 class="text-secondary text-capitalize">{{card?.created | date: 'medium'}}</h6> -->
+                </h6>
+                <h6 class="text-secondary text-capitalize">{{product?.dateCreated | date: 'medium'}}</h6>
                 <h4 class="product-card-title" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; max-height: 6em;">
                   <a [title]="product?.title" class="custom-text-black text-capitalize" [routerLink]="[collection, product?.id]">{{product?.title}}</a>
                 </h4>
+                <h6 class="text-secondary text-capitalize">{{product?.author}}</h6>
                 <!-- <p class="card-text product-card-content" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; max-height: 4em;"
                   [innerHTML]="product?.content">
                 </p> -->
