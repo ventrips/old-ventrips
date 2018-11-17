@@ -25,13 +25,13 @@ export class ProductsComponent implements OnInit {
   public searchOptions: Array<String>;
   public orderByOptions: Array<Object> = [
     {
-      label: 'Product Name: A - Z',
-      type: 'name',
+      label: 'Product Titler: A - Z',
+      type: 'title',
       direction: 'asc'
     },
     {
-      label: 'Product Name: Z - A',
-      type: 'name',
+      label: 'Product Titler: Z - A',
+      type: 'title',
       direction: 'desc'
     }
   ];
