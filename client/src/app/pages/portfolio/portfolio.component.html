@@ -1,4 +1,4 @@
-<main class="min-height-100vh bg-light">
+<main class="min-height-100vh">
   <section class="portfolio-background">
     <header class="masthead">
       <div class="container">
@@ -10,16 +10,33 @@
             My name is Johnson Huynh
           </h4>
           <p>
-            I am a Senior Software Engineer &amp; UX/UI Designer with a demonstrated history of working on the web. I am skilled in Mobile Applications, Web Design, HTML, Adobe Photoshop, and User Experience Design. Strong information technology professional with a Bachelor of Science focused in Human Centered Design & Engineering, Human-Computer Interaction from University of Washington.
+            I am a Senior Software Engineer &amp; UX/UI Designer with a demonstrated history of working on web applications.
           </p>
         </div>
       </div>
     </header>
   </section>
-  <div class="container py-5">
-    <div class="col-lg-12 text-center">
-      <h2 class="section-heading text-uppercase">Portfolio</h2>
-      <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
+  <!-- Portfolio -->
+  <section>
+    <div class="container">
+      <h2 class="section-heading text-uppercase text-center">Portfolio</h2>
+      <p class="text-center">Here are my featured works</p>
+      <div class="row">
+        <div class="col-lg-12 text-center">
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+  <!-- Videography -->
+  <section id="videography" class="bg-light">
+    <div class="container">
+      <h2 class="section-heading text-uppercase text-center">Videography</h2>
+      <p class="text-center">I like to make travel videos. Let's Ventrove It!</p>
+      <div class="row">
+        <div class="col-xs-12 col-md-6" *ngFor="let youTubeUrl of youTubeUrls">
+          <iframe class="mb-4" [src]="youTubeUrl" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
