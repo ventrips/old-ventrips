@@ -12,20 +12,20 @@ export class FooterComponent implements OnInit {
   public environment = environment;
   public socialMedia = [
     {
-      name: 'Twitter',
-      class: 'fab fa-twitter',
-      url: `https://twitter.com/${_.startCase(environment.name)}`
-    },
-    {
-      name: 'Facebook',
-      class: 'fab fa-facebook-f',
-      url: `https://facebook.com/Official${_.startCase(environment.name)}`
+      name: 'LinkedIn',
+      class: 'fab fa-linkedin',
+      url: `https://www.linkedin.com/in/johnsonhuynh`
     },
     {
       name: 'Instagram',
       class: 'fab fa-instagram',
-      url: `https://www.instagram.com/${_.startCase(environment.name)}`
+      url: `https://www.instagram.com/jamztuh`
     },
+    {
+      name: 'Facebook',
+      class: 'fab fa-facebook-f',
+      url: `https://www.facebook.com/JaMzTeR`
+    }
   ];
 
   constructor(
