@@ -8,6 +8,7 @@ import * as _ from 'lodash';
   styleUrls: ['./portfolio.component.scss']
 })
 export class PortfolioComponent implements OnInit {
+  public resumeUrl = './assets/pdf/Johnson-Huynh-Resume.pdf';
   public youTubeUrls: Array<SafeResourceUrl>;
 
   constructor(
@@ -15,9 +16,6 @@ export class PortfolioComponent implements OnInit {
     private domSanitizer: DomSanitizer
   ) {
     this.seoService.generateTags();
-  }
-
-  ngOnInit(): void {
     const youTubeVideos = [
       'Yd61DtkEXzM',
       'ceTBRll9GLo',
@@ -25,6 +23,9 @@ export class PortfolioComponent implements OnInit {
       'QTcfoTJEFOE'
     ];
     this.youTubeUrls = this.getYouTubeUrls(youTubeVideos);
+  }
+
+  ngOnInit(): void {
   }
 
   sanitizeUrl(url: string): SafeResourceUrl {
