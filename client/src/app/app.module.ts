@@ -29,6 +29,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ErrorNotFoundComponent } from './shared/errors/error-not-found/error-not-found.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
+import { PortfolioDetailComponent } from './pages/portfolio/portfolio-detail/portfolio-detail.component';
 import { ProductDetailComponent } from './pages/products/product-detail/product-detail.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { TrendsComponent } from './pages/trends/trends.component';
@@ -83,6 +84,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     ContactComponent,
     ErrorNotFoundComponent,
     PortfolioComponent,
+    PortfolioDetailComponent,
     ProductsComponent,
     ProductDetailComponent,
     PrivacyComponent,

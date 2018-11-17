@@ -22,7 +22,14 @@ export class NavbarComponent implements OnInit {
   }
 
   showBlackBar(): boolean {
-    const excludes = ['/', '/products', '/reviews', '/splash'];
+    const excludes = [
+      '/',
+      '/products',
+      '/reviews',
+      '/splash',
+      '/portfolio',
+      '/johnson-huynh'
+    ];
     return !_.includes(excludes, this.router.url);
   }
 
