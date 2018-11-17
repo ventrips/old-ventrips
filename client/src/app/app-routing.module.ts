@@ -7,7 +7,6 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { SplashComponent } from './pages/splash/splash.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
-import { PortfolioDetailComponent } from './pages/portfolio/portfolio-detail/portfolio-detail.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductDetailComponent } from './pages/products/product-detail/product-detail.component';

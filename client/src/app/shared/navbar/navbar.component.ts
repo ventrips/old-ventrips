@@ -26,7 +26,9 @@ export class NavbarComponent implements OnInit {
       '/',
       '/products',
       '/reviews',
-      '/splash'
+      '/splash',
+      '/portfolio',
+      '/johnson-huynh'
     ];
     return !_.includes(excludes, this.router.url);
   }

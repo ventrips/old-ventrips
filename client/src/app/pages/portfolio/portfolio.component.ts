@@ -9,6 +9,7 @@ import * as _ from 'lodash';
 })
 export class PortfolioComponent implements OnInit {
   public resumeUrl = './assets/pdf/Johnson-Huynh-Resume.pdf';
+  public youTubeChannelUrl = 'https://www.youtube.com/channel/UCtif_sUZk9_F7CUzP3rPf2w';
   public youTubeUrls: Array<SafeResourceUrl>;
 
   constructor(
