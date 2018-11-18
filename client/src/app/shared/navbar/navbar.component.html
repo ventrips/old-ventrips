@@ -10,36 +10,28 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a title="Products" class="nav-link text-shadow" [ngClass]="{'active': isActive('/')}"
-              [routerLink]="['/']">Products</a>
+              [routerLink]="['/']">Travel Gear</a>
+          </li>
+          <li class="nav-item">
+            <a title="Trends" class="nav-link text-shadow" [ngClass]="{'active': isActive('/trends')}"
+              [routerLink]="['/trends']">GitHub Trends</a>
+          </li>
+          <li class="nav-item">
+            <a title="Johnson Huynh" class="nav-link text-shadow" [ngClass]="{'active': isActive('/johnson-huynh')}"
+              [routerLink]="['/johnson-huynh']">About Johnson</a>
           </li>
           <!-- <li class="nav-item">
             <a title="Splash" class="nav-link text-shadow" [ngClass]="{'active': isActive('/splash')}"
               [routerLink]="['/splash']">Splash</a>
           </li> -->
           <!-- <li class="nav-item">
-            <a title="Trends" class="nav-link text-shadow" [ngClass]="{'active': isActive('/trends')}"
-              [routerLink]="['/trends']">Trends</a>
-          </li> -->
-          <!-- <li class="nav-item">
-            <a title="Reviews" class="nav-link text-shadow" [ngClass]="{'active': isActive('/reviews')}"
-              [routerLink]="['/reviews']">Reviews</a>
-          </li> -->
-          <!-- <li class="nav-item">
-            <a title="Portfolio" class="nav-link text-shadow" [ngClass]="{'active': isActive('/portfolio')}"
-              [routerLink]="['/portfolio']">Portfolio</a>
-          </li>
-          <li class="nav-item">
             <a title="About" class="nav-link text-shadow" [ngClass]="{'active': isActive('/about')}"
               [routerLink]="['/about']">About</a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a title="Contact" class="nav-link text-shadow" [ngClass]="{'active': isActive('/contact')}"
               [routerLink]="['/contact']">Contact</a>
           </li> -->
-          <li class="nav-item">
-            <a title="Johnson Huynh" class="nav-link text-shadow" [ngClass]="{'active': isActive('/johnson-huynh')}"
-              [routerLink]="['/johnson-huynh']">About</a>
-          </li>
           <li class="nav-item dropdown cursor-pointer" *ngIf="authService?.getUser()">
             <a class="nav-link text-shadow dropdown-toggle" title="User Dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
               [ngClass]="{'active': isActive('/admin')}">
