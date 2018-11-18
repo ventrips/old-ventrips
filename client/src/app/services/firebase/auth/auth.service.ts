@@ -60,12 +60,12 @@ export class AuthService {
     })));
   }
 
-  isAuthenticated(): boolean {
+  isUser(): boolean {
     return !_.isNil(this.user);
   }
 
   isAdmin(): boolean {
-    return !_.isNil(this.admins) && this.isAuthenticated() && _.includes(this.admins, this.user['uid']);
+    return !_.isNil(this.admins) && this.isUser() && _.includes(this.admins, this.user['uid']);
   }
 
   signOut(): void {

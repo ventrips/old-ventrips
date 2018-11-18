@@ -44,7 +44,7 @@ export class TrendsComponent implements OnInit {
   ngOnInit(): void {}
 
   postTrendingGitHubRepos(): void {
-    if (!this.authService.isAdmin()) { return; }
+    if (!this.authService.isUser()) { return; }
 
     this.isLoading = true;
     this.spinner.show();
