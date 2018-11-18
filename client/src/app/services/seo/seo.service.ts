@@ -16,7 +16,7 @@ export class SeoService {
   generateTags(config?: any) {
     // default values
     config = {
-      title: `${!_.isEmpty(_.startCase(this.router.url)) ? _.startCase(this.router.url) : 'Home'} Page`,
+      title: `${!_.isEmpty(_.startCase(this.router.url)) ? _.startCase(this.router.url) : 'Home'}`,
       description: environment.slogan,
       image: `${environment.url}/favicon.ico`,
       url: `${environment.url}${!_.isEmpty(_.startCase(this.router.url)) ? this.router.url : ''}`,
