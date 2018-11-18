@@ -17,6 +17,11 @@ export class FooterComponent implements OnInit {
       url: `https://www.linkedin.com/in/johnsonhuynh`
     },
     {
+      name: 'Email',
+      class: 'fa fa-envelope',
+      url: `mailto:huynhjjk@gmail.com?Subject=Hey`
+    },
+    {
       name: 'Instagram',
       class: 'fab fa-instagram',
       url: `https://www.instagram.com/jamztuh`
