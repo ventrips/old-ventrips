@@ -12,14 +12,14 @@ export class FooterComponent implements OnInit {
   public environment = environment;
   public socialMedia = [
     {
-      name: 'LinkedIn',
-      class: 'fab fa-linkedin',
-      url: `https://www.linkedin.com/in/johnsonhuynh`
-    },
-    {
       name: 'Email',
       class: 'fa fa-envelope',
       url: `mailto:huynhjjk@gmail.com?Subject=Hey`
+    },
+    {
+      name: 'LinkedIn',
+      class: 'fab fa-linkedin',
+      url: `https://www.linkedin.com/in/johnsonhuynh`
     },
     {
       name: 'Instagram',
