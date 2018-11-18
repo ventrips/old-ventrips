@@ -1,5 +1,5 @@
 <main class="min-height-100vh">
-  <section class="introduction-background">
+  <section class="introduction-background bg-info">
     <header class="masthead">
       <div class="container">
         <div class="intro-text">
@@ -14,7 +14,7 @@
     </header>
   </section>
   <!-- Portfolio -->
-  <section id="portfolio" class="bg-light portfolio-background">
+  <section id="portfolio" class="portfolio-background bg-primary">
     <div class="container">
       <h2 class="section-heading text-center text-light text-uppercase text-shadowv">Portfolio</h2>
       <h4 class="text-center text-capitalize text-light text-shadow my-5">My featured works. Here is my <a [href]="resumeUrl" target=__blank>Resume</a></h4>
@@ -24,7 +24,7 @@
             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
             <div class="card-body">
               <h4 class="card-title">{{portfolioWork?.title}}</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text">{{portfolioWork?.description}}</p>
             </div>
           </div>
         </div>
@@ -32,7 +32,7 @@
     </div>
   </section>
   <!-- Videography -->
-  <section id="videography" class="videography-background">
+  <section id="videography" class="videography-background bg-dark">
     <div class="container">
       <h2 class="section-heading text-center text-uppercase text-light text-shadow" >Videography</h2>
       <h4 class="text-light text-capitalize text-center text-shadow my-5">I like to make travel videos. Let's <a [href]="youTubeChannelUrl" target=__blank>Ventrove</a> It!</h4>

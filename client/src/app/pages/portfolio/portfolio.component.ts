@@ -12,22 +12,29 @@ export class PortfolioComponent implements OnInit {
   public resumeUrl = './assets/pdf/Johnson-Huynh-Resume.pdf';
   public portfolioWorks = [
     {
-      title: 'Data360'
+      title: 'Data 360',
+      description: 'Migrated and rebuilt entire existing AngularJS web application to the latest Angular for Data 360 Team'
     },
     {
-      title: 'AskGet'
+      title: 'AskGET',
+      description: 'Built an internal software store using the latest Angular 6 & Bootstrap 4 for AskGET Portal'
     },
     {
-      title: 'AIC Ozone'
+      title: 'AIC Ozone',
+      description: 'Built and redesigned internal cloud web application for AIC Ozone'
     },
     {
-      title: 'Order Capture Express'
+      title: 'Order Capture Express',
+      description: 'Redesigned the interface and improved the usability of the Order Capture Express application'
     },
     {
-      title: 'Business Solutions'
+      title: 'Business Solutions',
+      description: 'Helped improve page load times and performance on www.att.com'
     },
     {
-      title: 'TripTips'
+      title: 'TripTips',
+      description: `Designed the front-end and built a fully responsive web
+      applicationusing the MEAN Stack (MongoDB, Express,AngularJS, NodeJS) and Bootstrap 3`
     }
   ];
   public youTubeChannelUrl = 'https://www.youtube.com/channel/UCtif_sUZk9_F7CUzP3rPf2w';
