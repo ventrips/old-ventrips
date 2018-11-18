@@ -8,6 +8,7 @@ import * as _ from 'lodash';
   styleUrls: ['./portfolio.component.scss']
 })
 export class PortfolioComponent implements OnInit {
+  public selected = false;
   public resumeUrl = './assets/pdf/Johnson-Huynh-Resume.pdf';
   public portfolioWorks = [
     {
