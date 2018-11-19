@@ -7,7 +7,7 @@
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive">
           <li class="nav-item">
             <a title="Products" class="nav-link text-shadow" [ngClass]="{'active': isActive('/')}"
               [routerLink]="['/']">Travel Gear</a>
