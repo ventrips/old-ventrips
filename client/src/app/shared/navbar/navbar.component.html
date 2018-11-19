@@ -20,7 +20,7 @@
             <a title="Johnson Huynh" class="nav-link text-shadow" [ngClass]="{'active': isActive('/johnson-huynh')}"
               [routerLink]="['/johnson-huynh']">About Johnson</a>
           </li>
-          <li class="nav-item p-2">
+          <li class="nav-item py-2 pr-2">
             <a title="Resume" class="text-light text-shadow btn btn-outline-warning" role="button" [href]="environment.resumeUrl" target=__blank>Resume</a>
           </li>
           <!-- <li class="nav-item">
@@ -35,11 +35,11 @@
             <a title="Contact" class="nav-link text-shadow" [ngClass]="{'active': isActive('/contact')}"
               [routerLink]="['/contact']">Contact</a>
           </li> -->
-          <li class="nav-item dropdown p-2 cursor-pointer" *ngIf="authService?.getUser()">
+          <li class="nav-item dropdown py-2 pr-2 cursor-pointer" *ngIf="authService?.getUser()">
             <a class="nav-link text-shadow dropdown-toggle" title="User Dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
               [ngClass]="{'active': isActive('/admin')}">
-              <img class="rounded-circle avatar mr-3" [src]="authService?.getPhotoURL()" alt="Avatar">
-              <span>{{authService?.getDisplayName()}}</span>
+              <img class="rounded-circle avatar box-shadow mr-3" [src]="authService?.getPhotoURL()" alt="Avatar">
+              <span class="text-shadow">{{authService?.getDisplayName()}}</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <ng-container *ngIf="authService?.isAdmin()">
