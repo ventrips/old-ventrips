@@ -4,12 +4,12 @@
       <div class="col-lg-12 text-center">
         <h2 class="section-heading text-uppercase">GitHub Trends</h2>
         <h3 class="section-subheading text-capitalize text-muted">Web scraped by Puppeteer in a serverless cloud function <br> Updates and synchronizes data between all devices in real-time</h3>
-        <p *ngIf="!authService?.isUser()" class="text-muted">Note: Only logged-in users are allowed to reload the trending list. Go to 
+        <p *ngIf="!authService?.isUser()" class="text-muted">Note: Only logged-in users are allowed to refresh the trending list. Go to 
           <a title="Log In" [routerLink]="['/login']">
             Log In
           </a>
         </p>
-        <button *ngIf="authService?.isUser()" class="btn btn-primary" (click)="postTrendingGitHubRepos()" [disabled]="isLoading && authService?.isUser()"><i class="fa fa-sync-alt"></i> User Reload</button>
+        <button *ngIf="authService?.isUser()" class="btn btn-primary" (click)="postTrendingGitHubRepos()" [disabled]="isLoading && authService?.isUser()"><i class="fa fa-sync-alt"></i> Refresh</button>
       </div>
       <div class="col-lg-12">
         <div class="my-5" *ngFor="let trend of trends">
