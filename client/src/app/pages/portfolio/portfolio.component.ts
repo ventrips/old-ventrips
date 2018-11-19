@@ -14,28 +14,34 @@ export class PortfolioComponent implements OnInit {
   public portfolioWorks = [
     {
       title: 'Data 360',
-      description: 'Migrated and rebuilt entire existing AngularJS web application to the latest Angular for Data 360 Team'
+      description: 'Migrated and rebuilt entire existing AngularJS web application to the latest Angular for Data 360 Team',
+      languages: ['HTML', 'CSS', 'JS']
     },
     {
       title: 'AskGET',
-      description: 'Built an internal software store using the latest Angular 6 & Bootstrap 4 for AskGET Portal'
+      description: 'Built an internal software store using the latest Angular 6 & Bootstrap 4 for AskGET Portal',
+      languages: ['HTML', 'CSS', 'JS']
     },
     {
       title: 'AIC Ozone',
-      description: 'Built and redesigned internal cloud web application for AIC Ozone'
+      description: 'Built and redesigned internal cloud web application for AIC Ozone',
+      languages: ['HTML', 'CSS', 'JS']
     },
     {
       title: 'Order Capture Express',
-      description: 'Redesigned the interface and improved the usability of the Order Capture Express application'
+      description: 'Redesigned the interface and improved the usability of the Order Capture Express application',
+      languages: ['HTML', 'CSS', 'JS']
     },
     {
       title: 'Business Solutions',
-      description: 'Helped improve page load times and performance on www.att.com'
+      description: 'Helped improve page load times and performance on www.att.com',
+      languages: ['HTML', 'CSS', 'JS']
     },
     {
       title: 'TripTips',
       description: `Designed the front-end and built a fully responsive web
-      applicationusing the MEAN Stack (MongoDB, Express,AngularJS, NodeJS) and Bootstrap 3`
+      applicationusing the MEAN Stack (MongoDB, Express,AngularJS, NodeJS) and Bootstrap 3`,
+      languages: ['HTML', 'CSS', 'JS']
     }
   ];
   public youTubeChannelUrl = 'https://www.youtube.com/channel/UCtif_sUZk9_F7CUzP3rPf2w';

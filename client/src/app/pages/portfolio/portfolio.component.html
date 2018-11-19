@@ -26,8 +26,12 @@
           <div class="card w-100 rounded-0 box-shadow mb-4">
             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
             <div class="card-body">
-              <h4 class="card-title">{{portfolioWork?.title}}</h4>
+              <h3 class="card-title">{{portfolioWork?.title}}</h3>
               <p class="card-text">{{portfolioWork?.description}}</p>
+              <div>
+                <h5>Skills</h5>
+                <span *ngFor="let language of portfolioWork?.languages; let last = last">{{language}}{{!last ? ', ' : ''}}</span>
+              </div>
             </div>
           </div>
         </div>
