@@ -11,5 +11,6 @@ export const environment = {
     projectId: 'ventrips-214422',
     storageBucket: 'ventrips-214422.appspot.com',
     messagingSenderId: '637747621465'
-  }
+  },
+  resumeUrl: './assets/pdf/Johnson-Huynh-Resume.pdf'
 };

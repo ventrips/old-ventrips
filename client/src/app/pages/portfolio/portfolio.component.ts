@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SeoService } from '../../services/seo/seo.service';
 import { DomSanitizer, SafeUrl, SafeResourceUrl, SafeScript } from '@angular/platform-browser';
+import { environment } from './../../../environments/environment';
 import * as _ from 'lodash';
 @Component({
   selector: 'app-portfolio',
@@ -9,7 +10,7 @@ import * as _ from 'lodash';
 })
 export class PortfolioComponent implements OnInit {
   public selected = false;
-  public resumeUrl = './assets/pdf/Johnson-Huynh-Resume.pdf';
+  public environment = environment;
   public portfolioWorks = [
     {
       title: 'Data 360',
