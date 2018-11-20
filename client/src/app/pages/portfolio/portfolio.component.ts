@@ -31,7 +31,7 @@ export class PortfolioComponent implements OnInit {
     {
       title: 'Order Capture Express',
       description: 'Redesigned the interface and improved the usability of the Order Capture Express application',
-      languages: ['html5', 'css3', 'js', 'angular', 'node', 'npm', 'git']
+      languages: ['html5', 'css3', 'js', 'angular', 'npm', 'git']
     },
     {
       title: 'TripTips',
