@@ -40,7 +40,7 @@ export class PortfolioComponent implements OnInit {
     {
       title: 'TripTips',
       description: `Designed the front-end and built a fully responsive web
-      applicationusing the MEAN Stack (MongoDB, Express,AngularJS, NodeJS) and Bootstrap 3`,
+      application using the MEAN Stack`,
       languages: ['HTML', 'CSS', 'JS']
     }
   ];
