@@ -63,7 +63,7 @@ export class ProductsComponent implements OnInit {
     this.spinner.show();
     this.productsService.getCollection(this.collection).subscribe(products => {
       this.products = products;
-      this.searchOptions = _.map(products, (product) => product.name);
+      this.searchOptions = _.map(products, (product) => product.title);
       this.isLoading = false;
       this.spinner.hide();
     }, () => {
