@@ -16,7 +16,11 @@ export const environment = {
     storageBucket: 'ventrips-214422.appspot.com',
     messagingSenderId: '637747621465'
   },
-  resumeUrl: './assets/pdf/Johnson-Huynh-Resume.pdf'
+  pdf: {
+    resumeUrl: './assets/pdf/Johnson-Huynh-Resume.pdf',
+    nanoDegreeUrl: './assets/pdf/Johnson-Huynh-Udacity-Full-Stack-Nanodegree-Certificate.pdf',
+    hcdeCapstoneUrl: '/assets/pdf/Johnson-Huynh-HCDE-Capstone.pdf'
+  }
 };
 
 /*
