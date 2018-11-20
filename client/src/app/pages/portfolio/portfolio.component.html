@@ -56,7 +56,7 @@
     <div class="container">
       <div class="animated fadeInDown">
         <h1 class="text-center text-uppercase text-light text-shadow">Videography <span class="d-inline-block">🎥</span></h1>
-        <h4 class="text-light text-capitalize text-center text-shadow my-5">I like to make travel videos. Let's <a class="text-underline d-inline-block" target=__blank>Ventrove</a> It!</h4>    
+        <h4 class="text-light text-capitalize text-center text-shadow my-5">I like to make travel videos. Let's <a class="text-underline d-inline-block" [href]="youTubeChannelUrl" target=__blank>Ventrove</a> It!</h4>    
       </div>
       <div class="row mt-4">
         <div class="col-xs-12 col-lg-6 animated" [ngClass]="{'slideInRight': odd, 'slideInLeft': !odd }" *ngFor="let youTubeUrl of youTubeUrls; let odd = odd">
