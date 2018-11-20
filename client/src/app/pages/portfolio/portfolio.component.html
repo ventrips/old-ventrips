@@ -30,7 +30,7 @@
               <p class="card-text">{{portfolioWork?.description}}</p>
             </div>
             <div class="card-footer">
-              <h5>Skills</h5>
+              <h5 class="text-uppercase">Skills</h5>
               <span *ngFor="let language of portfolioWork?.languages">
                 <i title="{{_.upperCase(language)}}" class="fab fa-{{_.toLower(language)}} fa-2x mr-2"></i>
               </span>
