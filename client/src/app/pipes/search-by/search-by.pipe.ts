@@ -7,7 +7,7 @@ export class SearchByPipe implements PipeTransform {
 
   transform(data: Array<Object>, searchTerm: string): any {
     if (_.isEmpty(searchTerm)) { return data; }
-    return _.filter(data, (item: Object) => _.includes(_.toLower(item['name']), _.toLower(searchTerm)));
+    return _.filter(data, (item: Object) => _.includes(_.toLower(item['title']), _.toLower(searchTerm)));
   }
 
 }
