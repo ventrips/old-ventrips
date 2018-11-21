@@ -26,7 +26,13 @@ export class PortfolioComponent implements OnInit {
     private productsService: ProductsService,
     private spinner: NgxSpinnerService
   ) {
-    this.seoService.generateTags();
+    this.seoService.generateTags(
+      {
+        title: `Johnson Huynh | Full-Stack Developer & UX/UI Designer`,
+        description: `Hey! 👋 My name is Johnson Huynh. I am a Full-Stack Developer & UX/UI Designer
+        with a demonstrated history of working on web applications`
+      }
+    );
   }
 
   ngOnInit(): void {

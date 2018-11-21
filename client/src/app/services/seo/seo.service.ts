@@ -23,7 +23,7 @@ export class SeoService {
       ...config
     };
 
-    config.title = `${environment.name} - ${config.title}`;
+    config.title = `${config.title} - ${environment.name}`;
     config.description = config.description;
 
     // Set HTML Document Title
