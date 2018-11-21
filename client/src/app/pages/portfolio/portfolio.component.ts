@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { SeoService } from '../../services/seo/seo.service';
 import { DomSanitizer, SafeUrl, SafeResourceUrl, SafeScript } from '@angular/platform-browser';
 import { environment } from './../../../environments/environment';
+import { ProductsService } from '../../services/firebase/products/products.service';
 import * as _ from 'lodash';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -12,57 +15,38 @@ export class PortfolioComponent implements OnInit {
   public _ = _;
   public selected = false;
   public environment = environment;
-  public portfolioWorks = [
-    {
-      title: 'Data 360',
-      description: 'Migrated and rebuilt entire existing AngularJS web application to the latest Angular for Data 360 Team',
-      languages: ['html5', 'css3', 'js', 'angular', 'node', 'npm', 'git']
-    },
-    {
-      title: 'AskGET',
-      description: 'Built an internal software store using the latest Angular 6 & Bootstrap 4 for AskGET Portal',
-      languages: ['html5', 'css3', 'js', 'angular', 'node', 'npm', 'git']
-    },
-    {
-      title: 'AIC Ozone',
-      description: 'Built and redesigned internal cloud web application for AIC Ozone',
-      languages: ['html5', 'css3', 'js', 'angular', 'node', 'npm', 'git']
-    },
-    {
-      title: 'Order Capture Express',
-      description: 'Redesigned the interface and improved the usability of the Order Capture Express application',
-      languages: ['html5', 'css3', 'js', 'angular', 'npm', 'git']
-    },
-    {
-      title: 'TripTips',
-      description: `Designed the front-end and built a fully responsive web
-      application using the MEAN Stack`,
-      languages: ['html5', 'css3', 'js', 'angular', 'node', 'npm', 'git']
-    },
-    {
-      title: 'Business Solutions',
-      description: 'Helped improve page load times and performance on www.att.com',
-      languages: ['html5', 'css3', 'js']
-    }
-  ];
+  public portfolio: Array<Object>;
   public youTubeChannelUrl = 'https://www.youtube.com/channel/UCtif_sUZk9_F7CUzP3rPf2w';
-  public youTubeUrls: Array<SafeResourceUrl>;
+  public videography: Array<SafeResourceUrl>;
+  public isLoading = true;
 
   constructor(
     private seoService: SeoService,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private productsService: ProductsService,
+    private spinner: NgxSpinnerService
   ) {
     this.seoService.generateTags();
-    const youTubeVideos = [
-      'Yd61DtkEXzM',
-      'ceTBRll9GLo',
-      'ZCDY0SmSIrI',
-      'QTcfoTJEFOE'
-    ];
-    this.youTubeUrls = this.getYouTubeUrls(youTubeVideos);
   }
 
   ngOnInit(): void {
+    this.spinner.show();
+
+    const portfolioCollection = 'portfolio';
+    this.productsService.getCollection(portfolioCollection).subscribe(portfolioData => {
+      this.portfolio = portfolioData;
+      this.spinner.hide();
+      this.isLoading = false;
+    }, () => {
+      this.spinner.hide();
+      this.isLoading = false;
+    });
+
+    const videographyCollection = 'videography';
+    this.productsService.getCollection(videographyCollection).subscribe(videographyData => {
+      this.videography = this.getYouTubeUrls(videographyData);
+    }, () => {});
+
   }
 
   sanitizeUrl(url: string): SafeResourceUrl {
@@ -70,6 +54,6 @@ export class PortfolioComponent implements OnInit {
   }
 
   getYouTubeUrls(youTubeUrls: Array<string>): Array<SafeResourceUrl> {
-    return _.map(youTubeUrls, (youTubeUrl) => this.sanitizeUrl(`${'https://www.youtube.com/embed/'}${youTubeUrl}`));
+    return _.map(youTubeUrls, (youTubeUrl) => this.sanitizeUrl(youTubeUrl['url']));
   }
 }

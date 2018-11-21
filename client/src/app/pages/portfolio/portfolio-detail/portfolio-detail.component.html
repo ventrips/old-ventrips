@@ -1,3 +1,21 @@
-<p>
-  portfolio-detail works!
-</p>
+<section class="min-height-100vh animated fadeIn" *ngIf="!isLoading">
+  <div class="container">
+    <div class="row mt-4 animated fadeInRight" *ngIf="!_.isEmpty(work)">
+      <div class="col-xs-12 col-lg-6">
+        <div class="card w-100 rounded-0 box-shadow mb-4">
+          <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+          <div class="card-body">
+            <h3 class="card-title text-uppercase">{{work?.title}}</h3>
+            <p class="card-text">{{work?.description}}</p>
+          </div>
+          <div class="card-footer">
+            <h5 class="text-capitalize">Skills</h5>
+            <span *ngFor="let skill of work?.skills">
+              <i title="{{_.upperCase(skill)}}" class="fab fa-{{_.toLower(skill)}} fa-2x mr-2"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
