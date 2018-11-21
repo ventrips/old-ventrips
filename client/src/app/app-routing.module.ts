@@ -7,6 +7,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { SplashComponent } from './pages/splash/splash.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
+import { PortfolioDetailComponent } from './pages/portfolio/portfolio-detail/portfolio-detail.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductDetailComponent } from './pages/products/product-detail/product-detail.component';
@@ -26,7 +27,17 @@ const routes: Routes = [
       { path: 'reviews/:id', component: ProductDetailComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'johnson-huynh', component: PortfolioComponent },
+      { path: 'johnson-huynh', children: [
+        {
+          path: '',
+          component: PortfolioComponent
+        },
+        {
+          path: 'works/:id',
+          component: PortfolioDetailComponent
+        }
+       ]
+      },
       { path: 'privacy', component: PrivacyComponent },
       { path: '', component: ProductsComponent },
       { path: 'products/:id', component: ProductDetailComponent },
