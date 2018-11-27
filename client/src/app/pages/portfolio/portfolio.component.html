@@ -5,7 +5,9 @@
         <div class="container">
           <div class="intro-text">
             <h2 class="text-capitalize text-shadow mb-5">
-              Hey! <span class="d-inline-block animated tada delay-1s">👋</span> My Name is
+              Hey!
+              <!-- <span class="d-inline-block animated tada delay-1s">👋</span> -->
+              My Name is
             </h2>
             <h1 class="intro-heading text-light text-uppercase text-shadow">
               Johnson Huynh
@@ -25,7 +27,10 @@
     <section id="portfolio" class="portfolio-background bg-dark">
       <div class="container" *ngIf="!isLoading">
         <div>
-          <h1 class="text-center text-light text-uppercase text-shadow">Portfolio <span class="d-inline-block">👨🏻‍💻</span></h1>
+          <h1 class="text-center text-light text-uppercase text-shadow">
+            Portfolio
+            <!-- <span class="d-inline-block">👨🏻‍💻</span> -->
+          </h1>
           <h4 class="text-center text-capitalize text-light text-shadow my-5">
             My Featured Works. Here is my
             <a class="text-underline d-inline-block" [href]="environment.pdf.resumeUrl" target=__blank>
@@ -56,7 +61,10 @@
     <section id="videography" class="videography-background bg-dark">
       <div class="container" *ngIf="!isLoading">
         <div>
-          <h1 class="text-center text-uppercase text-light text-shadow">Videography <span class="d-inline-block">🎥</span></h1>
+          <h1 class="text-center text-uppercase text-light text-shadow">
+            Videography
+            <!-- <span class="d-inline-block">🎥</span> -->
+          </h1>
           <h4 class="text-light text-capitalize text-center text-shadow my-5">I like to make travel videos. Let's <a class="text-underline d-inline-block" [href]="youTubeChannelUrl" target=__blank>Ventrove</a> It!</h4>    
         </div>
         <div class="row mt-4 animated fadeInDown" *ngIf="!_.isEmpty(videography)">
