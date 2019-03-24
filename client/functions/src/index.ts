@@ -1,7 +1,8 @@
 // SSR
-import * as puppeteer from 'puppeteer';
+import * as puppeteer from 'puppeteer-core';
 import { Renderer } from './seo/renderer';
 import * as fetch from 'node-fetch';
+import * as chromium from 'chrome-aws-lambda';
 
 // FIREBASE
 import * as functions from 'firebase-functions';
@@ -19,19 +20,13 @@ const appURL = 'https://ventrips-214422.firebaseapp.com/';
 const renderURL = 'https://us-central1-ventrips-214422.cloudfunctions.net/render';
 
 export const render = functions
-.runWith({ memory: '1GB' })
+.runWith({ memory: '2GB' })
 .https.onRequest(async (request, response) => {
     const browser = await puppeteer.launch({
-        headless: false,
-        args: [
-        '--disable-gpu',
-        '--disable-dev-shm-usage',
-        '--disable-setuid-sandbox',
-        '--no-first-run',
-        '--no-sandbox',
-        '--no-zygote',
-        '--single-process'
-        ]
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath,
+      headless: chromium.headless
     });
 
     const requestURL = request.query.requestURL;
